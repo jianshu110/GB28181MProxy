@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../libs/libscale.a  CMakeFiles/scale.dir/src/TdScale.cpp.o
+/usr/bin/ranlib ../libs/libscale.a

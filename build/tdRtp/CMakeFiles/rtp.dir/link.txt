@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../libs/librtp.a  CMakeFiles/rtp.dir/src/TdRtp.cpp.o
+/usr/bin/ranlib ../libs/librtp.a

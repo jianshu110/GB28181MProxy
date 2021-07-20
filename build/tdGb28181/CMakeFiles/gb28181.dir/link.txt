@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../libs/libgb28181.a  CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o CMakeFiles/gb28181.dir/src/TdDevice.cpp.o
+/usr/bin/ranlib ../libs/libgb28181.a

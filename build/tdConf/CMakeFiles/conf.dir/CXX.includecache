@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../tdConf/inc/TdConf.h
+iostream
+-
+fstream
+-
+stdlib.h
+-
+string.h
+-
+inc/uuid4.h
+../tdConf/inc/inc/uuid4.h
+
+../tdUtil/inc/uuid4.h
+
+/home/tdwl/work/GMProxy/tdConf/src/TdConf.cpp
+TdConf.h
+/home/tdwl/work/GMProxy/tdConf/src/TdConf.h
+

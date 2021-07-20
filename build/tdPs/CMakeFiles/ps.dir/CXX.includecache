@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../tdPs/inc/TdPs.h
+stdlib.h
+-
+stdio.h
+-
+iostream
+-
+string
+-
+thread
+-
+pstream.h
+../tdPs/inc/pstream.h
+fstream
+-
+string.h
+-
+
+../tdPs/inc/pstream.h
+
+/home/tdwl/work/GMProxy/tdPs/src/TdPs.cpp
+TdPs.h
+/home/tdwl/work/GMProxy/tdPs/src/TdPs.h
+
