@@ -105,12 +105,14 @@ void TdRtp::dumpHex(uint8_t*data,int start,int end){
     printf("\r\n");
 }
 
-void TdRtp::start(uint32_t time){
-    std::thread t(loopThread,this);
-    t.detach();
+uint32_t TdRtp::start(uint32_t time){
+    rtpTh = std::thread(loopThread,this);
+    //t.detach();
+    spdlog::debug("Rtp 启动成功\r\n");
+    return 0 ;
 }
-int startTeg = 0 ;
-int count = 0;
+// int startTeg = 0 ;
+// int count = 0;
 void TdRtp::loopThread(TdRtp *rtp){
     int status ;
     rtp->isRun = true;
@@ -162,10 +164,10 @@ void TdRtp::loopThread(TdRtp *rtp){
                                 //rtp->dumpHex(obuff,0,5);
                                 spdlog::debug("oLen:%d pos+len:%d",oLen,pos+len);
 
-                                if(startTeg==0){
+                                if(rtp->startTeg==0){
                                     if(obuff[4]==0x67)
                                     {
-                                        startTeg = 1;
+                                        rtp->startTeg = 1;
                                         FramePacket *frame = new FramePacket(obuff,oLen);
                                         rtp->pushFrameToQue(frame);
                                     }
@@ -191,8 +193,17 @@ void TdRtp::loopThread(TdRtp *rtp){
             }
         }
 		
-		
 		sessPtr->EndDataAccess();
 	}
     return ;
+}
+
+uint32_t TdRtp::stop()
+{
+    isRun = false;
+    rtpTh.join();
+    sess.BYEDestroy(RTPTime(10,0),0,0);
+    spdlog::debug("=== rtp joined ===");
+    TdH264::destory();
+    return 0;
 }

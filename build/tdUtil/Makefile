@@ -125,6 +125,33 @@ util/fast:
 	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/build
 .PHONY : util/fast
 
+src/common.o: src/common.cpp.o
+
+.PHONY : src/common.o
+
+# target to build an object file
+src/common.cpp.o:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.o
+.PHONY : src/common.cpp.o
+
+src/common.i: src/common.cpp.i
+
+.PHONY : src/common.i
+
+# target to preprocess a source file
+src/common.cpp.i:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.i
+.PHONY : src/common.cpp.i
+
+src/common.s: src/common.cpp.s
+
+.PHONY : src/common.s
+
+# target to generate assembly for a file
+src/common.cpp.s:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.s
+.PHONY : src/common.cpp.s
+
 src/json11.o: src/json11.cpp.o
 
 .PHONY : src/json11.o
@@ -188,6 +215,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... util"
 	@echo "... edit_cache"
+	@echo "... src/common.o"
+	@echo "... src/common.i"
+	@echo "... src/common.s"
 	@echo "... src/json11.o"
 	@echo "... src/json11.i"
 	@echo "... src/json11.s"

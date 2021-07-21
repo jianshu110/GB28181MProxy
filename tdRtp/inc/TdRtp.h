@@ -32,10 +32,13 @@ private:
     RTPSession sess;
     bool isRun = false;
     static void loopThread(TdRtp *rtp);
+    std::thread rtpTh ;
+    int startTeg = 0 ;
     /* data */
 public:
     TdRtp(){
-        fout = new std::ofstream("dumpPs.h264", std::ios::out | std::ios::binary);
+        //fout = new std::ofstream("dumpPs.h264", std::ios::out | std::ios::binary);
+        ;
     }
     ~TdRtp(){};
     void dumpHex(uint8_t*data,int start,int end);
@@ -46,8 +49,8 @@ public:
     int32_t setUp(std::string destIp,uint16_t destPort,uint16_t basePort);
     void h264CallBackUser(uint8_t*data,int size);
     uint32_t sendData(uint8_t * data,uint32_t size);
-    void start(uint32_t time);
-    void stop();
+    uint32_t start(uint32_t time);
+    uint32_t stop();
 };
 
 #endif

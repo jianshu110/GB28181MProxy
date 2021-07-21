@@ -94,11 +94,13 @@ GMProxy_bin: libs/libscale.a
 GMProxy_bin: libs/librtp.a
 GMProxy_bin: libs/libserver.a
 GMProxy_bin: libs/libgb28181.a
+GMProxy_bin: libs/libconf.a
+GMProxy_bin: libs/libutil.a
+GMProxy_bin: libs/libchannel.a
+GMProxy_bin: libs/librtp.a
 GMProxy_bin: libs/libcodec.a
 GMProxy_bin: libs/libscale.a
 GMProxy_bin: libs/libps.a
-GMProxy_bin: libs/libconf.a
-GMProxy_bin: libs/libutil.a
 GMProxy_bin: gmproxy/CMakeFiles/GMProxy_bin.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../GMProxy_bin"
 	cd /home/tdwl/work/GMProxy/build/gmproxy && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GMProxy_bin.dir/link.txt --verbose=$(VERBOSE)

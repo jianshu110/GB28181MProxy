@@ -15,6 +15,7 @@
 #include <thread>
 #include <mutex>
 #include <unistd.h>
+#include "spdlog/spdlog.h"
 
 typedef struct  {
     uint8_t * data[3];
@@ -41,20 +42,18 @@ private:
     bool mIsEncoderSetUp = false;
     std::queue<FramePacket*> frameQue;
     pthread_mutex_t queMutex;
-    int loopThrStatus = 0 ;
+    bool loopThrStatus = 0 ;
+    bool frameQueStatus = true;
     static void loopThread(TdH264 *h264);
+    std::thread th;
     //uint8_t* picture_buffer_;
     /* data */
 public:
     TdH264(/* args */)
     {
-        // h264fout = new std::ofstream("dumpScale.h264",std::ios::binary);
-        // yuvScalefout = new std::ofstream("dumpScale.yuv",std::ios::binary);
-        // yuvfout = new std::ofstream("dumpH264.yuv",std::ios::binary);
-        // rtpfout = new std::ofstream("dumpRtp.h264",std::ios::binary);
         pthread_mutex_init(&queMutex,NULL);
-        std::thread t(loopThread,this);
-        t.detach();
+        th = std::thread(loopThread,this);
+        //t.detach();
     }
     std::ofstream *rtpfout ;
     std::ofstream *h264fout ;
@@ -72,14 +71,11 @@ public:
     void setPicture(int width,int height,int Ystride,int UVstride);
     int32_t decode(uint8_t * inData,uint32_t inSize);
     int32_t encode(uint8_t* Ydata,uint8_t* Udata,uint8_t* Vdata,uint8_t* pkt,size_t& pkt_size,bool& is_keyframe,bool& got_output);
+    int32_t destory();
     virtual void h264CallBackUser(uint8_t * data,int size )=0;
     ~TdH264(){
         pthread_mutex_destroy(&queMutex);
         loopThrStatus = 0;
-        // h264fout->close();
-        // yuvScalefout->close();
-        // yuvfout->close();
-        // rtpfout->close();
     };
 };
 

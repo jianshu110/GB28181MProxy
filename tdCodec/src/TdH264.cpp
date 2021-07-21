@@ -55,6 +55,11 @@ void TdH264::DelFramePacket(FramePacket*frame)
  }
 int32_t TdH264::pushFrameToQue(FramePacket * frame)
 {
+    if(!frameQueStatus)
+    {
+        //队列状态为false 数据直接丢掉
+        return -1 ;
+    }
     pthread_mutex_lock(&queMutex);
     if(frameQue.size()<128){
          frameQue.push(frame);
@@ -195,8 +200,6 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
     {  
         if(obufInfo.UsrData.sSystemBuffer.iFormat==videoFormatI420){
 
-            //rtpfout->write((const char*)inData,inSize);
-
             src_height = obufInfo.UsrData.sSystemBuffer.iHeight;
             src_width = obufInfo.UsrData.sSystemBuffer.iWidth;
 
@@ -206,13 +209,6 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
 
             src_y_plane_size = obufInfo.UsrData.sSystemBuffer.iStride[0]*src_height;
             src_uv_plane_size = obufInfo.UsrData.sSystemBuffer.iStride[1]*src_height;
-
-            // yuvfout->write((const char*)oData[0],src_y_plane_size);
-            // yuvfout->write((const char*)oData[1],src_uv_plane_size);
-            // yuvfout->write((const char*)oData[2],src_uv_plane_size);
-            // yuvfout->flush();
-
-
 
             dst_height = (abs(src_height) + 1) >> 1;
             dst_width = (abs(src_width) + 1) >> 1;
@@ -241,13 +237,6 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
             if(status){
                 return -1 ;
             }
-            //printf("src: %d(%d)*%d dst: %d*%d \r\n",src_width,obufInfo.UsrData.sSystemBuffer.iStride[0],src_height,dst_width,dst_height);
-
-            // yuvScalefout->write((const char*)dst_y_c,dst_y_plane_size);
-            // yuvScalefout->write((const char*)dst_u_c,dst_uv_plane_size);
-            // yuvScalefout->write((const char*)dst_v_c,dst_uv_plane_size);
-            // yuvScalefout->flush();
-
             uint8_t* pkt = new uint8_t[1024*1024*5];
             size_t pkt_size = 0 ;
             bool is_keyframe=false ,got_output=false;
@@ -261,7 +250,7 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
      
             if(got_output)
             {
-                h264fout->write((const char*)pkt,pkt_size);
+                //h264fout->write((const char*)pkt,pkt_size);
                 h264CallBackUser(pkt,pkt_size);
             }
             free(pkt);
@@ -273,9 +262,36 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
     return 0 ;
 }
 
+int32_t TdH264::destory()
+{
+    loopThrStatus  = false;
+    //清空缓存的数据
+    pthread_mutex_lock(&queMutex);
+    while (!frameQue.empty()) 
+    {
+        frameQue.pop();
+    }
+    pthread_mutex_unlock(&queMutex);
+
+    th.join(); //等待线程结束
+    spdlog::debug("===TdH264 joined===\r\n");
+    if(encoder_!=nullptr){
+        encoder_->Uninitialize();
+        WelsDestroySVCEncoder(encoder_);
+        encoder_ = nullptr;
+    }
+    if(decoder_!=nullptr)
+    {
+        decoder_ ->Uninitialize();
+        WelsDestroyDecoder(decoder_);
+        decoder_ = nullptr;
+    }
+    return 0 ;
+}
+
 void TdH264::loopThread(TdH264 *h264){
-    h264->loopThrStatus =1;
-    while(h264->loopThrStatus==1)
+    h264->loopThrStatus =true;
+    while(h264->loopThrStatus)
     {
         FramePacket * frame = h264->popFrameFromQue();
         if(frame!=nullptr)

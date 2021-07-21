@@ -37,6 +37,8 @@ mutex
 -
 unistd.h
 -
+spdlog/spdlog.h
+../tdCodec/inc/spdlog/spdlog.h
 
 ../tdPs/inc/TdPs.h
 stdlib.h

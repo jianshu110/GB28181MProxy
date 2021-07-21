@@ -120,25 +120,25 @@ std::string getRand()
 }
 
 
-std::string getMsStr()
-{
-    struct timeval xTime;
-    gettimeofday(&xTime, NULL);
-    long long xFactor = 1;
-    long long now = (long long)(( xFactor * xTime.tv_sec * 1000) + (xTime.tv_usec / 1000));
-    char timeMs[16];
-    memset(timeMs,0,16);
-    snprintf(timeMs,16,"%13lld",now);
-    std::string retTimeMsStr = timeMs;
-    return retTimeMsStr ;
-}
+// std::string getMsStr()
+// {
+//     struct timeval xTime;
+//     gettimeofday(&xTime, NULL);
+//     long long xFactor = 1;
+//     long long now = (long long)(( xFactor * xTime.tv_sec * 1000) + (xTime.tv_usec / 1000));
+//     char timeMs[16];
+//     memset(timeMs,0,16);
+//     snprintf(timeMs,16,"%13lld",now);
+//     std::string retTimeMsStr = timeMs;
+//     return retTimeMsStr ;
+// }
 
 
-std::string getMd5(std::string Data) {
-    if (Data.empty())
-        return Data;
-    return MD5(Data).toStr();
-}
+// std::string getMd5(std::string Data) {
+//     if (Data.empty())
+//         return Data;
+//     return MD5(Data).toStr();
+// }
 
 
 

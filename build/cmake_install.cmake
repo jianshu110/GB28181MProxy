@@ -47,6 +47,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/tdwl/work/GMProxy/build/tdConf/cmake_install.cmake")
   include("/home/tdwl/work/GMProxy/build/tdUtil/cmake_install.cmake")
   include("/home/tdwl/work/GMProxy/build/tdGb28181/cmake_install.cmake")
+  include("/home/tdwl/work/GMProxy/build/tdChannel/cmake_install.cmake")
   include("/home/tdwl/work/GMProxy/build/gmproxy/cmake_install.cmake")
 
 endif()

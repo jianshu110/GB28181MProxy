@@ -6,6 +6,32 @@
 
 #IncludeRegexTransform: 
 
+/home/tdwl/work/GMProxy/tdUtil/inc/common.h
+iostream
+-
+string
+-
+stdio.h
+-
+stdlib.h
+-
+sys/time.h
+-
+unistd.h
+-
+md5.h
+/home/tdwl/work/GMProxy/tdUtil/inc/md5.h
+uuid4.h
+/home/tdwl/work/GMProxy/tdUtil/inc/uuid4.h
+encryption.h
+/home/tdwl/work/GMProxy/tdUtil/inc/encryption.h
+json11.hpp
+/home/tdwl/work/GMProxy/tdUtil/inc/json11.hpp
+
+/home/tdwl/work/GMProxy/tdUtil/inc/encryption.h
+string
+-
+
 /home/tdwl/work/GMProxy/tdUtil/inc/json11.hpp
 string
 -
@@ -18,7 +44,23 @@ memory
 initializer_list
 -
 
+/home/tdwl/work/GMProxy/tdUtil/inc/md5.h
+string
+-
+cstring
+-
+
 /home/tdwl/work/GMProxy/tdUtil/inc/uuid4.h
+
+/home/tdwl/work/GMProxy/tdUtil/src/common.cpp
+../inc/json11.hpp
+/home/tdwl/work/GMProxy/tdUtil/inc/json11.hpp
+../inc/common.h
+/home/tdwl/work/GMProxy/tdUtil/inc/common.h
+string
+-
+sstream
+-
 
 /home/tdwl/work/GMProxy/tdUtil/src/json11.cpp
 ../inc/json11.hpp

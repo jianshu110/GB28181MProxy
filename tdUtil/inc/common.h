@@ -14,7 +14,6 @@
 #include "uuid4.h"
 #include "encryption.h"
 #include "json11.hpp"
-#include "../../network/inc/httpAdapter.h"
 
 #define SIZE1024 1024
 #define SIZE2048 2048
@@ -31,5 +30,6 @@ std::string getRand();
 std::string getMsStr();
 std::string getMd5(std::string Data);
 long long string2longlong(std::string data);
+int string2int(std::string data);
 
 #endif //TDWLSDK_COMMON_H

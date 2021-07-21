@@ -86,7 +86,7 @@ tdRtp/CMakeFiles/rtp.dir/all: tdCodec/CMakeFiles/codec.dir/all
 tdRtp/CMakeFiles/rtp.dir/all: tdPs/CMakeFiles/ps.dir/all
 	$(MAKE) -f tdRtp/CMakeFiles/rtp.dir/build.make tdRtp/CMakeFiles/rtp.dir/depend
 	$(MAKE) -f tdRtp/CMakeFiles/rtp.dir/build.make tdRtp/CMakeFiles/rtp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=13,14 "Built target rtp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=15,16 "Built target rtp"
 .PHONY : tdRtp/CMakeFiles/rtp.dir/all
 
 # Include target in all.
@@ -141,7 +141,7 @@ tdScale/preinstall:
 tdScale/CMakeFiles/scale.dir/all:
 	$(MAKE) -f tdScale/CMakeFiles/scale.dir/build.make tdScale/CMakeFiles/scale.dir/depend
 	$(MAKE) -f tdScale/CMakeFiles/scale.dir/build.make tdScale/CMakeFiles/scale.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=15,16 "Built target scale"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=17,18 "Built target scale"
 .PHONY : tdScale/CMakeFiles/scale.dir/all
 
 # Include target in all.
@@ -196,7 +196,7 @@ tdCodec/preinstall:
 tdCodec/CMakeFiles/codec.dir/all: tdScale/CMakeFiles/scale.dir/all
 	$(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/depend
 	$(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=3,4 "Built target codec"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=5,6 "Built target codec"
 .PHONY : tdCodec/CMakeFiles/codec.dir/all
 
 # Include target in all.
@@ -251,7 +251,7 @@ tdPs/preinstall:
 tdPs/CMakeFiles/ps.dir/all:
 	$(MAKE) -f tdPs/CMakeFiles/ps.dir/build.make tdPs/CMakeFiles/ps.dir/depend
 	$(MAKE) -f tdPs/CMakeFiles/ps.dir/build.make tdPs/CMakeFiles/ps.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=11,12 "Built target ps"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=13,14 "Built target ps"
 .PHONY : tdPs/CMakeFiles/ps.dir/all
 
 # Include target in all.
@@ -307,7 +307,7 @@ tdServer/CMakeFiles/server.dir/all: tdConf/CMakeFiles/conf.dir/all
 tdServer/CMakeFiles/server.dir/all: tdUtil/CMakeFiles/util.dir/all
 	$(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/depend
 	$(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=17,18 "Built target server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=19,20 "Built target server"
 .PHONY : tdServer/CMakeFiles/server.dir/all
 
 # Include target in all.
@@ -317,7 +317,7 @@ all: tdServer/CMakeFiles/server.dir/all
 
 # Build rule for subdir invocation for target.
 tdServer/CMakeFiles/server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 tdServer/CMakeFiles/server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
 .PHONY : tdServer/CMakeFiles/server.dir/rule
@@ -362,7 +362,7 @@ tdConf/preinstall:
 tdConf/CMakeFiles/conf.dir/all: tdUtil/CMakeFiles/util.dir/all
 	$(MAKE) -f tdConf/CMakeFiles/conf.dir/build.make tdConf/CMakeFiles/conf.dir/depend
 	$(MAKE) -f tdConf/CMakeFiles/conf.dir/build.make tdConf/CMakeFiles/conf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=5,6 "Built target conf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=7,8 "Built target conf"
 .PHONY : tdConf/CMakeFiles/conf.dir/all
 
 # Include target in all.
@@ -372,7 +372,7 @@ all: tdConf/CMakeFiles/conf.dir/all
 
 # Build rule for subdir invocation for target.
 tdConf/CMakeFiles/conf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 tdConf/CMakeFiles/conf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
 .PHONY : tdConf/CMakeFiles/conf.dir/rule
@@ -417,7 +417,7 @@ tdUtil/preinstall:
 tdUtil/CMakeFiles/util.dir/all:
 	$(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/depend
 	$(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=19,20,21 "Built target util"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=21,22,23,24 "Built target util"
 .PHONY : tdUtil/CMakeFiles/util.dir/all
 
 # Include target in all.
@@ -427,7 +427,7 @@ all: tdUtil/CMakeFiles/util.dir/all
 
 # Build rule for subdir invocation for target.
 tdUtil/CMakeFiles/util.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 tdUtil/CMakeFiles/util.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
 .PHONY : tdUtil/CMakeFiles/util.dir/rule
@@ -469,10 +469,15 @@ tdGb28181/preinstall:
 # Target rules for target tdGb28181/CMakeFiles/gb28181.dir
 
 # All Build rule for target.
-tdGb28181/CMakeFiles/gb28181.dir/all:
+tdGb28181/CMakeFiles/gb28181.dir/all: tdRtp/CMakeFiles/rtp.dir/all
+tdGb28181/CMakeFiles/gb28181.dir/all: tdScale/CMakeFiles/scale.dir/all
+tdGb28181/CMakeFiles/gb28181.dir/all: tdCodec/CMakeFiles/codec.dir/all
+tdGb28181/CMakeFiles/gb28181.dir/all: tdPs/CMakeFiles/ps.dir/all
+tdGb28181/CMakeFiles/gb28181.dir/all: tdUtil/CMakeFiles/util.dir/all
+tdGb28181/CMakeFiles/gb28181.dir/all: tdChannel/CMakeFiles/channel.dir/all
 	$(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/depend
 	$(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=7,8,9,10 "Built target gb28181"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=9,10,11,12 "Built target gb28181"
 .PHONY : tdGb28181/CMakeFiles/gb28181.dir/all
 
 # Include target in all.
@@ -482,7 +487,7 @@ all: tdGb28181/CMakeFiles/gb28181.dir/all
 
 # Build rule for subdir invocation for target.
 tdGb28181/CMakeFiles/gb28181.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 tdGb28181/CMakeFiles/gb28181.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
 .PHONY : tdGb28181/CMakeFiles/gb28181.dir/rule
@@ -499,6 +504,64 @@ tdGb28181/CMakeFiles/gb28181.dir/clean:
 
 # clean rule for target.
 clean: tdGb28181/CMakeFiles/gb28181.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory tdChannel
+
+# Convenience name for "all" pass in the directory.
+tdChannel/all: tdChannel/CMakeFiles/channel.dir/all
+
+.PHONY : tdChannel/all
+
+# Convenience name for "clean" pass in the directory.
+tdChannel/clean: tdChannel/CMakeFiles/channel.dir/clean
+
+.PHONY : tdChannel/clean
+
+# Convenience name for "preinstall" pass in the directory.
+tdChannel/preinstall:
+
+.PHONY : tdChannel/preinstall
+
+#=============================================================================
+# Target rules for target tdChannel/CMakeFiles/channel.dir
+
+# All Build rule for target.
+tdChannel/CMakeFiles/channel.dir/all: tdRtp/CMakeFiles/rtp.dir/all
+tdChannel/CMakeFiles/channel.dir/all: tdScale/CMakeFiles/scale.dir/all
+tdChannel/CMakeFiles/channel.dir/all: tdCodec/CMakeFiles/codec.dir/all
+tdChannel/CMakeFiles/channel.dir/all: tdPs/CMakeFiles/ps.dir/all
+	$(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/depend
+	$(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=3,4 "Built target channel"
+.PHONY : tdChannel/CMakeFiles/channel.dir/all
+
+# Include target in all.
+all: tdChannel/CMakeFiles/channel.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+tdChannel/CMakeFiles/channel.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 10
+	$(MAKE) -f CMakeFiles/Makefile2 tdChannel/CMakeFiles/channel.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
+.PHONY : tdChannel/CMakeFiles/channel.dir/rule
+
+# Convenience name for target.
+channel: tdChannel/CMakeFiles/channel.dir/rule
+
+.PHONY : channel
+
+# clean rule for target.
+tdChannel/CMakeFiles/channel.dir/clean:
+	$(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/clean
+.PHONY : tdChannel/CMakeFiles/channel.dir/clean
+
+# clean rule for target.
+clean: tdChannel/CMakeFiles/channel.dir/clean
 
 .PHONY : clean
 
@@ -532,6 +595,7 @@ gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdServer/CMakeFiles/server.dir/all
 gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdConf/CMakeFiles/conf.dir/all
 gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdUtil/CMakeFiles/util.dir/all
 gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdGb28181/CMakeFiles/gb28181.dir/all
+gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdChannel/CMakeFiles/channel.dir/all
 	$(MAKE) -f gmproxy/CMakeFiles/GMProxy_bin.dir/build.make gmproxy/CMakeFiles/GMProxy_bin.dir/depend
 	$(MAKE) -f gmproxy/CMakeFiles/GMProxy_bin.dir/build.make gmproxy/CMakeFiles/GMProxy_bin.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=1,2 "Built target GMProxy_bin"
@@ -544,7 +608,7 @@ all: gmproxy/CMakeFiles/GMProxy_bin.dir/all
 
 # Build rule for subdir invocation for target.
 gmproxy/CMakeFiles/GMProxy_bin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 24
 	$(MAKE) -f CMakeFiles/Makefile2 gmproxy/CMakeFiles/GMProxy_bin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
 .PHONY : gmproxy/CMakeFiles/GMProxy_bin.dir/rule

@@ -5,13 +5,24 @@
 #include <tuple>
 #include <memory>
 #include "eXosip2/eXosip.h"
+#include "inc/TdChanManager.h"
+#include "spdlog/spdlog.h"
+#include "pugixml.hpp"
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netinet/udp.h>
+#include <string>
+#include <sstream>
+#include <thread>
+#include <tuple> 
+#include <inc/common.h> 
 
 using namespace std;
 
 class TdDevice {
 public:
-    TdDevice() {}
 
+    TdDevice() {}
     TdDevice(string server_sip_id, string server_ip, int server_port,
             string device_sip_id, string username, string password,
             int local_port,
@@ -55,9 +66,14 @@ public:
     osip_message_t * create_msg();
 
     void send_response_ok(shared_ptr<eXosip_event_t> evt);
+    
+    void send_response_err(shared_ptr<eXosip_event_t> evt);
 
     std::tuple<string, string> get_cmd(const char * body);
-
+    std::string getValueByNodeName(const char * body,std::string nodeName);
+    std::string getValueByAttrKey(const char * sdp,std::string AttrKey);
+    int createSession(std::string deviceId,std::string dest,int destPort,int basePort);
+    int destorySession(std::string deviceId);
 public:
     string server_sip_id;
     string server_ip;

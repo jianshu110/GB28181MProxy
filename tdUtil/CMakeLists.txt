@@ -2,7 +2,8 @@ project(util)
  
 set(srcs 
 	src/json11.cpp
-	src/uuid4.cpp)
+	src/uuid4.cpp
+	src/common.cpp)
  
 include_directories(. "inc")
 

@@ -1,13 +1,5 @@
 #include "inc/TdDevice.h"
-#include "spdlog/spdlog.h"
-#include "pugixml.hpp"
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netinet/udp.h>
-#include <string>
-#include <sstream>
-#include <thread>
-#include <tuple> 
+
 
 static int SN_MAX = 99999999;
 static int sn;
@@ -21,7 +13,7 @@ static int get_sn() {
 }
 
 void TdDevice::start() {
-    spdlog::info("sip init begin.");
+    spdlog::debug("sip init begin.");
 
     sip_context = eXosip_malloc();
 
@@ -46,7 +38,7 @@ void TdDevice::start() {
 
     // local ip & port
     eXosip_guess_localip(sip_context, AF_INET, /*data(local_ip)*/(char*)local_ip.c_str(), local_ip.length());
-    spdlog::info("local ip is {}", local_ip);
+    spdlog::debug("local ip is {}", local_ip);
 
     from_uri << "sip:" << device_sip_id << "@" << local_ip << ":" << local_port;
     contact << "sip:" << device_sip_id << "@" << local_ip << ":" << local_port;
@@ -55,9 +47,9 @@ void TdDevice::start() {
     from_sip = from_uri.str();
     to_sip = proxy_uri.str();
 
-    spdlog::info("from uri is {}", from_sip);
-    spdlog::info("contact is {}", contact.str());
-    spdlog::info("proxy_uri is {}", to_sip);
+    spdlog::debug("from uri is {}", from_sip);
+    spdlog::debug("contact is {}", contact.str());
+    spdlog::debug("proxy_uri is {}", to_sip);
 
     // clear auth
     eXosip_clear_authentication_info(sip_context);
@@ -77,8 +69,9 @@ void TdDevice::start() {
 
     thread heartbeat_task_thread(&TdDevice::heartbeat_task, this);
     heartbeat_task_thread.detach();
-
+    spdlog::info("启动GB28181协议栈成功");
     this->process_request();
+   
 }
 
 void TdDevice::process_request() {
@@ -98,12 +91,12 @@ void TdDevice::process_request() {
         switch (evt->type)
         {
         case eXosip_event_type::EXOSIP_REGISTRATION_SUCCESS: {
-            spdlog::info("got REGISTRATION_SUCCESS");
+            spdlog::info("GB28181注册成功");
             is_register = true;
             break;
         }
         case eXosip_event_type::EXOSIP_REGISTRATION_FAILURE: {
-            spdlog::info("got REGISTRATION_FAILURE");
+            spdlog::info("GB28181注册失败");
             if (evt->response == nullptr) {
                 spdlog::error("register 401 has no response !!!");
                 break;
@@ -123,21 +116,19 @@ void TdDevice::process_request() {
             break;
         }
         case eXosip_event_type::EXOSIP_MESSAGE_NEW: {
-            spdlog::info("got MESSAGE_NEW");
+            spdlog::debug("got MESSAGE_NEW");
 
             if (MSG_IS_MESSAGE(evt->request)) {
                 osip_body_t * body = nullptr;
                 osip_message_get_body(evt->request, 0, &body);
-                if (body != nullptr) {
-                    spdlog::info("new message request: \n{}", body->body);
-                }
-
-                this->send_response_ok(evt);
-
+                if (body == nullptr) {
+                    //spdlog::info("new message request: \n{}", body->body);
+                    break;
+                }   
                 auto cmd_sn = this->get_cmd(body->body);
                 string cmd = get<0>(cmd_sn);
                 string sn = get<1>(cmd_sn);
-                spdlog::info("got new cmd: {}", cmd);
+                spdlog::debug("got new cmd: {}", cmd);
                 if ("Catalog" == cmd) {
                     this->process_catalog_query(sn);
                 } else if ("DeviceStatus" == cmd) {
@@ -146,7 +137,36 @@ void TdDevice::process_request() {
                     this->process_deviceinfo_query(sn);
                 } else if ("DeviceControl" == cmd) {
                     this->process_devicecontrol_query(sn);
-                } else {
+                }else if ("mediaProxy" == cmd) {
+                    std::string channel = getValueByNodeName(body->body,"DeviceID");
+                    std::string subCmd = getValueByNodeName(body->body,"CmdSubType");
+                    spdlog::debug("got channel: {} subCmd:{} ", channel,subCmd);
+                    if(!subCmd.compare("start"))
+                    {
+                        std::string destHost = getValueByNodeName(body->body,"DestHost");
+                        std::string destPort = getValueByNodeName(body->body,"DestPort");
+                        std::string basePort = getValueByNodeName(body->body,"BasePort");
+                        spdlog::debug("got destHost: {} destPort:{} basePort:{}", destHost,destPort,basePort);
+                        if(!createSession(channel,destHost,string2int(destPort),string2int(basePort)))
+                        {
+                            spdlog::info("通道({}) -> 启动成功",channel);
+                            usleep(500);
+                            this->send_response_ok(evt);
+                        }
+                        else
+                        {
+                            spdlog::info("通道({}) -> 启动失败",channel);
+                            this->send_response_err(evt);
+                        }
+                    }
+                    else if(!subCmd.compare("end"))
+                    {
+                        destorySession(channel);
+                        this->send_response_ok(evt);
+                        spdlog::info("通道({}) -> 关闭成功",channel);
+                    }
+                }
+                else{
                     spdlog::error("unhandled cmd: {}", cmd);
                 }
             } else if (MSG_IS_BYE(evt->request)) {
@@ -159,12 +179,18 @@ void TdDevice::process_request() {
         case eXosip_event_type::EXOSIP_CALL_INVITE: {
             spdlog::info("got CALL_INVITE");
 
-            auto sdp_msg = eXosip_get_remote_sdp(sip_context, evt->did);
+            sdp_message_t *sdp_msg = eXosip_get_remote_sdp(sip_context, evt->did);
             if (!sdp_msg) {
                 spdlog::error("eXosip_get_remote_sdp failed");
                 break;
             }
+        
+            char * sdpStr ;
+            sdp_message_to_str(sdp_msg,&sdpStr);
 
+            //getValueByAttrKey(sdpStr,"rtpmap");
+
+            printf("sdpStr:%s\r\n",sdpStr);
             auto connection = eXosip_get_video_connection(sdp_msg);
             if (!connection) {
                 spdlog::error("eXosip_get_video_connection failed");
@@ -203,12 +229,11 @@ void TdDevice::process_request() {
 
              osip_message_t * message = evt->request;
             int status = eXosip_call_build_answer(sip_context, evt->tid, 200, &message);
-
             if (status != 0) {
                 spdlog::error("call invite build answer failed");
                 break;
             }
-            send_response_ok(evt);
+            this->send_response_ok(evt);
              break;
         }
         case eXosip_event_type::EXOSIP_CALL_ACK: {
@@ -228,7 +253,7 @@ void TdDevice::process_request() {
             break;
         }
         case eXosip_event_type::EXOSIP_MESSAGE_ANSWERED: {
-            spdlog::info("got MESSAGE_ANSWERED: unhandled");
+            //spdlog::info("got MESSAGE_ANSWERED: unhandled");
             break;
         }
         
@@ -258,7 +283,7 @@ void TdDevice::process_catalog_query(string sn) {
     ss << "</Item>\r\n";
     ss << "</DeviceList>\r\n";
     ss << "</Response>\r\n";
-    spdlog::info("catalog response: \n{}", ss.str());
+    spdlog::debug("catalog response: \n{}", ss.str());
     auto request = create_msg();
     if (request != NULL) {
         osip_message_set_content_type(request, "Application/MANSCDP+xml");
@@ -310,6 +335,7 @@ void TdDevice::process_deviceinfo_query(string sn) {
     ss <<    "<CmdType>DeviceInfo</CmdType>\r\n";
     ss <<    "<SN>" << get_sn() << "</SN>\r\n";
     ss <<    "<DeviceID>" << device_sip_id << "</DeviceID>\r\n";
+    ss <<    "<DeviceName>jiuli</DeviceName>";
     ss <<    "<Name>媒体代理服务</Name>\r\n" ;
     ss <<    "<Result>OK</Result>\r\n";
     ss <<    "<DeviceType>simulate client</DeviceType>\r\n";
@@ -320,7 +346,7 @@ void TdDevice::process_deviceinfo_query(string sn) {
     ss <<    "<MaxAlarm>0</MaxAlarm>\r\n";
     ss <<    "</Response>\r\n";
 
-    spdlog::info("deviceinfo response: \n{}", ss.str());
+    spdlog::debug("deviceinfo response: \n{}", ss.str());
     auto request = create_msg();
     if (request != NULL) {
         osip_message_set_content_type(request, "Application/MANSCDP+xml");
@@ -350,7 +376,7 @@ void TdDevice::heartbeat_task() {
                 osip_message_set_content_type(request, "Application/MANSCDP+xml");
                 osip_message_set_body(request, ss.str().c_str(), strlen(ss.str().c_str()));
                 send_request(request);
-                spdlog::info("sent heartbeat");
+                spdlog::debug("sent heartbeat");
             }
         }
 
@@ -384,6 +410,12 @@ void TdDevice::send_response(shared_ptr<eXosip_event_t> evt, osip_message_t * ms
 void TdDevice::send_response_ok(shared_ptr<eXosip_event_t> evt) {
     auto msg = evt->request;
     eXosip_message_build_answer(sip_context, evt->tid, 200, &msg);
+    send_response(evt, msg);
+}
+
+void TdDevice::send_response_err(shared_ptr<eXosip_event_t> evt) {
+    auto msg = evt->request;
+    eXosip_message_build_answer(sip_context, evt->tid, 403, &msg);
     send_response(evt, msg);
 }
 
@@ -426,4 +458,56 @@ std::tuple<string, string> TdDevice::get_cmd(const char * body) {
     string sn = sn_node.child_value();
 
     return make_tuple(cmd, sn);
+}
+
+std::string TdDevice::getValueByNodeName(const char * body,std::string nodeName)
+{
+    pugi::xml_document document;
+
+    if (!document.load(body)) {
+        spdlog::error("cannot parse the xml");
+        return "";
+    }
+
+    pugi::xml_node root_node = document.first_child();
+
+    if (!root_node) {
+        spdlog::error("cannot get root node of xml");
+        return "";
+    }
+
+    string root_name = root_node.name();
+    if ("Query" != root_name) {
+        spdlog::error("invalid query xml with root: {}", root_name);
+        return "";
+    }
+    auto dest_node = root_node.child(nodeName.c_str());
+
+    if (!dest_node) {
+        spdlog::error("cannot get the {}",nodeName);
+        return "";
+    }
+    return dest_node.child_value();
+}
+
+std::string TdDevice::getValueByAttrKey(const char * sdp,std::string AttrKey)
+{
+    if(!sdp)
+    {
+        spdlog::error("sdp is null");
+        return "";
+    }
+   const char* sataPtr = strstr(sdp,AttrKey.c_str());
+   printf("sataPtr:%s\r\n",sataPtr);
+   return "";
+}
+
+int TdDevice::createSession(std::string channle,std::string dest,int destPort,int basePort)
+{
+    return TdChanManager::getInstance()->createChannel(channle,dest,destPort,basePort);
+}
+
+int TdDevice::destorySession(std::string channle)
+{
+    return  TdChanManager::getInstance()->delChannel(channle);
 }

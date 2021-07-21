@@ -20,9 +20,11 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../tdScale"
   "../tdServer"
   "../tdPs"
+  "../tdRtp"
   "../tdConf"
   "../tdUtil"
   "../tdGb28181"
+  "../tdChannel"
   "../tdUtil/inc"
   "../tdGb28181/."
   "../tdGb28181/inc"
@@ -30,6 +32,12 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/util.dir/DependInfo.cmake"
+  "/home/tdwl/work/GMProxy/build/tdRtp/CMakeFiles/rtp.dir/DependInfo.cmake"
+  "/home/tdwl/work/GMProxy/build/tdChannel/CMakeFiles/channel.dir/DependInfo.cmake"
+  "/home/tdwl/work/GMProxy/build/tdCodec/CMakeFiles/codec.dir/DependInfo.cmake"
+  "/home/tdwl/work/GMProxy/build/tdScale/CMakeFiles/scale.dir/DependInfo.cmake"
+  "/home/tdwl/work/GMProxy/build/tdPs/CMakeFiles/ps.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
