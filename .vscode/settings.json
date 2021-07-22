@@ -69,6 +69,14 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp",
-        "xthread": "cpp"
+        "xthread": "cpp",
+        "iomanip": "cpp",
+        "csignal": "cpp",
+        "forward_list": "cpp",
+        "random": "cpp",
+        "set": "cpp",
+        "any": "cpp",
+        "future": "cpp",
+        "variant": "cpp"
     }
 }

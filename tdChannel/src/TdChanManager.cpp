@@ -17,6 +17,7 @@ int TdChanManager::createChannel(std::string channle,std::string dest,int destPo
     if(chanMap[channle])
     {
         pthread_mutex_unlock(&chanMapMutex);
+        spdlog::error("通道({}) 已存在",channle);
         return status ;
     } 
     pthread_mutex_unlock(&chanMapMutex);
@@ -26,7 +27,7 @@ int TdChanManager::createChannel(std::string channle,std::string dest,int destPo
     if(status<0)
     {
         delete gRtp ;
-        spdlog::error("create Rtp Session {}",status);
+        spdlog::error("创建通道失败 原因:{}",status);
         return status ;
     }
     gRtp->start(1);
@@ -60,16 +61,15 @@ void TdChanManager::delChanWorkLoop(TdChanManager* chanMannager)
             TdRtp * rtpPtr = nullptr ;
             pthread_mutex_lock(&chanMannager->chanMapMutex);
             rtpPtr = chanMannager->chanMap[chanId];
-            if(rtpPtr!=nullptr)
-            {
-               chanMannager->chanMap.erase(chanId);
-            }
             pthread_mutex_unlock(&chanMannager->chanMapMutex);
             if(rtpPtr!=nullptr)
             {
                 rtpPtr->stop();
                 delete rtpPtr ;
                 rtpPtr = nullptr ;
+                pthread_mutex_lock(&chanMannager->chanMapMutex);
+                chanMannager->chanMap.erase(chanId);
+                pthread_mutex_unlock(&chanMannager->chanMapMutex);
             }
         }
         

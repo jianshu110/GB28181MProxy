@@ -125,32 +125,32 @@ server/fast:
 	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/build
 .PHONY : server/fast
 
-src/TdRedis.o: src/TdRedis.cpp.o
+src/TdHttpServer.o: src/TdHttpServer.cpp.o
 
-.PHONY : src/TdRedis.o
+.PHONY : src/TdHttpServer.o
 
 # target to build an object file
-src/TdRedis.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o
-.PHONY : src/TdRedis.cpp.o
+src/TdHttpServer.cpp.o:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o
+.PHONY : src/TdHttpServer.cpp.o
 
-src/TdRedis.i: src/TdRedis.cpp.i
+src/TdHttpServer.i: src/TdHttpServer.cpp.i
 
-.PHONY : src/TdRedis.i
+.PHONY : src/TdHttpServer.i
 
 # target to preprocess a source file
-src/TdRedis.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.i
-.PHONY : src/TdRedis.cpp.i
+src/TdHttpServer.cpp.i:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.i
+.PHONY : src/TdHttpServer.cpp.i
 
-src/TdRedis.s: src/TdRedis.cpp.s
+src/TdHttpServer.s: src/TdHttpServer.cpp.s
 
-.PHONY : src/TdRedis.s
+.PHONY : src/TdHttpServer.s
 
 # target to generate assembly for a file
-src/TdRedis.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.s
-.PHONY : src/TdRedis.cpp.s
+src/TdHttpServer.cpp.s:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.s
+.PHONY : src/TdHttpServer.cpp.s
 
 # Help Target
 help:
@@ -161,9 +161,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... server"
 	@echo "... edit_cache"
-	@echo "... src/TdRedis.o"
-	@echo "... src/TdRedis.i"
-	@echo "... src/TdRedis.s"
+	@echo "... src/TdHttpServer.o"
+	@echo "... src/TdHttpServer.i"
+	@echo "... src/TdHttpServer.s"
 .PHONY : help
 
 

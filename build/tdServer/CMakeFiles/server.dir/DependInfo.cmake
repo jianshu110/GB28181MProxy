@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tdwl/work/GMProxy/tdServer/src/TdRedis.cpp" "/home/tdwl/work/GMProxy/build/tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o"
+  "/home/tdwl/work/GMProxy/tdServer/src/TdHttpServer.cpp" "/home/tdwl/work/GMProxy/build/tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

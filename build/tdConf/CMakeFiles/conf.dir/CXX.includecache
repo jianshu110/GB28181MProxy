@@ -17,6 +17,18 @@ string.h
 -
 inc/uuid4.h
 ../tdConf/inc/inc/uuid4.h
+inc/inifile.h
+../tdConf/inc/inc/inifile.h
+
+../tdUtil/inc/inifile.h
+vector
+-
+algorithm
+-
+string
+-
+string.h
+-
 
 ../tdUtil/inc/uuid4.h
 

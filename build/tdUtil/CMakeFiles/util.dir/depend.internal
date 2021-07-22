@@ -8,9 +8,18 @@ tdUtil/CMakeFiles/util.dir/src/common.cpp.o
  /home/tdwl/work/GMProxy/tdUtil/inc/md5.h
  /home/tdwl/work/GMProxy/tdUtil/inc/uuid4.h
  /home/tdwl/work/GMProxy/tdUtil/src/common.cpp
+tdUtil/CMakeFiles/util.dir/src/inifile.cpp.o
+ ../tdUtil/inc/inifile.h
+ /home/tdwl/work/GMProxy/tdUtil/src/inifile.cpp
 tdUtil/CMakeFiles/util.dir/src/json11.cpp.o
  /home/tdwl/work/GMProxy/tdUtil/inc/json11.hpp
  /home/tdwl/work/GMProxy/tdUtil/src/json11.cpp
+tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.o
+ ../tdUtil/inc/function_traits.h
+ ../tdUtil/inc/noticeCenter.h
+ ../tdUtil/inc/onceToken.h
+ ../tdUtil/inc/util.h
+ /home/tdwl/work/GMProxy/tdUtil/src/noticeCenter.cpp
 tdUtil/CMakeFiles/util.dir/src/uuid4.cpp.o
  /home/tdwl/work/GMProxy/tdUtil/inc/uuid4.h
  /home/tdwl/work/GMProxy/tdUtil/src/uuid4.cpp

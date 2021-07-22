@@ -4,15 +4,22 @@
 gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o
  ../tdChannel/inc/TdChanManager.h
  ../tdCodec/inc/TdH264.h
+ ../tdConf/inc/TdConf.h
  ../tdGb28181/inc/TdDevice.h
  ../tdPs/inc/TdPs.h
  ../tdPs/inc/pstream.h
  ../tdRtp/inc/TdRtp.h
  ../tdScale/inc/TdScale.h
+ ../tdServer/inc/TdHttpServer.h
+ ../tdServer/inc/httplib.h
  ../tdUtil/inc/common.h
  ../tdUtil/inc/encryption.h
+ ../tdUtil/inc/function_traits.h
+ ../tdUtil/inc/inifile.h
  ../tdUtil/inc/json11.hpp
  ../tdUtil/inc/md5.h
+ ../tdUtil/inc/noticeCenter.h
+ ../tdUtil/inc/onceToken.h
  ../tdUtil/inc/pugiconfig.hpp
  ../tdUtil/inc/pugixml.hpp
  ../tdUtil/inc/spdlog/common-inl.h

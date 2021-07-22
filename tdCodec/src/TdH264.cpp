@@ -243,7 +243,7 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
 
             //printf("status:%d  %d %d %d %d \r\n",status,dst_width,dst_height,dst_stride_uv,dst_stride_y);
             if(!isEncoderSetUp()){
-                setEncoderParam(dst_width,dst_height,20000,30000,25);
+                setEncoderParam(dst_width,dst_height,200000,300000,25);
             }
             setPicture(dst_width,dst_height,dst_stride_y,dst_stride_uv);
             encode(dst_y_c,dst_u_c,dst_v_c,pkt,pkt_size,is_keyframe,got_output);
@@ -269,6 +269,10 @@ int32_t TdH264::destory()
     pthread_mutex_lock(&queMutex);
     while (!frameQue.empty()) 
     {
+        FramePacket* frame = frameQue.front();
+        free(frame->data);
+        frame->data=nullptr;
+        free(frame);
         frameQue.pop();
     }
     pthread_mutex_unlock(&queMutex);

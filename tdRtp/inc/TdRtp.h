@@ -17,7 +17,7 @@
 #include "inc/TdPs.h"
 #include <fstream>
 using namespace jrtplib;
-
+typedef void(*closeOnCallBack)(void* argv);
 
 #define CAMERA_SUPPORT_MAX      500
 #define RTP_MAXBUF          4096
@@ -34,6 +34,7 @@ private:
     static void loopThread(TdRtp *rtp);
     std::thread rtpTh ;
     int startTeg = 0 ;
+    closeOnCallBack mCloseOnCallBack ;
     /* data */
 public:
     TdRtp(){

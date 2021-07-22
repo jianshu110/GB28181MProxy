@@ -3,5 +3,6 @@
 
 tdConf/CMakeFiles/conf.dir/src/TdConf.cpp.o
  ../tdConf/inc/TdConf.h
+ ../tdUtil/inc/inifile.h
  ../tdUtil/inc/uuid4.h
  /home/tdwl/work/GMProxy/tdConf/src/TdConf.cpp

@@ -57,38 +57,38 @@ include tdServer/CMakeFiles/server.dir/progress.make
 # Include the compile flags for this target's objects.
 include tdServer/CMakeFiles/server.dir/flags.make
 
-tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o: tdServer/CMakeFiles/server.dir/flags.make
-tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o: ../tdServer/src/TdRedis.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o"
-	cd /home/tdwl/work/GMProxy/build/tdServer && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/server.dir/src/TdRedis.cpp.o -c /home/tdwl/work/GMProxy/tdServer/src/TdRedis.cpp
+tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o: tdServer/CMakeFiles/server.dir/flags.make
+tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o: ../tdServer/src/TdHttpServer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o"
+	cd /home/tdwl/work/GMProxy/build/tdServer && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/server.dir/src/TdHttpServer.cpp.o -c /home/tdwl/work/GMProxy/tdServer/src/TdHttpServer.cpp
 
-tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/TdRedis.cpp.i"
-	cd /home/tdwl/work/GMProxy/build/tdServer && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GMProxy/tdServer/src/TdRedis.cpp > CMakeFiles/server.dir/src/TdRedis.cpp.i
+tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/TdHttpServer.cpp.i"
+	cd /home/tdwl/work/GMProxy/build/tdServer && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GMProxy/tdServer/src/TdHttpServer.cpp > CMakeFiles/server.dir/src/TdHttpServer.cpp.i
 
-tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/TdRedis.cpp.s"
-	cd /home/tdwl/work/GMProxy/build/tdServer && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GMProxy/tdServer/src/TdRedis.cpp -o CMakeFiles/server.dir/src/TdRedis.cpp.s
+tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/TdHttpServer.cpp.s"
+	cd /home/tdwl/work/GMProxy/build/tdServer && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GMProxy/tdServer/src/TdHttpServer.cpp -o CMakeFiles/server.dir/src/TdHttpServer.cpp.s
 
-tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o.requires:
+tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o.requires:
 
-.PHONY : tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o.requires
+.PHONY : tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o.requires
 
-tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o.provides: tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o.requires
-	$(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o.provides.build
-.PHONY : tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o.provides
+tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o.provides: tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o.requires
+	$(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o.provides.build
+.PHONY : tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o.provides
 
-tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o.provides.build: tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o
+tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o.provides.build: tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o
 
 
 # Object files for target server
 server_OBJECTS = \
-"CMakeFiles/server.dir/src/TdRedis.cpp.o"
+"CMakeFiles/server.dir/src/TdHttpServer.cpp.o"
 
 # External object files for target server
 server_EXTERNAL_OBJECTS =
 
-libs/libserver.a: tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o
+libs/libserver.a: tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o
 libs/libserver.a: tdServer/CMakeFiles/server.dir/build.make
 libs/libserver.a: tdServer/CMakeFiles/server.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../libs/libserver.a"
@@ -100,7 +100,7 @@ tdServer/CMakeFiles/server.dir/build: libs/libserver.a
 
 .PHONY : tdServer/CMakeFiles/server.dir/build
 
-tdServer/CMakeFiles/server.dir/requires: tdServer/CMakeFiles/server.dir/src/TdRedis.cpp.o.requires
+tdServer/CMakeFiles/server.dir/requires: tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o.requires
 
 .PHONY : tdServer/CMakeFiles/server.dir/requires
 

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/server.dir/src/TdRedis.cpp.o"
+  "CMakeFiles/server.dir/src/TdHttpServer.cpp.o"
   "../libs/libserver.pdb"
   "../libs/libserver.a"
 )

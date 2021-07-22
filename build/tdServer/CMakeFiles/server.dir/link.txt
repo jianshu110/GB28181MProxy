@@ -1,2 +1,2 @@
-/usr/bin/ar qc ../libs/libserver.a  CMakeFiles/server.dir/src/TdRedis.cpp.o
+/usr/bin/ar qc ../libs/libserver.a  CMakeFiles/server.dir/src/TdHttpServer.cpp.o
 /usr/bin/ranlib ../libs/libserver.a

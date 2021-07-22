@@ -152,6 +152,33 @@ src/common.cpp.s:
 	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.s
 .PHONY : src/common.cpp.s
 
+src/inifile.o: src/inifile.cpp.o
+
+.PHONY : src/inifile.o
+
+# target to build an object file
+src/inifile.cpp.o:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/inifile.cpp.o
+.PHONY : src/inifile.cpp.o
+
+src/inifile.i: src/inifile.cpp.i
+
+.PHONY : src/inifile.i
+
+# target to preprocess a source file
+src/inifile.cpp.i:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/inifile.cpp.i
+.PHONY : src/inifile.cpp.i
+
+src/inifile.s: src/inifile.cpp.s
+
+.PHONY : src/inifile.s
+
+# target to generate assembly for a file
+src/inifile.cpp.s:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/inifile.cpp.s
+.PHONY : src/inifile.cpp.s
+
 src/json11.o: src/json11.cpp.o
 
 .PHONY : src/json11.o
@@ -178,6 +205,33 @@ src/json11.s: src/json11.cpp.s
 src/json11.cpp.s:
 	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/json11.cpp.s
 .PHONY : src/json11.cpp.s
+
+src/noticeCenter.o: src/noticeCenter.cpp.o
+
+.PHONY : src/noticeCenter.o
+
+# target to build an object file
+src/noticeCenter.cpp.o:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.o
+.PHONY : src/noticeCenter.cpp.o
+
+src/noticeCenter.i: src/noticeCenter.cpp.i
+
+.PHONY : src/noticeCenter.i
+
+# target to preprocess a source file
+src/noticeCenter.cpp.i:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.i
+.PHONY : src/noticeCenter.cpp.i
+
+src/noticeCenter.s: src/noticeCenter.cpp.s
+
+.PHONY : src/noticeCenter.s
+
+# target to generate assembly for a file
+src/noticeCenter.cpp.s:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.s
+.PHONY : src/noticeCenter.cpp.s
 
 src/uuid4.o: src/uuid4.cpp.o
 
@@ -218,9 +272,15 @@ help:
 	@echo "... src/common.o"
 	@echo "... src/common.i"
 	@echo "... src/common.s"
+	@echo "... src/inifile.o"
+	@echo "... src/inifile.i"
+	@echo "... src/inifile.s"
 	@echo "... src/json11.o"
 	@echo "... src/json11.i"
 	@echo "... src/json11.s"
+	@echo "... src/noticeCenter.o"
+	@echo "... src/noticeCenter.i"
+	@echo "... src/noticeCenter.s"
 	@echo "... src/uuid4.o"
 	@echo "... src/uuid4.i"
 	@echo "... src/uuid4.s"

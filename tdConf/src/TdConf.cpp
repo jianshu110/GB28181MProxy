@@ -7,37 +7,40 @@ TdConf* TdConf::getInstance()
     if(mConf==nullptr)
     {
         mConf = new TdConf();
+        mConf->readConfig();
     }
     return mConf ;
 }
 
-std::string TdConf::getUuid()
+
+int TdConf::saveConfig()
 {
-    if(!mUuid.empty())
-    {
-        return mUuid ;
-    }
-    char out[256];
-    memset(out,0,256);
-    std::ifstream fr = std::ifstream("mod.conf",std::ios::binary);
-    fr.getline (out, 100);
-    if(out[0]>0)
-    {
-        setUuid(out);
-        return out;
-    }
-    else{
-        fr.close();
-        std::ofstream fw = std::ofstream("mod.conf",std::ios::binary);
-        uuid4_init();
-        uuid4_generate(out);
-        fw<<out;
-        fw.close();
-        setUuid(out);
-        return out;
-    }
+    mIni.SetStringValue("GB28181","DevideId",mGB28121Ctx.mDevideId);
+    mIni.SetStringValue("GB28181","ServerSipId",mGB28121Ctx.mServerSipId);
+    mIni.SetStringValue("GB28181","SipServerIp",mGB28121Ctx.mSipServerIp);
+    mIni.SetIntValue("GB28181","SipServerPort",mGB28121Ctx.mSipServerPort);
+    mIni.SetStringValue("GB28181","SipUserName",mGB28121Ctx.mSipUserName);
+    mIni.SetStringValue("GB28181","SipPassWd",mGB28121Ctx.mSipPassWd);
+    mIni.SetIntValue("GB28181","Expires",mGB28121Ctx.mExpires);
+    mIni.SetIntValue("GB28181","BasePort",mGB28121Ctx.mBasePort);
+    mIni.SetStringValue("GB28181","Manufacture",mGB28121Ctx.mManufacture);
+    mIni.SaveAs(confFile);
+    return 0 ;
 }
-void TdConf::setUuid(std::string Uuid)
+
+int TdConf::readConfig()
 {
-    mUuid = Uuid ;
+    if(mIni.Load(confFile)){
+        saveConfig();
+    }
+    mIni.GetStringValue("GB28181","DevideId",&mGB28121Ctx.mDevideId);
+    mIni.GetStringValue("GB28181","ServerSipId",&mGB28121Ctx.mServerSipId);
+    mIni.GetStringValue("GB28181","SipServerIp",&mGB28121Ctx.mSipServerIp);
+    mIni.GetIntValue("GB28181","SipServerPort",&mGB28121Ctx.mSipServerPort);
+    mIni.GetStringValue("GB28181","SipUserName",&mGB28121Ctx.mSipUserName);
+    mIni.GetStringValue("GB28181","SipPassWd",&mGB28121Ctx.mSipPassWd);
+    mIni.GetIntValue("GB28181","Expires",&mGB28121Ctx.mExpires);
+    mIni.GetIntValue("GB28181","BasePort",&mGB28121Ctx.mBasePort);
+    mIni.GetStringValue("GB28181","Manufacture",&mGB28121Ctx.mManufacture);
+    return 0 ;
 }

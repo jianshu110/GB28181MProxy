@@ -338,10 +338,10 @@ void TdDevice::process_deviceinfo_query(string sn) {
     ss <<    "<DeviceName>jiuli</DeviceName>";
     ss <<    "<Name>媒体代理服务</Name>\r\n" ;
     ss <<    "<Result>OK</Result>\r\n";
-    ss <<    "<DeviceType>simulate client</DeviceType>\r\n";
+    ss <<    "<DeviceType>GMProxy</DeviceType>\r\n";
     ss <<    "<Manufacturer>TDWL</Manufacturer>\r\n";
     ss <<    "<Model>CH-QDLC-21-01020-MP</Model>\r\n";
-    ss <<    "<Firmware>fireware</Firmware>\r\n";
+    ss <<    "<Firmware>v1.0.2</Firmware>\r\n";
     ss <<    "<MaxCamera>1</MaxCamera>\r\n";
     ss <<    "<MaxAlarm>0</MaxAlarm>\r\n";
     ss <<    "</Response>\r\n";
@@ -414,9 +414,10 @@ void TdDevice::send_response_ok(shared_ptr<eXosip_event_t> evt) {
 }
 
 void TdDevice::send_response_err(shared_ptr<eXosip_event_t> evt) {
-    auto msg = evt->request;
-    eXosip_message_build_answer(sip_context, evt->tid, 403, &msg);
-    send_response(evt, msg);
+    //auto msg = evt->request;
+    //eXosip_message_build_answer(sip_context, evt->tid, 403, nullptr);
+    //send_response(evt, msg);
+    eXosip_message_send_answer(sip_context, evt->tid, 403, nullptr);
 }
 
 std::tuple<string, string> TdDevice::get_cmd(const char * body) {
