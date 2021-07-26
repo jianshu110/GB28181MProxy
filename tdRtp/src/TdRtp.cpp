@@ -12,49 +12,8 @@ uint32_t TdRtp::sendData(uint8_t * data,uint32_t size)
    sess.SendPacket((void*)data+dataPtrOffset,leftsize,96,true,10);
    return 0 ;
 }
-void TdRtp::h264CallBackUser(uint8_t*data,int size){
-    //int status ;
-    uint8_t *outData = nullptr;
-    int outlength =0 ;
-    if((data!=nullptr)&&(size!=0)){
-        H264Stream_t h264_stream;
-        memset(&h264_stream,0,sizeof(H264Stream_t));
-        
-        if(data[4]==0x67){
-            
-            h264_stream.is_iframe = 1;
-            h264_stream.data = data ;
-            h264_stream.size = size ;
-            h264_stream.dts = pts ;
-            h264_stream.pts = pts;
-            pts+=3600;
-            packagingPs(&h264_stream,&outData, &outlength);
-            sendData(outData,outlength);
-            //dumpHex(outData,0,10);
-            //printf("rtp outlength:%d\r\n",outlength);
-            //psfout->write((const char*)outData,outlength);
-            free(outData);
-            outData = nullptr;
-        }
-        else{
-            h264_stream.is_iframe = 0;
-            h264_stream.data = data ;
-            h264_stream.size = size ;
-            h264_stream.dts = pts ;
-            h264_stream.pts = pts;
-            pts+=3600;
-            packagingPs(&h264_stream,&outData, &outlength);
-            sendData(outData,outlength);
-            //dumpHex(outData,0,10);
-            //printf("rtp outlength:%d\r\n",outlength);
-            //psfout->write((const char*)outData,outlength);
-            free(outData);
-            outData = nullptr;
-        } 
-    }
-}
 
-int32_t TdRtp::setUp(std::string destIp,uint16_t destPort,uint16_t basePort){
+int32_t TdRtp::setUp(std::string channel,std::string destIp,uint16_t destPort,uint16_t basePort){
  
 	uint32_t lDestip = inet_addr(destIp.c_str());
 	lDestip = ntohl(lDestip);
@@ -81,8 +40,9 @@ int32_t TdRtp::setUp(std::string destIp,uint16_t destPort,uint16_t basePort){
     sess.SetDefaultPayloadType(96);
     sess.SetDefaultMark(true);
     sess.SetDefaultTimestampIncrement(50);
-    TdH264::decoderSetUp();
-    TdH264::encoderSetUp();
+    TdCodec::init(VideoH264);
+    //TdH264::create(channel);
+    
 	return 0;
 }
 RTPUDPv4TransmissionParams* TdRtp::getTransparams()
@@ -106,14 +66,14 @@ void TdRtp::dumpHex(uint8_t*data,int start,int end){
 }
 
 uint32_t TdRtp::start(uint32_t time){
-    rtpTh = std::thread(loopThread,this);
+    rtpRecvTh = std::thread(recvLoopThread,this);
+    rtpSendTh = std::thread(sendLoopThread,this);
     //t.detach();
     spdlog::debug("Rtp 启动成功\r\n");
     return 0 ;
 }
-// int startTeg = 0 ;
-// int count = 0;
-void TdRtp::loopThread(TdRtp *rtp){
+
+void TdRtp::recvLoopThread(TdRtp *rtp){
     int status ;
     rtp->isRun = true;
     bool i=false;
@@ -162,27 +122,38 @@ void TdRtp::loopThread(TdRtp *rtp){
                                 }
                                 rtp->parsingPs((int8_t*)buff,pos+len,&obuff, &oLen);
                                 //rtp->dumpHex(obuff,0,5);
-                                spdlog::debug("oLen:%d pos+len:%d",oLen,pos+len);
+                                spdlog::debug("oLen:{} pos+len:{}",oLen,pos+len);
+                                            Packet frame(obuff,oLen); 
+                                        rtp->frameQue.push(frame);
+                                // if(rtp->startTeg==0){
+                                //     if(obuff[4]==0x67)
+                                //     {
+                                //         rtp->startTeg = 1;
+                                //         Packet frame(obuff,oLen); 
+                                //         rtp->frameQue.push(frame);
+                                //         //FramePacket *frame = new FramePacket(obuff,oLen);
+                                //         // /rtp->pushFrameToQue(frame);
+                                //     }else{
+                                //         if(obuff!=nullptr)
+                                //         {
+                                //             free(obuff);
+                                //         }
+                                //     }
 
-                                if(rtp->startTeg==0){
-                                    if(obuff[4]==0x67)
-                                    {
-                                        rtp->startTeg = 1;
-                                        FramePacket *frame = new FramePacket(obuff,oLen);
-                                        rtp->pushFrameToQue(frame);
-                                    }
-                                }
-                                else{
-                                    FramePacket *frame = new FramePacket(obuff,oLen);
-                                    rtp->pushFrameToQue(frame);
-                                }
+                                // }
+                                // else{
+                                //     Packet frame(obuff,oLen);
+                                //     rtp->frameQue.push(frame);
+                                //     // FramePacket *frame = new FramePacket(obuff,oLen);
+                                //     // rtp->pushFrameToQue(frame);
+                                // }
                                 pos = 0;
                             }
                             else
                             {
                                 memcpy(&buff[pos],loaddata,len);
                                 pos = pos + len;
-                                spdlog::debug("posc:%d\r\n",pos);
+                                //spdlog::debug("posc:%d\r\n",pos);
                             }
                         }else{
                             spdlog::info("!!!  GetPayloadType = %d !!!! ",pack->GetPayloadType());
@@ -198,12 +169,62 @@ void TdRtp::loopThread(TdRtp *rtp){
     return ;
 }
 
+
+void TdRtp::sendLoopThread(TdRtp *rtp)
+{
+    rtp->isRun = true ;
+    while(rtp->isRun){
+        Packet frame = rtp->frameQue.pop();
+        if(!frame.empty())
+        {
+            uint8_t * codecOutDate ;
+            uint32_t codecOutSize ;
+            uint8_t *psOut ;
+            int32_t psOutSize ;
+            // rtp->dumpHex(frame.data,0,5);
+            // printf("%d\r\n",frame.size);
+            bool isKeyFrame ;
+            rtp->convert(frame.data,frame.size,&codecOutDate,&codecOutSize,isKeyFrame);
+            //printf("osize:%d iskeyframe:%d\r\n",codecOutDate,isKeyFrame);
+            if((codecOutDate!=nullptr)&&(codecOutSize>0))
+            {
+                H264Stream_t h264_stream;
+                memset(&h264_stream,0,sizeof(H264Stream_t));
+                h264_stream.is_iframe = isKeyFrame;
+                h264_stream.data = codecOutDate ;
+                h264_stream.size = codecOutSize ;
+                h264_stream.dts = rtp->pts ;
+                h264_stream.pts = rtp->pts;
+                rtp->pts+=3600;
+                //printf("outDate:%02x %02x osize:%d iskeyframe:%d\r\n",outDate[3],outDate[4],h264OutSize,isKeyFrame);
+                rtp->packagingPs(&h264_stream,&psOut,&psOutSize);
+                if((psOut!=nullptr)&&(psOutSize>0))
+                {
+                    rtp->sendData(psOut,psOutSize);
+                    free(psOut);
+                    psOut = nullptr;
+                }
+                free(codecOutDate);
+                codecOutDate = nullptr;
+            }
+            frame.clear();
+            // //h264->decode(frame->data,frame->size);
+            // free(frame.data);
+            // frame.data=nullptr;
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    }
+}
+
 uint32_t TdRtp::stop()
 {
     isRun = false;
-    rtpTh.join();
+    rtpRecvTh.join();
+    rtpSendTh.join();
     sess.BYEDestroy(RTPTime(10,0),0,0);
+    frameQue.clear();
+    TdCodec::destroy();
     spdlog::debug("=== rtp joined ===");
-    TdH264::destory();
+    //TdH264::destory();
     return 0;
 }

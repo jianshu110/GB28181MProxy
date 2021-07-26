@@ -25,11 +25,37 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
     httpSrv->mHttpServer.Post("/gmproxy/setconfig", [](const Request& req, Response& res) {
        
         printf("req:%s\r\n",req.body.c_str());
-        std::string contents ("{\"code\":\"0\"}");
+        std::string err;
+        auto jsonData = json11::Json::parse(req.body,err);
+        std::string contents="";
+        if(jsonData.is_null())
+        {
+            contents = "{\"code\":\"10000\"}";
+        }
+        else{
+            std::string contents ("{\"code\":\"0\"}");
+        }
         res.set_content(contents,"text/json");
     });
 
-
-    // NoticeCenter::Instance().emitEvent("once",1,(const char *)"b",2,"d");
+    httpSrv->mHttpServer.Post("/gmproxy/setvideoparam", [](const Request& req, Response& res) {
+       
+        printf("req:%s\r\n",req.body.c_str());
+        std::string err;
+        auto jsonData = json11::Json::parse(req.body,err);
+        std::string contents="";
+        if(jsonData.is_null())
+        {
+            contents = "{\"code\":\"10000\"}";
+        }
+        else{
+            std::string Resolution = jsonData["Resolution"].string_value();
+            int Rate = jsonData["Rate"].int_value();
+            int MaxBitrate = jsonData["MaxBitrate"].int_value();
+            NoticeCenter::Instance().emitEvent("37021318001328547502",Rate,Resolution,MaxBitrate);
+            contents = "{\"code\":\"0\"}";
+        }
+        res.set_content(contents,"text/json");
+    });
     httpSrv->mHttpServer.listen("0.0.0.0", 8080);
 }

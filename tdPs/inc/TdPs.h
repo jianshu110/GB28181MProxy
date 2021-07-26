@@ -35,6 +35,12 @@ typedef struct
     uint8_t * data ;
 }H264Stream_t;
 
+
+typedef struct {
+  char Byte[3];
+  char type;
+}H264head_t;
+
 typedef struct
 {
     unsigned char* p_data;

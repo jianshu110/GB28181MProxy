@@ -13,9 +13,11 @@
 #include <iostream>
 #include <string>
 #include <thread>
-#include "inc/TdH264.h"
+#include "inc/TdCodec.h"
 #include "inc/TdPs.h"
 #include <fstream>
+#include "inc/Queue.h"
+#include <chrono>
 using namespace jrtplib;
 typedef void(*closeOnCallBack)(void* argv);
 
@@ -24,17 +26,20 @@ typedef void(*closeOnCallBack)(void* argv);
 #define PS_BUF_SIZE         (1024*1024*4)
 
 
-class TdRtp : public TdH264 ,public TdPs
+class TdRtp :public TdPs,TdCodec
 {
 private:
 	RTPUDPv4TransmissionParams transparams;
 	RTPSessionParams sessparams;
     RTPSession sess;
     bool isRun = false;
-    static void loopThread(TdRtp *rtp);
-    std::thread rtpTh ;
+    static void recvLoopThread(TdRtp *rtp);
+    static void sendLoopThread(TdRtp *rtp);
+    std::thread rtpSendTh ;
+    std::thread rtpRecvTh ;
     int startTeg = 0 ;
     closeOnCallBack mCloseOnCallBack ;
+    Queue frameQue;
     /* data */
 public:
     TdRtp(){
@@ -47,8 +52,8 @@ public:
     RTPUDPv4TransmissionParams* getTransparams();
     RTPSessionParams* getSessparams();
     RTPSession* getRTPSession();
-    int32_t setUp(std::string destIp,uint16_t destPort,uint16_t basePort);
-    void h264CallBackUser(uint8_t*data,int size);
+    int32_t setUp(std::string channel,std::string destIp,uint16_t destPort,uint16_t basePort);
+    //void h264CallBackUser(uint8_t*data,int size);
     uint32_t sendData(uint8_t * data,uint32_t size);
     uint32_t start(uint32_t time);
     uint32_t stop();

@@ -1,2 +1,2 @@
-/usr/bin/ar qc ../libs/libcodec.a  CMakeFiles/codec.dir/src/TdH264.cpp.o
+/usr/bin/ar qc ../libs/libcodec.a  CMakeFiles/codec.dir/src/TdH264.cpp.o CMakeFiles/codec.dir/src/TdCodec.cpp.o
 /usr/bin/ranlib ../libs/libcodec.a

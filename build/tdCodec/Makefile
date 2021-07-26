@@ -125,6 +125,33 @@ codec/fast:
 	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/build
 .PHONY : codec/fast
 
+src/TdCodec.o: src/TdCodec.cpp.o
+
+.PHONY : src/TdCodec.o
+
+# target to build an object file
+src/TdCodec.cpp.o:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o
+.PHONY : src/TdCodec.cpp.o
+
+src/TdCodec.i: src/TdCodec.cpp.i
+
+.PHONY : src/TdCodec.i
+
+# target to preprocess a source file
+src/TdCodec.cpp.i:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.i
+.PHONY : src/TdCodec.cpp.i
+
+src/TdCodec.s: src/TdCodec.cpp.s
+
+.PHONY : src/TdCodec.s
+
+# target to generate assembly for a file
+src/TdCodec.cpp.s:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.s
+.PHONY : src/TdCodec.cpp.s
+
 src/TdH264.o: src/TdH264.cpp.o
 
 .PHONY : src/TdH264.o
@@ -161,6 +188,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... codec"
 	@echo "... edit_cache"
+	@echo "... src/TdCodec.o"
+	@echo "... src/TdCodec.i"
+	@echo "... src/TdCodec.s"
 	@echo "... src/TdH264.o"
 	@echo "... src/TdH264.i"
 	@echo "... src/TdH264.s"

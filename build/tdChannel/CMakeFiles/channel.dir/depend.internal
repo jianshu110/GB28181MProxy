@@ -3,11 +3,17 @@
 
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o
  ../tdChannel/inc/TdChanManager.h
+ ../tdCodec/inc/TdCodec.h
  ../tdCodec/inc/TdH264.h
  ../tdPs/inc/TdPs.h
  ../tdPs/inc/pstream.h
  ../tdRtp/inc/TdRtp.h
  ../tdScale/inc/TdScale.h
+ ../tdUtil/inc/FunHandler.h
+ ../tdUtil/inc/Queue.h
+ ../tdUtil/inc/function_traits.h
+ ../tdUtil/inc/noticeCenter.h
+ ../tdUtil/inc/onceToken.h
  ../tdUtil/inc/spdlog/common-inl.h
  ../tdUtil/inc/spdlog/common.h
  ../tdUtil/inc/spdlog/details/backtracer-inl.h

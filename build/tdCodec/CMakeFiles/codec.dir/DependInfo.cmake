@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/tdwl/work/GMProxy/tdCodec/src/TdCodec.cpp" "/home/tdwl/work/GMProxy/build/tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o"
   "/home/tdwl/work/GMProxy/tdCodec/src/TdH264.cpp" "/home/tdwl/work/GMProxy/build/tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -31,6 +32,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/tdwl/work/GMProxy/build/tdScale/CMakeFiles/scale.dir/DependInfo.cmake"
+  "/home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/util.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

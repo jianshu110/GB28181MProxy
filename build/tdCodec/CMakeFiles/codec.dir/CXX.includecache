@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+../tdCodec/inc/TdCodec.h
+iostream
+-
+stdlib.h
+-
+stdio.h
+-
+stdint.h
+-
+string.h
+-
+TdH264.h
+../tdCodec/inc/TdH264.h
+
 ../tdCodec/inc/TdH264.h
 stdlib.h
 -
@@ -39,6 +53,10 @@ unistd.h
 -
 spdlog/spdlog.h
 ../tdCodec/inc/spdlog/spdlog.h
+inc/noticeCenter.h
+../tdCodec/inc/inc/noticeCenter.h
+inc/FunHandler.h
+../tdCodec/inc/inc/FunHandler.h
 
 ../tdScale/inc/TdScale.h
 libyuv/cpu_id.h
@@ -49,6 +67,50 @@ stdlib.h
 ../tdScale/inc/stdlib.h
 stdio.h
 ../tdScale/inc/stdio.h
+
+../tdUtil/inc/FunHandler.h
+iostream
+-
+stdlib.h
+-
+stdio.h
+-
+stdint.h
+-
+string.h
+-
+functional
+-
+
+../tdUtil/inc/function_traits.h
+tuple
+-
+
+../tdUtil/inc/noticeCenter.h
+mutex
+-
+memory
+-
+string
+-
+exception
+-
+functional
+-
+unordered_map
+-
+thread
+-
+function_traits.h
+../tdUtil/inc/function_traits.h
+onceToken.h
+../tdUtil/inc/onceToken.h
+
+../tdUtil/inc/onceToken.h
+functional
+-
+type_traits
+-
 
 ../tdUtil/inc/spdlog/common-inl.h
 spdlog/common.h
@@ -565,6 +627,10 @@ spdlog-inl.h
 ../tdUtil/inc/spdlog/tweakme.h
 
 ../tdUtil/inc/spdlog/version.h
+
+/home/tdwl/work/GMProxy/tdCodec/src/TdCodec.cpp
+TdCodec.h
+/home/tdwl/work/GMProxy/tdCodec/src/TdCodec.h
 
 /home/tdwl/work/GMProxy/tdCodec/src/TdH264.cpp
 TdH264.h

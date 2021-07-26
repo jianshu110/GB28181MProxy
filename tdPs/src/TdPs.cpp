@@ -110,7 +110,7 @@ uint32_t TdPs::parsingPs(int8_t*srcdata,int length,uint8_t **outData, int *outle
         && NextPack[1]=='\x00' 
         && NextPack[2]=='\x01' 
         && NextPack[3]=='\xE0') {
-             //printf("----------------------------------------------------------E0--\r\n");
+            //printf("----------------------------------------------------------E0--\r\n");
             //接着就是流包，说明是非i帧
             if(Pes(NextPack, leftlength, &NextPack, &leftlength, &PayloadData, &PayloadDataLen)) {
                 if(PayloadDataLen) {
@@ -121,7 +121,7 @@ uint32_t TdPs::parsingPs(int8_t*srcdata,int length,uint8_t **outData, int *outle
                         //printf("PayloadDataLen:%d\r\n",PayloadDataLen);
                     }
                     else {
-                        printf("h264 frame size exception!! %d:%d\r\n", PayloadDataLen, *outlength);
+                        printf("h264 frame size exception!! %d:%d  %d\r\n", PayloadDataLen, *outlength,__LINE__);
                     }
                 }
             }
@@ -133,7 +133,7 @@ uint32_t TdPs::parsingPs(int8_t*srcdata,int length,uint8_t **outData, int *outle
                         *outlength += PayloadDataLen;
                     }
                     else {
-                        printf("h264 frame size exception!! %d:%d\r\n", PayloadDataLen, *outlength);
+                        printf("h264 frame size exception!! %d:%d  %d\r\n", PayloadDataLen, *outlength,__LINE__);
                     }
                 }
             }
@@ -320,7 +320,6 @@ uint32_t TdPs::makePesHeader(char *pData, int stream_id, int payload_len, unsign
 }
 uint32_t TdPs::packagingPs(H264Stream_t *h264_stream,uint8_t **outData, int *outlength)
 {
-    int i = 0;
     int remainSize = h264_stream->size;
     int dataPtrOffset = 0 ;
     *outlength = 0;
@@ -354,7 +353,5 @@ uint32_t TdPs::packagingPs(H264Stream_t *h264_stream,uint8_t **outData, int *out
     *outlength += PES_HDR_LEN;
     memcpy(*outData + *outlength, h264_stream->data+dataPtrOffset, remainSize);
     *outlength += remainSize;
-    // dataPtrOffset = pesPayloadMax;
-    // remainSize -=pesPayloadMax;
     return 0 ;
 }

@@ -1,6 +1,16 @@
 #include "inc/TdDevice.h"
 #include "inc/TdHttpServer.h"
+#include "inc/TdH264.h"
 #include "inc/TdConf.h"
+
+TdH264 gH264;
+
+uint8_t iDate[111];
+uint32_t iAa ;
+
+uint8_t *oDate;
+uint32_t oAa ;
+
 int main(){
 
     char logo[] = "\n\
@@ -20,7 +30,7 @@ char explain[] = "* Copyright (c) 2021 The GMProxy project authors. All Rights R
 * LICENSE file in the root of the source tree. All contributing project authors\n\
 * may be found in the AUTHORS file in the root of the source tree. \n\n";
  printf("%s",explain);
-
+    //spdlog::set_level(spdlog::level::debug);
     TdConf::getInstance();
 
     TdHttpServer * httpServer  = new TdHttpServer();

@@ -23,7 +23,7 @@ int TdChanManager::createChannel(std::string channle,std::string dest,int destPo
     pthread_mutex_unlock(&chanMapMutex);
   
     TdRtp *gRtp = new TdRtp();
-    status = gRtp->setUp(dest.c_str(),destPort,basePort);
+    status = gRtp->setUp(channle,dest.c_str(),destPort,basePort);
     if(status<0)
     {
         delete gRtp ;

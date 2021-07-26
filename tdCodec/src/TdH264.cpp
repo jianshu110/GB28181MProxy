@@ -3,11 +3,11 @@
 int32_t TdH264::decoderSetUp()
 {
     long rv = WelsCreateDecoder (&decoder_);
-    if(decoder_ != NULL);
     if (decoder_ == NULL) 
     {
         return (int32_t)rv;
     }
+    printf("888888888888888888888888888888\r\n");
     memset (&decParam, 0, sizeof (SDecodingParam));
     decParam.uiTargetDqLayer = UCHAR_MAX;
     decParam.eEcActiveIdc = ERROR_CON_SLICE_COPY;
@@ -27,46 +27,7 @@ int32_t TdH264::encoderSetUp(){
     timestamp_ = 0;
     return 0 ;
 }
-FramePacket* TdH264::newFramePacket(uint8_t*data,uint32_t size)
-{
-    FramePacket* frame = new FramePacket(data,size);
-    return frame ;
-}
-void TdH264::DelFramePacket(FramePacket*frame)
-{
-    if(frame!=nullptr){
-        if(frame->data!=nullptr){
-            free(frame->data);
-            frame->data=nullptr;
-        }
-        delete frame ;
-    }
-}
- FramePacket *TdH264::popFrameFromQue()
- {
-    FramePacket * frame=nullptr;
-    pthread_mutex_lock(&queMutex);
-    if(!frameQue.empty()){
-        frame=frameQue.front();
-        frameQue.pop();
-    }
-    pthread_mutex_unlock(&queMutex);
-    return frame ;
- }
-int32_t TdH264::pushFrameToQue(FramePacket * frame)
-{
-    if(!frameQueStatus)
-    {
-        //队列状态为false 数据直接丢掉
-        return -1 ;
-    }
-    pthread_mutex_lock(&queMutex);
-    if(frameQue.size()<128){
-         frameQue.push(frame);
-    }
-    pthread_mutex_unlock(&queMutex);
-    return 0 ;
-}
+
 int32_t TdH264::setEncoderParam(int width,int height,int bitrate,int iMaxBitrate,int fps)
 {
     memset(&encParam,0,sizeof(encParam));
@@ -106,23 +67,24 @@ void TdH264::setPicture(int width,int height,int Ystride,int UVstride)
     picture_.iStride[1] = UVstride;
     //printf("%d %d\r\n",picture_.iStride[0],picture_.iStride[1]);
 }
-int32_t TdH264::encode(uint8_t* Ydata,uint8_t* Udata,uint8_t* Vdata,uint8_t* pkt,size_t& pkt_size,bool& is_keyframe,bool& got_output){
+int32_t TdH264::encode(uint8_t* Ydata,uint8_t* Udata,uint8_t* Vdata,uint8_t** pkt,uint32_t* pkt_size,bool& is_keyframe,bool& got_output){
     got_output = false;
-	pkt_size = 0;
 	if (!encoder_)
 	{
 		return false;
 	}
+    *pkt =nullptr;
+    *pkt_size = 0 ;
+    //*outData = (uint8_t*)realloc(*outData,*outlength+PayloadDataLen);
+    //    memcpy(*outData+*outlength, PayloadData, PayloadDataLen);
 	picture_.uiTimeStamp =timestamp_++; 
     picture_.pData[0] = (unsigned char*)Ydata;
     picture_.pData[1] = (unsigned char*)Udata;
     picture_.pData[2] = (unsigned char*)Vdata;
 
-	int iFrameSize = 0;
-    uint32_t temporal_id = 0;
+    //uint32_t temporal_id = 0;
 
 	SFrameBSInfo encoded_frame_info;
-
 	int err = encoder_->EncodeFrame(&picture_, &encoded_frame_info);
 	if (err) {
         printf("enCodec error\r\n");
@@ -141,14 +103,15 @@ int32_t TdH264::encode(uint8_t* Ydata,uint8_t* Udata,uint8_t* Vdata,uint8_t* pkt
 			SLayerBSInfo* pLayerBsInfo = &(encoded_frame_info.sLayerInfo[iLayer]);
 			if (pLayerBsInfo != NULL) {
 				int iLayerSize = 0;
-				temporal_id = pLayerBsInfo->uiTemporalId;
+				//temporal_id = pLayerBsInfo->uiTemporalId;
 				int iNalIdx = pLayerBsInfo->iNalCount - 1;
 				do {
 					iLayerSize += pLayerBsInfo->pNalLengthInByte[iNalIdx];
 					--iNalIdx;
 				} while (iNalIdx >= 0);
-				memcpy(pkt + iFrameSize, pLayerBsInfo->pBsBuf, iLayerSize);
-				iFrameSize += iLayerSize;
+                *pkt = (uint8_t*)realloc(*pkt,*pkt_size+iLayerSize);
+				memcpy(*pkt + *pkt_size, pLayerBsInfo->pBsBuf, iLayerSize);
+				*pkt_size += iLayerSize;
 			}
 			++iLayer;
 		}
@@ -159,10 +122,8 @@ int32_t TdH264::encode(uint8_t* Ydata,uint8_t* Udata,uint8_t* Vdata,uint8_t* pkt
 		is_keyframe = false;
 	}
     //printf("FrameType: %d FrameSizeInBytes: %d LayerNum: %d\r\n",encoded_frame_info.eFrameType,encoded_frame_info.iFrameSizeInBytes,encoded_frame_info.iLayerNum);
-	if (iFrameSize > 0)
+	if (*pkt_size > 0)
 	{
-		pkt_size = iFrameSize;
-
 		EVideoFrameType ft_temp = encoded_frame_info.eFrameType;
 		if (ft_temp == 1 || ft_temp == 2)
 		{
@@ -178,12 +139,95 @@ int32_t TdH264::encode(uint8_t* Ydata,uint8_t* Udata,uint8_t* Vdata,uint8_t* pkt
 		}
 	}
 
-	return iFrameSize;
+	return *pkt_size ;
 }
-int save_tag = 0 ;
+// int save_tag = 0 ;
 int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
 {
-    if((inData==nullptr))
+    // if((inData==nullptr))
+    // {
+    //     return -1;
+    // }
+    // uint8_t *oData[3];
+    // SBufferInfo obufInfo ;
+    // int status;
+    // int src_width,src_height,src_width_uv,src_height_uv,src_stride_y,src_stride_uv;
+    // int dst_width,dst_height,dst_width_uv,dst_height_uv,dst_stride_y,dst_stride_uv;
+    // int64_t dst_y_plane_size,dst_uv_plane_size;
+    // int64_t src_y_plane_size,src_uv_plane_size;
+    // memset (&obufInfo, 0, sizeof (SBufferInfo));
+    // DECODING_STATE rv = decoder_->DecodeFrame2 (inData, (int) inSize, oData, &obufInfo);
+    // if (obufInfo.iBufferStatus == 1) 
+    // {  
+    //     if(obufInfo.UsrData.sSystemBuffer.iFormat==videoFormatI420){
+
+    //         src_height = obufInfo.UsrData.sSystemBuffer.iHeight;
+    //         src_width = obufInfo.UsrData.sSystemBuffer.iWidth;
+
+        
+    //         src_width_uv = (abs(src_width) + 1) >> 1;
+    //         src_height_uv = (abs(src_height) + 1) >> 1;
+
+    //         src_y_plane_size = obufInfo.UsrData.sSystemBuffer.iStride[0]*src_height;
+    //         src_uv_plane_size = obufInfo.UsrData.sSystemBuffer.iStride[1]*src_height;
+
+    //         dst_height = (abs(src_height) + 1) >> 1;
+    //         dst_width = (abs(src_width) + 1) >> 1;
+
+    //         dst_width_uv = (abs(dst_width) + 1) >> 1;
+    //         dst_height_uv = (abs(dst_height) + 1) >> 1;
+
+        
+    //         dst_stride_y = dst_width;
+    //         dst_stride_uv = dst_width_uv;
+
+
+    //         dst_y_plane_size = (dst_width) * (dst_height);
+    //         dst_uv_plane_size = (dst_width_uv) * (dst_height_uv);
+
+    //         align_buffer_page_end(dst_y_c,dst_y_plane_size);
+    //         align_buffer_page_end(dst_u_c,dst_uv_plane_size);
+    //         align_buffer_page_end(dst_v_c,dst_uv_plane_size);
+
+
+    //         status = libyuv::I420Scale(oData[0], obufInfo.UsrData.sSystemBuffer.iStride[0],oData[1], 
+    //             obufInfo.UsrData.sSystemBuffer.iStride[1], oData[2],
+    //             obufInfo.UsrData.sSystemBuffer.iStride[1],
+    //             src_width, src_height, dst_y_c, dst_stride_y, dst_u_c,
+    //             dst_stride_uv, dst_v_c, dst_stride_uv, dst_width, dst_height,libyuv::kFilterNone);
+    //         if(status){
+    //             return -1 ;
+    //         }
+    //         uint8_t* pkt = new uint8_t[1024*1024*5];
+    //         size_t pkt_size = 0 ;
+    //         bool is_keyframe=false ,got_output=false;
+
+    //         //printf("status:%d  %d %d %d %d \r\n",status,dst_width,dst_height,dst_stride_uv,dst_stride_y);
+    //         if(!isEncoderSetUp()){
+    //             setEncoderParam(dst_width,dst_height,200000,300000,25);
+    //         }
+    //         setPicture(dst_width,dst_height,dst_stride_y,dst_stride_uv);
+    //         encode(dst_y_c,dst_u_c,dst_v_c,pkt,pkt_size,is_keyframe,got_output);
+     
+    //         if(got_output)
+    //         {
+    //             //h264fout->write((const char*)pkt,pkt_size);
+    //             //h264CallBackUser(pkt,pkt_size);
+    //             mFunHandler(pkt,pkt_size);
+    //         }
+    //         free(pkt);
+    //         free_aligned_buffer_page_end(dst_y_c);
+    //         free_aligned_buffer_page_end(dst_u_c);
+    //         free_aligned_buffer_page_end(dst_v_c);
+    //     }
+    // }
+    return 0 ;
+}
+
+
+int32_t TdH264::convert(uint8_t *inDate,uint32_t inSize,uint8_t **outDate,uint32_t *outSize,bool &isKeyFrame)
+{
+    if((inDate==nullptr))
     {
         return -1;
     }
@@ -195,8 +239,10 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
     int64_t dst_y_plane_size,dst_uv_plane_size;
     int64_t src_y_plane_size,src_uv_plane_size;
     memset (&obufInfo, 0, sizeof (SBufferInfo));
-    DECODING_STATE rv = decoder_->DecodeFrame2 (inData, (int) inSize, oData, &obufInfo);
-    if (obufInfo.iBufferStatus == 1) 
+    *outSize = 0 ;
+    isKeyFrame=false ;
+    DECODING_STATE rv = decoder_->DecodeFrame2 (inDate, (int) inSize, oData, &obufInfo);
+    if (obufInfo.iBufferStatus == 1)
     {  
         if(obufInfo.UsrData.sSystemBuffer.iFormat==videoFormatI420){
 
@@ -237,8 +283,6 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
             if(status){
                 return -1 ;
             }
-            uint8_t* pkt = new uint8_t[1024*1024*5];
-            size_t pkt_size = 0 ;
             bool is_keyframe=false ,got_output=false;
 
             //printf("status:%d  %d %d %d %d \r\n",status,dst_width,dst_height,dst_stride_uv,dst_stride_y);
@@ -246,14 +290,14 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
                 setEncoderParam(dst_width,dst_height,200000,300000,25);
             }
             setPicture(dst_width,dst_height,dst_stride_y,dst_stride_uv);
-            encode(dst_y_c,dst_u_c,dst_v_c,pkt,pkt_size,is_keyframe,got_output);
-     
-            if(got_output)
-            {
-                //h264fout->write((const char*)pkt,pkt_size);
-                h264CallBackUser(pkt,pkt_size);
-            }
-            free(pkt);
+            encode(dst_y_c,dst_u_c,dst_v_c,outDate,outSize,isKeyFrame,got_output);
+            // if(got_output)
+            // {
+            //     //h264fout->write((const char*)pkt,pkt_size);
+            //     //h264CallBackUser(pkt,pkt_size);
+            //     //mFunHandler(pkt,pkt_size);
+            //     ;
+            // }
             free_aligned_buffer_page_end(dst_y_c);
             free_aligned_buffer_page_end(dst_u_c);
             free_aligned_buffer_page_end(dst_v_c);
@@ -262,23 +306,57 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
     return 0 ;
 }
 
+int32_t TdH264::create()
+{
+    // if(channel.empty())
+    // {
+    //     return -1 ;
+    // }
+    //mChannel = channel ;
+    // NoticeCenter::Instance().addListener(0,channel,
+    //         [](int Rate,std::string Resolution,int MaxBitrate){
+    //     spdlog::info("修改视频参数为-> 帧率:{} 分辨率:{} 最大比特:{}",Rate,Resolution,MaxBitrate);
+    //     // if(!Resolution.compare("1080p"))
+    //     // {
+    //     //     outFrameParam.height = 1080 ;
+    //     //     outFrameParam.width = 1920;
+    //     // }
+    //     // else if(!Resolution.compare("720p"))
+    //     // {
+    //     //     outFrameParam.height = 1280 ;
+    //     //     outFrameParam.width = 720;
+    //     // }
+    //     // else if(!Resolution.compare("qHD"))
+    //     // {
+    //     //     outFrameParam.height = 960 ;
+    //     //     outFrameParam.width = 540;
+    //     // }
+    //     // else if(!Resolution.compare("nHD"))
+    //     // {
+    //     //     outFrameParam.height = 640 ;
+    //     //     outFrameParam.width = 360;
+    //     // }
+    //     // else if(!Resolution.compare("WQVGA"))
+    //     // {
+    //     //     outFrameParam.height = 480 ;
+    //     //     outFrameParam.width = 272;
+    //     // }
+    //     // else if(!Resolution.compare("FWQVGA"))
+    //     // {
+    //     //     outFrameParam.height = 432 ;
+    //     //     outFrameParam.width = 240;
+    //     // }
+        
+    // });
+   
+    decoderSetUp();
+    encoderSetUp();
+    return 0 ;
+}
+
+
 int32_t TdH264::destory()
 {
-    loopThrStatus  = false;
-    //清空缓存的数据
-    pthread_mutex_lock(&queMutex);
-    while (!frameQue.empty()) 
-    {
-        FramePacket* frame = frameQue.front();
-        free(frame->data);
-        frame->data=nullptr;
-        free(frame);
-        frameQue.pop();
-    }
-    pthread_mutex_unlock(&queMutex);
-
-    th.join(); //等待线程结束
-    spdlog::debug("===TdH264 joined===\r\n");
     if(encoder_!=nullptr){
         encoder_->Uninitialize();
         WelsDestroySVCEncoder(encoder_);
@@ -291,20 +369,4 @@ int32_t TdH264::destory()
         decoder_ = nullptr;
     }
     return 0 ;
-}
-
-void TdH264::loopThread(TdH264 *h264){
-    h264->loopThrStatus =true;
-    while(h264->loopThrStatus)
-    {
-        FramePacket * frame = h264->popFrameFromQue();
-        if(frame!=nullptr)
-        {
-            h264->decode(frame->data,frame->size);
-            free(frame->data);
-            frame->data=nullptr;
-            free(frame);
-        }
-        usleep(1000);
-    }
 }

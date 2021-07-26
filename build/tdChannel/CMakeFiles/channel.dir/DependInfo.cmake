@@ -32,6 +32,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/tdwl/work/GMProxy/build/tdRtp/CMakeFiles/rtp.dir/DependInfo.cmake"
   "/home/tdwl/work/GMProxy/build/tdCodec/CMakeFiles/codec.dir/DependInfo.cmake"
+  "/home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/util.dir/DependInfo.cmake"
   "/home/tdwl/work/GMProxy/build/tdScale/CMakeFiles/scale.dir/DependInfo.cmake"
   "/home/tdwl/work/GMProxy/build/tdPs/CMakeFiles/ps.dir/DependInfo.cmake"
   )

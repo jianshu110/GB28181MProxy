@@ -81,17 +81,43 @@ tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o.provides: tdCodec/CMakeFiles/codec
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o.provides.build: tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o
 
 
+tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: tdCodec/CMakeFiles/codec.dir/flags.make
+tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: ../tdCodec/src/TdCodec.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o"
+	cd /home/tdwl/work/GMProxy/build/tdCodec && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/codec.dir/src/TdCodec.cpp.o -c /home/tdwl/work/GMProxy/tdCodec/src/TdCodec.cpp
+
+tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/codec.dir/src/TdCodec.cpp.i"
+	cd /home/tdwl/work/GMProxy/build/tdCodec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GMProxy/tdCodec/src/TdCodec.cpp > CMakeFiles/codec.dir/src/TdCodec.cpp.i
+
+tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/codec.dir/src/TdCodec.cpp.s"
+	cd /home/tdwl/work/GMProxy/build/tdCodec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GMProxy/tdCodec/src/TdCodec.cpp -o CMakeFiles/codec.dir/src/TdCodec.cpp.s
+
+tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o.requires:
+
+.PHONY : tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o.requires
+
+tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o.provides: tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o.requires
+	$(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o.provides.build
+.PHONY : tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o.provides
+
+tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o.provides.build: tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o
+
+
 # Object files for target codec
 codec_OBJECTS = \
-"CMakeFiles/codec.dir/src/TdH264.cpp.o"
+"CMakeFiles/codec.dir/src/TdH264.cpp.o" \
+"CMakeFiles/codec.dir/src/TdCodec.cpp.o"
 
 # External object files for target codec
 codec_EXTERNAL_OBJECTS =
 
 libs/libcodec.a: tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o
+libs/libcodec.a: tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o
 libs/libcodec.a: tdCodec/CMakeFiles/codec.dir/build.make
 libs/libcodec.a: tdCodec/CMakeFiles/codec.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../libs/libcodec.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library ../libs/libcodec.a"
 	cd /home/tdwl/work/GMProxy/build/tdCodec && $(CMAKE_COMMAND) -P CMakeFiles/codec.dir/cmake_clean_target.cmake
 	cd /home/tdwl/work/GMProxy/build/tdCodec && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/codec.dir/link.txt --verbose=$(VERBOSE)
 
@@ -101,6 +127,7 @@ tdCodec/CMakeFiles/codec.dir/build: libs/libcodec.a
 .PHONY : tdCodec/CMakeFiles/codec.dir/build
 
 tdCodec/CMakeFiles/codec.dir/requires: tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o.requires
+tdCodec/CMakeFiles/codec.dir/requires: tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o.requires
 
 .PHONY : tdCodec/CMakeFiles/codec.dir/requires
 

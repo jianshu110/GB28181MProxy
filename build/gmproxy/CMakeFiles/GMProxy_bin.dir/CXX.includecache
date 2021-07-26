@@ -16,6 +16,20 @@ map
 inc/TdRtp.h
 ../tdChannel/inc/inc/TdRtp.h
 
+../tdCodec/inc/TdCodec.h
+iostream
+-
+stdlib.h
+-
+stdio.h
+-
+stdint.h
+-
+string.h
+-
+TdH264.h
+../tdCodec/inc/TdH264.h
+
 ../tdCodec/inc/TdH264.h
 stdlib.h
 -
@@ -49,6 +63,10 @@ unistd.h
 -
 spdlog/spdlog.h
 ../tdCodec/inc/spdlog/spdlog.h
+inc/noticeCenter.h
+../tdCodec/inc/inc/noticeCenter.h
+inc/FunHandler.h
+../tdCodec/inc/inc/FunHandler.h
 
 ../tdConf/inc/TdConf.h
 iostream
@@ -143,11 +161,15 @@ string
 -
 thread
 -
-inc/TdH264.h
-../tdRtp/inc/inc/TdH264.h
+inc/TdCodec.h
+../tdRtp/inc/inc/TdCodec.h
 inc/TdPs.h
 ../tdRtp/inc/inc/TdPs.h
 fstream
+-
+inc/Queue.h
+../tdRtp/inc/inc/Queue.h
+chrono
 -
 
 ../tdScale/inc/TdScale.h
@@ -286,6 +308,34 @@ zlib.h
 brotli/decode.h
 -
 brotli/encode.h
+-
+
+../tdUtil/inc/FunHandler.h
+iostream
+-
+stdlib.h
+-
+stdio.h
+-
+stdint.h
+-
+string.h
+-
+functional
+-
+
+../tdUtil/inc/Queue.h
+queue
+-
+iostream
+-
+stdlib.h
+-
+stdio.h
+-
+stdint.h
+-
+string.h
 -
 
 ../tdUtil/inc/common.h
@@ -911,6 +961,8 @@ inc/TdDevice.h
 /home/tdwl/work/GMProxy/gmproxy/inc/TdDevice.h
 inc/TdHttpServer.h
 /home/tdwl/work/GMProxy/gmproxy/inc/TdHttpServer.h
+inc/TdH264.h
+/home/tdwl/work/GMProxy/gmproxy/inc/TdH264.h
 inc/TdConf.h
 /home/tdwl/work/GMProxy/gmproxy/inc/TdConf.h
 
