@@ -26,7 +26,7 @@ typedef void(*closeOnCallBack)(void* argv);
 #define PS_BUF_SIZE         (1024*1024*4)
 
 
-class TdRtp :public TdPs,TdCodec
+class TdRtp :public TdPs,public TdCodec,public Queue
 {
 private:
 	RTPUDPv4TransmissionParams transparams;
@@ -39,14 +39,14 @@ private:
     std::thread rtpRecvTh ;
     int startTeg = 0 ;
     closeOnCallBack mCloseOnCallBack ;
-    Queue frameQue;
+    //Queue frameQue;
     /* data */
 public:
     TdRtp(){
         //fout = new std::ofstream("dumpPs.h264", std::ios::out | std::ios::binary);
         ;
     }
-    ~TdRtp(){};
+    ~TdRtp(){printf("%s\r\n",__func__);};
     void dumpHex(uint8_t*data,int start,int end);
     std::ofstream *fout ;
     RTPUDPv4TransmissionParams* getTransparams();

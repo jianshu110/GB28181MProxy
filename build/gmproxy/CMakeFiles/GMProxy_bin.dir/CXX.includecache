@@ -30,6 +30,8 @@ string.h
 TdH264.h
 ../tdCodec/inc/TdH264.h
 
+../tdCodec/inc/TdCodecParam.h
+
 ../tdCodec/inc/TdH264.h
 stdlib.h
 -
@@ -61,12 +63,12 @@ mutex
 -
 unistd.h
 -
-spdlog/spdlog.h
-../tdCodec/inc/spdlog/spdlog.h
 inc/noticeCenter.h
 ../tdCodec/inc/inc/noticeCenter.h
 inc/FunHandler.h
 ../tdCodec/inc/inc/FunHandler.h
+inc/TdCodecParam.h
+../tdCodec/inc/inc/TdCodecParam.h
 
 ../tdConf/inc/TdConf.h
 iostream
@@ -93,8 +95,6 @@ eXosip2/eXosip.h
 ../tdGb28181/inc/eXosip2/eXosip.h
 inc/TdChanManager.h
 ../tdGb28181/inc/inc/TdChanManager.h
-spdlog/spdlog.h
-../tdGb28181/inc/spdlog/spdlog.h
 pugixml.hpp
 ../tdGb28181/inc/pugixml.hpp
 sys/socket.h
@@ -113,6 +113,8 @@ tuple
 -
 inc/common.h
 -
+inc/noticeCenter.h
+../tdGb28181/inc/inc/noticeCenter.h
 
 ../tdPs/inc/TdPs.h
 stdlib.h
@@ -336,6 +338,44 @@ stdio.h
 stdint.h
 -
 string.h
+-
+
+../tdUtil/inc/System.h
+iostream
+-
+thread
+-
+chrono
+-
+string.h
+-
+windows.h
+-
+psapi.h
+-
+direct.h
+-
+process.h
+-
+sys/stat.h
+-
+sys/sysinfo.h
+-
+sys/time.h
+-
+unistd.h
+-
+
+../tdUtil/inc/Tdlog.h
+stdio.h
+-
+vector
+-
+string
+-
+Windows.h
+-
+pthread.h
 -
 
 ../tdUtil/inc/common.h
@@ -965,6 +1005,10 @@ inc/TdH264.h
 /home/tdwl/work/GMProxy/gmproxy/inc/TdH264.h
 inc/TdConf.h
 /home/tdwl/work/GMProxy/gmproxy/inc/TdConf.h
+inc/Tdlog.h
+/home/tdwl/work/GMProxy/gmproxy/inc/Tdlog.h
+inc/System.h
+/home/tdwl/work/GMProxy/gmproxy/inc/System.h
 
 /usr/local/include/jrtplib3/rtcpcompoundpacket.h
 rtpconfig.h

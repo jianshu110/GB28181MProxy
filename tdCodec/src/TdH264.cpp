@@ -7,7 +7,6 @@ int32_t TdH264::decoderSetUp()
     {
         return (int32_t)rv;
     }
-    printf("888888888888888888888888888888\r\n");
     memset (&decParam, 0, sizeof (SDecodingParam));
     decParam.uiTargetDqLayer = UCHAR_MAX;
     decParam.eEcActiveIdc = ERROR_CON_SLICE_COPY;
@@ -27,7 +26,8 @@ int32_t TdH264::encoderSetUp(){
     timestamp_ = 0;
     return 0 ;
 }
-
+//pDecoder->SetOption (DECODER_OPTION_END_OF_STREAM, (void*)&iEndOfStreamFlag);
+//pDecoder->FlushFrame (pData, &sDstBufInfo);
 int32_t TdH264::setEncoderParam(int width,int height,int bitrate,int iMaxBitrate,int fps)
 {
     memset(&encParam,0,sizeof(encParam));
@@ -54,7 +54,6 @@ int32_t TdH264::setEncoderParam(int width,int height,int bitrate,int iMaxBitrate
     encParam.sSpatialLayers[0].iSpatialBitrate = bitrate;
     encParam.sSpatialLayers[0].iMaxSpatialBitrate =iMaxBitrate;
     encoder_->InitializeExt (&encParam);
-    mIsEncoderSetUp = true;
     return 0 ;
 }
 void TdH264::setPicture(int width,int height,int Ystride,int UVstride)
@@ -75,8 +74,6 @@ int32_t TdH264::encode(uint8_t* Ydata,uint8_t* Udata,uint8_t* Vdata,uint8_t** pk
 	}
     *pkt =nullptr;
     *pkt_size = 0 ;
-    //*outData = (uint8_t*)realloc(*outData,*outlength+PayloadDataLen);
-    //    memcpy(*outData+*outlength, PayloadData, PayloadDataLen);
 	picture_.uiTimeStamp =timestamp_++; 
     picture_.pData[0] = (unsigned char*)Ydata;
     picture_.pData[1] = (unsigned char*)Udata;
@@ -224,7 +221,6 @@ int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
     return 0 ;
 }
 
-
 int32_t TdH264::convert(uint8_t *inDate,uint32_t inSize,uint8_t **outDate,uint32_t *outSize,bool &isKeyFrame)
 {
     if((inDate==nullptr))
@@ -256,8 +252,10 @@ int32_t TdH264::convert(uint8_t *inDate,uint32_t inSize,uint8_t **outDate,uint32
             src_y_plane_size = obufInfo.UsrData.sSystemBuffer.iStride[0]*src_height;
             src_uv_plane_size = obufInfo.UsrData.sSystemBuffer.iStride[1]*src_height;
 
-            dst_height = (abs(src_height) + 1) >> 1;
-            dst_width = (abs(src_width) + 1) >> 1;
+            //  dst_height = (abs(src_height) + 1) >> 1;
+            //  dst_width = (abs(src_width) + 1) >> 1;
+            dst_height = getCodecHeight();
+            dst_width = getCodecWidth();
 
             dst_width_uv = (abs(dst_width) + 1) >> 1;
             dst_height_uv = (abs(dst_height) + 1) >> 1;
@@ -286,18 +284,14 @@ int32_t TdH264::convert(uint8_t *inDate,uint32_t inSize,uint8_t **outDate,uint32
             bool is_keyframe=false ,got_output=false;
 
             //printf("status:%d  %d %d %d %d \r\n",status,dst_width,dst_height,dst_stride_uv,dst_stride_y);
-            if(!isEncoderSetUp()){
-                setEncoderParam(dst_width,dst_height,200000,300000,25);
+            if(isCodecParamRefresh()){
+                //printf("H264修改参数\r\n");
+                setEncoderParam(dst_width,dst_height,200000,getCodecMaxBitrate(),getCodecRate());
+                setCodecParamRefresh(false);
             }
             setPicture(dst_width,dst_height,dst_stride_y,dst_stride_uv);
             encode(dst_y_c,dst_u_c,dst_v_c,outDate,outSize,isKeyFrame,got_output);
-            // if(got_output)
-            // {
-            //     //h264fout->write((const char*)pkt,pkt_size);
-            //     //h264CallBackUser(pkt,pkt_size);
-            //     //mFunHandler(pkt,pkt_size);
-            //     ;
-            // }
+        
             free_aligned_buffer_page_end(dst_y_c);
             free_aligned_buffer_page_end(dst_u_c);
             free_aligned_buffer_page_end(dst_v_c);
@@ -307,50 +301,11 @@ int32_t TdH264::convert(uint8_t *inDate,uint32_t inSize,uint8_t **outDate,uint32
 }
 
 int32_t TdH264::create()
-{
-    // if(channel.empty())
-    // {
-    //     return -1 ;
-    // }
-    //mChannel = channel ;
-    // NoticeCenter::Instance().addListener(0,channel,
-    //         [](int Rate,std::string Resolution,int MaxBitrate){
-    //     spdlog::info("修改视频参数为-> 帧率:{} 分辨率:{} 最大比特:{}",Rate,Resolution,MaxBitrate);
-    //     // if(!Resolution.compare("1080p"))
-    //     // {
-    //     //     outFrameParam.height = 1080 ;
-    //     //     outFrameParam.width = 1920;
-    //     // }
-    //     // else if(!Resolution.compare("720p"))
-    //     // {
-    //     //     outFrameParam.height = 1280 ;
-    //     //     outFrameParam.width = 720;
-    //     // }
-    //     // else if(!Resolution.compare("qHD"))
-    //     // {
-    //     //     outFrameParam.height = 960 ;
-    //     //     outFrameParam.width = 540;
-    //     // }
-    //     // else if(!Resolution.compare("nHD"))
-    //     // {
-    //     //     outFrameParam.height = 640 ;
-    //     //     outFrameParam.width = 360;
-    //     // }
-    //     // else if(!Resolution.compare("WQVGA"))
-    //     // {
-    //     //     outFrameParam.height = 480 ;
-    //     //     outFrameParam.width = 272;
-    //     // }
-    //     // else if(!Resolution.compare("FWQVGA"))
-    //     // {
-    //     //     outFrameParam.height = 432 ;
-    //     //     outFrameParam.width = 240;
-    //     // }
-        
-    // });
-   
+{  
     decoderSetUp();
     encoderSetUp();
+    setCodecParamRefresh(true);
+    printf("TdH264::create\r\n");
     return 0 ;
 }
 
@@ -361,12 +316,15 @@ int32_t TdH264::destory()
         encoder_->Uninitialize();
         WelsDestroySVCEncoder(encoder_);
         encoder_ = nullptr;
+        printf("encoder_ destory \r\n");
     }
+    printf("encoder_ destory11111 \r\n");
     if(decoder_!=nullptr)
     {
-        decoder_ ->Uninitialize();
+        decoder_->Uninitialize();
         WelsDestroyDecoder(decoder_);
         decoder_ = nullptr;
+        printf("decoder_ destory \r\n");
     }
     return 0 ;
 }

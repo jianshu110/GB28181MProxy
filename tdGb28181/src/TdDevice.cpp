@@ -14,6 +14,9 @@ static int get_sn() {
 
 void TdDevice::start() {
     spdlog::debug("sip init begin.");
+    TdChanManager::getInstance();
+
+
 
     sip_context = eXosip_malloc();
 
@@ -73,7 +76,10 @@ void TdDevice::start() {
     this->process_request();
    
 }
+void TdDevice::Register()
+{
 
+}
 void TdDevice::process_request() {
     while (is_running) {
         auto evt = shared_ptr<eXosip_event_t>(
@@ -149,7 +155,7 @@ void TdDevice::process_request() {
                         spdlog::debug("got destHost: {} destPort:{} basePort:{}", destHost,destPort,basePort);
                         if(!createSession(channel,destHost,string2int(destPort),string2int(basePort)))
                         {
-                            spdlog::info("通道({}) -> 启动成功",channel);
+                            spdlog::info("通道({}) - Port({}->{})-> 启动成功",channel,basePort,destPort);
                             usleep(500);
                             this->send_response_ok(evt);
                         }
@@ -164,6 +170,14 @@ void TdDevice::process_request() {
                         destorySession(channel);
                         this->send_response_ok(evt);
                         spdlog::info("通道({}) -> 关闭成功",channel);
+                    }
+                    else if(!subCmd.compare("setVideoParam"))
+                    {
+                        spdlog::info("通道({}) -> 设置参数",channel);
+                        std::string Resolution = getValueByNodeName(body->body,"Resolution");
+                        int Rate = string2int(getValueByNodeName(body->body,"Rate"));
+                        int MaxBitrate = string2int(getValueByNodeName(body->body,"MaxBitrate"));
+                        NoticeCenter::Instance().emitEvent("setCodecParam",channel,Rate,Resolution,MaxBitrate);
                     }
                 }
                 else{

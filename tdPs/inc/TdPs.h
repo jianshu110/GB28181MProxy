@@ -80,22 +80,22 @@ class TdPs
 private:
     /* data */
 public:
-    TdPs(/* args */){psfout = new std::ofstream("dumpOutPs.h264", std::ios::out | std::ios::binary);}
-    ~TdPs(){}
-    uint32_t pts = 0 ;
-    //uint32_t setPsPara(int fps);
-    std::ofstream *psfout ;
-    uint32_t ProgramStreamMap(char* Pack, int length, char **NextPack, int *leftlength, char **PayloadData, int *PayloadDataLen);
-    uint32_t ProgramShHead(char* Pack, int length, char **NextPack, int *leftlength, char **PayloadData, int *PayloadDataLen);
-    uint32_t Pes(char* Pack, int length, char **NextPack, int *leftlength, char **PayloadData, int *PayloadDataLen);
-    uint32_t ProgramStreamPackHeader(char* Pack, int length, char **NextPack, int *leftlength) ;
-    uint32_t parsingPs(int8_t*srcdata,int length,uint8_t **outData, int *outlength);
+  TdPs(/* args */){}
+  ~TdPs(){printf("%s\r\n",__func__);}
+  uint32_t pts = 0 ;
+  //uint32_t setPsPara(int fps);
+  //std::ofstream *psfout ;
+  uint32_t ProgramStreamMap(char* Pack, int length, char **NextPack, int *leftlength, char **PayloadData, int *PayloadDataLen);
+  uint32_t ProgramShHead(char* Pack, int length, char **NextPack, int *leftlength, char **PayloadData, int *PayloadDataLen);
+  uint32_t Pes(char* Pack, int length, char **NextPack, int *leftlength, char **PayloadData, int *PayloadDataLen);
+  uint32_t ProgramStreamPackHeader(char* Pack, int length, char **NextPack, int *leftlength) ;
+  uint32_t parsingPs(int8_t*srcdata,int length,uint8_t **outData, int *outlength);
 
-    uint32_t makePsHeader(char *pData, unsigned long long s64Scr);
-    uint32_t makeSysHeader(char *pData);
-    uint32_t makePsmHeader(char *pData);
-    uint32_t makePesHeader(char *pData, int stream_id, int payload_len, unsigned long long pts, unsigned long long dts);
+  uint32_t makePsHeader(char *pData, unsigned long long s64Scr);
+  uint32_t makeSysHeader(char *pData);
+  uint32_t makePsmHeader(char *pData);
+  uint32_t makePesHeader(char *pData, int stream_id, int payload_len, unsigned long long pts, unsigned long long dts);
 
-    uint32_t packagingPs(H264Stream_t *h264_stream,uint8_t **outData, int *outlength);
+  uint32_t packagingPs(H264Stream_t *h264_stream,uint8_t **outData, int *outlength);
 };
 #endif

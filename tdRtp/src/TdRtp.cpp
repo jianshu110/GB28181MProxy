@@ -22,8 +22,8 @@ int32_t TdRtp::setUp(std::string channel,std::string destIp,uint16_t destPort,ui
 	
 	sessparams.SetAcceptOwnPackets(true);
 	transparams.SetPortbase(basePort);
-    transparams.SetRTCPMultiplexing(false);
-	int status = sess.Create(sessparams,&transparams);
+    //transparams.SetRTCPMultiplexing(false);
+	int status = sess.Create(sessparams,&transparams,RTPTransmitter::TransmissionProtocol::IPv4UDPProto);
     if(status<0)
     {
         spdlog::error("创建本地RTP会话失败");
@@ -40,9 +40,7 @@ int32_t TdRtp::setUp(std::string channel,std::string destIp,uint16_t destPort,ui
     sess.SetDefaultPayloadType(96);
     sess.SetDefaultMark(true);
     sess.SetDefaultTimestampIncrement(50);
-    TdCodec::init(VideoH264);
-    //TdH264::create(channel);
-    
+    TdCodec::init(VideoH264);    
 	return 0;
 }
 RTPUDPv4TransmissionParams* TdRtp::getTransparams()
@@ -76,14 +74,14 @@ uint32_t TdRtp::start(uint32_t time){
 void TdRtp::recvLoopThread(TdRtp *rtp){
     int status ;
     rtp->isRun = true;
-    bool i=false;
+    bool isComing = false;
     YUVFrame_t* iFrame = nullptr;
     YUVFrame_t* oFrame = nullptr;
     RTPSession *sessPtr = rtp->getRTPSession();
     size_t len;
 	uint8_t *loaddata;
 	RTPPacket *pack;
-	uint8_t buff[1024*1000] = {0};
+    uint8_t *rtpOut=nullptr;
     uint8_t *obuff;
     int oLen = 0 ;
 	int pos = 0;
@@ -98,16 +96,16 @@ void TdRtp::recvLoopThread(TdRtp *rtp){
         status = sessPtr->Poll();
 		sessPtr->BeginDataAccess();
 		// check incoming packets
-        status = sessPtr->WaitForIncomingData(RTPTime(1,1),&i);
+        status = sessPtr->WaitForIncomingData(RTPTime(1,1),&isComing);
         // checkerror(status);
-        if(i==true)
+        if(isComing==true)
         {
             if (sessPtr->GotoFirstSourceWithData())
             {
                 do
                 {
                     RTPPacket *pack;
-                    while ((pack = sessPtr->GetNextPacket()) != NULL)
+                    while ((rtp->isRun)&&((pack = sessPtr->GetNextPacket()) != NULL))
                     {
                         loaddata = pack->GetPayloadData();
 					    len	= pack->GetPayloadLength();
@@ -115,43 +113,30 @@ void TdRtp::recvLoopThread(TdRtp *rtp){
                         {
                             if(pack->HasMarker()) // the last packet
                             {
-                                memcpy(&buff[pos],loaddata,len);
-                                if(buff[3]!=0xba){
-                                    pos = 0;
-                                    continue;
-                                }
-                                rtp->parsingPs((int8_t*)buff,pos+len,&obuff, &oLen);
+                                rtpOut = (uint8_t*)realloc(rtpOut,pos + len);
+                                memcpy(rtpOut+pos, loaddata, len);
+                                pos = pos + len;
+                                rtp->parsingPs((int8_t*)rtpOut,pos,&obuff, &oLen);
+                                //rtp->sendData(rtpOut,pos);
+                                //printf("oLen:%d\r\n",oLen);
                                 //rtp->dumpHex(obuff,0,5);
                                 spdlog::debug("oLen:{} pos+len:{}",oLen,pos+len);
-                                            Packet frame(obuff,oLen); 
-                                        rtp->frameQue.push(frame);
-                                // if(rtp->startTeg==0){
-                                //     if(obuff[4]==0x67)
-                                //     {
-                                //         rtp->startTeg = 1;
-                                //         Packet frame(obuff,oLen); 
-                                //         rtp->frameQue.push(frame);
-                                //         //FramePacket *frame = new FramePacket(obuff,oLen);
-                                //         // /rtp->pushFrameToQue(frame);
-                                //     }else{
-                                //         if(obuff!=nullptr)
-                                //         {
-                                //             free(obuff);
-                                //         }
-                                //     }
-
-                                // }
-                                // else{
-                                //     Packet frame(obuff,oLen);
-                                //     rtp->frameQue.push(frame);
-                                //     // FramePacket *frame = new FramePacket(obuff,oLen);
-                                //     // rtp->pushFrameToQue(frame);
-                                // }
+                                if(oLen>0)
+                                {
+                                    Packet frame(obuff,oLen); 
+                                    rtp->push(frame);
+                                }
+                                if(rtpOut!=nullptr)
+                                {
+                                    free(rtpOut);
+                                    rtpOut = nullptr;
+                                }
                                 pos = 0;
                             }
                             else
                             {
-                                memcpy(&buff[pos],loaddata,len);
+                                rtpOut = (uint8_t*)realloc(rtpOut,pos + len);
+                                memcpy(rtpOut+pos, loaddata, len);
                                 pos = pos + len;
                                 //spdlog::debug("posc:%d\r\n",pos);
                             }
@@ -160,12 +145,59 @@ void TdRtp::recvLoopThread(TdRtp *rtp){
                         }
                         sessPtr->DeletePacket(pack);
                     }
-                } while (sessPtr->GotoNextSourceWithData());
+                } while ((rtp->isRun)&&(sessPtr->GotoNextSourceWithData()));
             }
         }
 		
 		sessPtr->EndDataAccess();
 	}
+    if(rtpOut!=nullptr)
+    {
+        free(rtpOut);
+        rtpOut = nullptr;
+    }
+    sessPtr->EndDataAccess();
+    printf("recvLoopThread stop\r\n");
+
+
+
+    // rtp->isRun = true;
+    // RTPSession *sessPtr = rtp->getRTPSession();
+    // while(rtp->isRun)
+    // {
+        
+    //     sessPtr->BeginDataAccess();
+    //     if (sessPtr->GotoFirstSourceWithData())
+    //     {
+    //         do
+    //         {
+    //             RTPPacket *pack;
+                
+    //             while ((pack = sessPtr->GetNextPacket()) != NULL)
+    //             {
+    //                 // You can examine the data here
+                    
+                    
+    //                 //pack->GetSSRC();
+    //                 printf("Got packet %d %d %d\n",pack->GetPacketLength(),pack->GetPayloadLength(),(int)pack->GetPayloadType());
+                    
+                    
+    //                 // we don't longer need the packet, so
+    //                 // we'll delete it
+    //                 sessPtr->DeletePacket(pack);
+    //             }
+    //         }while (sessPtr->GotoNextSourceWithData());
+    //     }
+	//     sessPtr->EndDataAccess();
+    //     sessPtr->Poll();
+    //     RTPTime::Wait(RTPTime(1,0));
+       
+    // }
+    // sessPtr->ClearAcceptList();
+    // sessPtr->ClearDestinations();
+    // sessPtr->Destroy();
+    
+    //sessPtr->DeleteDestination( RTPIPv4Address(ntohl(inet_addr(dst_ip.c_str()),dst_port) );
     return ;
 }
 
@@ -174,18 +206,15 @@ void TdRtp::sendLoopThread(TdRtp *rtp)
 {
     rtp->isRun = true ;
     while(rtp->isRun){
-        Packet frame = rtp->frameQue.pop();
+        Packet frame = rtp->pop();
         if(!frame.empty())
         {
-            uint8_t * codecOutDate ;
+            uint8_t * codecOutDate = nullptr;
             uint32_t codecOutSize ;
-            uint8_t *psOut ;
+            uint8_t *psOut = nullptr;
             int32_t psOutSize ;
-            // rtp->dumpHex(frame.data,0,5);
-            // printf("%d\r\n",frame.size);
             bool isKeyFrame ;
             rtp->convert(frame.data,frame.size,&codecOutDate,&codecOutSize,isKeyFrame);
-            //printf("osize:%d iskeyframe:%d\r\n",codecOutDate,isKeyFrame);
             if((codecOutDate!=nullptr)&&(codecOutSize>0))
             {
                 H264Stream_t h264_stream;
@@ -196,24 +225,29 @@ void TdRtp::sendLoopThread(TdRtp *rtp)
                 h264_stream.dts = rtp->pts ;
                 h264_stream.pts = rtp->pts;
                 rtp->pts+=3600;
-                //printf("outDate:%02x %02x osize:%d iskeyframe:%d\r\n",outDate[3],outDate[4],h264OutSize,isKeyFrame);
+                //printf("osize:%d iskeyframe:%d\r\n",codecOutSize,isKeyFrame);
                 rtp->packagingPs(&h264_stream,&psOut,&psOutSize);
                 if((psOut!=nullptr)&&(psOutSize>0))
                 {
                     rtp->sendData(psOut,psOutSize);
+                    ;
+                }
+                if(psOut!=nullptr)
+                {
                     free(psOut);
                     psOut = nullptr;
                 }
                 free(codecOutDate);
                 codecOutDate = nullptr;
             }
+            printf("frame len:%d\r\n",frame);
+            
             frame.clear();
-            // //h264->decode(frame->data,frame->size);
-            // free(frame.data);
-            // frame.data=nullptr;
         }
+        
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
+    printf("sendLoopThread stop\r\n");
 }
 
 uint32_t TdRtp::stop()
@@ -222,9 +256,8 @@ uint32_t TdRtp::stop()
     rtpRecvTh.join();
     rtpSendTh.join();
     sess.BYEDestroy(RTPTime(10,0),0,0);
-    frameQue.clear();
+    clear();
     TdCodec::destroy();
     spdlog::debug("=== rtp joined ===");
-    //TdH264::destory();
     return 0;
 }

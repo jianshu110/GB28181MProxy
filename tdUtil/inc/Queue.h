@@ -38,8 +38,8 @@ private:
     pthread_mutex_t queMutex;
 public:
 
-    Queue(/* args */){};
-    ~Queue(){};
+    Queue(/* args */){pthread_mutex_init(&queMutex,NULL);};
+    ~Queue(){pthread_mutex_destroy(&queMutex);printf("%s\r\n",__func__);};
     bool isAccess(){
         return mQueAccess ;
     }

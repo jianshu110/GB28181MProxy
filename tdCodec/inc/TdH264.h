@@ -15,12 +15,19 @@
 #include <thread>
 #include <mutex>
 #include <unistd.h>
-#include "spdlog/spdlog.h"
+// #include "spdlog/spdlog.h"
 #include "inc/noticeCenter.h"
 #include "inc/FunHandler.h"
+#include "inc/TdCodecParam.h"
+// #ifdef DMALLOC
+// #include "dmalloc.h"
+// #endif
+
+
 using namespace toolkit;
 
-class TdH264:public TdScale 
+
+class TdH264:public TdScale ,public TdCodecParam
 {
 private:
     ISVCDecoder* decoder_;
@@ -29,7 +36,6 @@ private:
     SEncParamExt encParam;
     Source_Picture_s picture_;
     uint64_t timestamp_;
-    bool mIsEncoderSetUp = false;
     /* data */
 public:
     TdH264(/* args */){};
@@ -41,7 +47,6 @@ public:
     FunHandler mFunHandler ;
     int32_t decoderSetUp();
     int32_t encoderSetUp();
-    bool isEncoderSetUp(){return mIsEncoderSetUp;}
     int32_t setEncoderParam(int width,int height,int bitrate,int iMaxBitrate,int fps);
     void setPicture(int width,int height,int Ystride,int UVstride);
     int32_t decode(uint8_t * inData,uint32_t inSize);
@@ -49,6 +54,7 @@ public:
     int32_t convert(uint8_t *inDate,uint32_t inSize,uint8_t **outDate,uint32_t *outSize,bool &isKeyFrame);
     int32_t destory();
     int32_t create();
+    //void setCodecParam(TdCodecParam * para);
 };
 
 #endif

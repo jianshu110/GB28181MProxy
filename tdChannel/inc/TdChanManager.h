@@ -21,9 +21,11 @@ private:
     pthread_mutex_t delChanMutex;
     pthread_mutex_t chanMapMutex;
     bool delChanWorkStatus =false ;
+    
     /* data */
 public:
     static TdChanManager* getInstance();
+    int monitor();
     int createChannel(std::string channle,std::string dest,int destPort,int basePort);
     int delChannel(std::string channle);
 

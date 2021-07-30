@@ -3,6 +3,7 @@
 
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdChannel/inc/TdChanManager.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdCodec/inc/TdCodec.h
+tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdCodec/inc/TdCodecParam.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdCodec/inc/TdH264.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdPs/inc/TdPs.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdPs/inc/pstream.h

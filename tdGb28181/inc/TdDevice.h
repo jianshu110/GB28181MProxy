@@ -6,7 +6,6 @@
 #include <memory>
 #include "eXosip2/eXosip.h"
 #include "inc/TdChanManager.h"
-#include "spdlog/spdlog.h"
 #include "pugixml.hpp"
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -16,6 +15,7 @@
 #include <thread>
 #include <tuple> 
 #include <inc/common.h> 
+#include "inc/noticeCenter.h"
 
 using namespace std;
 
@@ -46,6 +46,8 @@ public:
     void start();
 
     void stop();
+
+    void Register();
 
     void process_request();
 

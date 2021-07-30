@@ -38,6 +38,45 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
         res.set_content(contents,"text/json");
     });
 
+    httpSrv->mHttpServer.Post("/gmproxy/closeChannel", [](const Request& req, Response& res) {
+    
+        printf("req:%s\r\n",req.body.c_str());
+        std::string err;
+        auto jsonData = json11::Json::parse(req.body,err);
+        std::string contents="";
+        if(jsonData.is_null())
+        {
+            contents = "{\"code\":\"10000\"}";
+        }
+        else{
+            std::string channel = jsonData["channel"].string_value();
+            NoticeCenter::Instance().emitEvent("closeChannel",channel);
+            std::string contents ("{\"code\":\"0\"}");
+        }
+        res.set_content(contents,"text/json");
+    });
+
+      httpSrv->mHttpServer.Post("/gmproxy/closeChannel2", [](const Request& req, Response& res) {
+    
+        printf("req:%s\r\n",req.body.c_str());
+        std::string err;
+        auto jsonData = json11::Json::parse(req.body,err);
+        std::string contents="";
+        if(jsonData.is_null())
+        {
+            contents = "{\"code\":\"10000\"}";
+        }
+        else{
+            std::string channel = jsonData["channel"].string_value();
+            NoticeCenter::Instance().emitEvent("createChannel",channel);
+            printf("9999999999999999999999\r\n");
+            std::string contents ("{\"code\":\"0\"}");
+        }
+        res.set_content(contents,"text/json");
+    });
+
+
+
     httpSrv->mHttpServer.Post("/gmproxy/setvideoparam", [](const Request& req, Response& res) {
        
         printf("req:%s\r\n",req.body.c_str());
@@ -50,9 +89,10 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
         }
         else{
             std::string Resolution = jsonData["Resolution"].string_value();
+            std::string Channel = jsonData["channel"].string_value();
             int Rate = jsonData["Rate"].int_value();
             int MaxBitrate = jsonData["MaxBitrate"].int_value();
-            NoticeCenter::Instance().emitEvent("37021318001328547502",Rate,Resolution,MaxBitrate);
+            NoticeCenter::Instance().emitEvent("setCodecParam",Channel,Rate,Resolution,MaxBitrate);
             contents = "{\"code\":\"0\"}";
         }
         res.set_content(contents,"text/json");

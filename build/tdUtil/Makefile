@@ -125,6 +125,33 @@ util/fast:
 	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/build
 .PHONY : util/fast
 
+src/Tdlog.o: src/Tdlog.cpp.o
+
+.PHONY : src/Tdlog.o
+
+# target to build an object file
+src/Tdlog.cpp.o:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.o
+.PHONY : src/Tdlog.cpp.o
+
+src/Tdlog.i: src/Tdlog.cpp.i
+
+.PHONY : src/Tdlog.i
+
+# target to preprocess a source file
+src/Tdlog.cpp.i:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.i
+.PHONY : src/Tdlog.cpp.i
+
+src/Tdlog.s: src/Tdlog.cpp.s
+
+.PHONY : src/Tdlog.s
+
+# target to generate assembly for a file
+src/Tdlog.cpp.s:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.s
+.PHONY : src/Tdlog.cpp.s
+
 src/common.o: src/common.cpp.o
 
 .PHONY : src/common.o
@@ -269,6 +296,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... util"
 	@echo "... edit_cache"
+	@echo "... src/Tdlog.o"
+	@echo "... src/Tdlog.i"
+	@echo "... src/Tdlog.s"
 	@echo "... src/common.o"
 	@echo "... src/common.i"
 	@echo "... src/common.s"

@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
 project(ffmpeg_test)
  
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O -O2 -g -fPIC")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O -O2 -g -fPIC -DDMALLOC -DDMALLOC_FUNC_CHECK")
  
 include_directories (${INCLUDE_DIRS})
  

@@ -20,6 +20,8 @@ string.h
 TdH264.h
 ../tdCodec/inc/TdH264.h
 
+../tdCodec/inc/TdCodecParam.h
+
 ../tdCodec/inc/TdH264.h
 stdlib.h
 -
@@ -51,12 +53,12 @@ mutex
 -
 unistd.h
 -
-spdlog/spdlog.h
-../tdCodec/inc/spdlog/spdlog.h
 inc/noticeCenter.h
 ../tdCodec/inc/inc/noticeCenter.h
 inc/FunHandler.h
 ../tdCodec/inc/inc/FunHandler.h
+inc/TdCodecParam.h
+../tdCodec/inc/inc/TdCodecParam.h
 
 ../tdPs/inc/TdPs.h
 stdlib.h

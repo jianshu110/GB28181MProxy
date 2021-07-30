@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+../tdUtil/inc/Tdlog.h
+stdio.h
+-
+vector
+-
+string
+-
+Windows.h
+-
+pthread.h
+-
+
 ../tdUtil/inc/function_traits.h
 tuple
 -
@@ -123,6 +135,38 @@ cstring
 -
 
 /home/tdwl/work/GMProxy/tdUtil/inc/uuid4.h
+
+/home/tdwl/work/GMProxy/tdUtil/src/Tdlog.cpp
+Tdlog.h
+/home/tdwl/work/GMProxy/tdUtil/src/Tdlog.h
+time.h
+-
+assert.h
+-
+stdarg.h
+-
+algorithm
+-
+string.h
+-
+io.h
+-
+direct.h
+-
+process.h
+-
+unistd.h
+-
+sys/stat.h
+-
+sys/time.h
+-
+dirent.h
+-
+pthread.h
+-
+sys/syscall.h
+-
 
 /home/tdwl/work/GMProxy/tdUtil/src/common.cpp
 ../inc/json11.hpp

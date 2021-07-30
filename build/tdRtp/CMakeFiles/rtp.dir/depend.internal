@@ -3,6 +3,7 @@
 
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o
  ../tdCodec/inc/TdCodec.h
+ ../tdCodec/inc/TdCodecParam.h
  ../tdCodec/inc/TdH264.h
  ../tdPs/inc/TdPs.h
  ../tdPs/inc/pstream.h

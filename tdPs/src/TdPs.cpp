@@ -78,24 +78,41 @@ uint32_t TdPs::Pes(char* Pack, int length, char **NextPack, int *leftlength, cha
     
     
     *PayloadDataLen = pse_length.length - 2 - 1 - PSEPack->stuffing_length;
+    //printf("data[3]: %02x \r\n",Pack[3]);
+    //printf("PayloadDataLen1:%d %d %d\r\n",*PayloadDataLen,PSEPack->stuffing_length,length);
+
     if(*PayloadDataLen>0)
         *PayloadData = Pack + sizeof(program_stream_e) + PSEPack->stuffing_length;
+    
 
     *leftlength = length - pse_length.length - sizeof(pack_start_code) - sizeof(littel_endian_size);
-    if(*leftlength<=0) return 0;
+    //printf("leftlength:%d pse_length.length:%d %d %d\r\n",*leftlength,pse_length.length,sizeof(pack_start_code),sizeof(littel_endian_size));
+    
+    if(*leftlength<0)
+    {
+        *NextPack = Pack+sizeof(pack_start_code);
+        return -1;
+    }
 
     *NextPack = Pack + sizeof(pack_start_code) + sizeof(littel_endian_size) + pse_length.length;
-
+    //printf("leftlength:%d pse_length.length:%d\r\n",*leftlength,pse_length.length);
     return *leftlength;
 }
 
 uint32_t TdPs::parsingPs(int8_t*srcdata,int length,uint8_t **outData, int *outlength)
 {
-     int leftlength = 0;
+    int leftlength = 0;
     char *NextPack = 0;
     *outlength = 0;
     *outData = nullptr;
-     //printf("sizestruct:%d %d %d %d\r\n",sizeof(program_stream_e),sizeof(program_stream_e1),sizeof(pack_start_code),sizeof(littel_endian_size));
+    //printf("%02x,%02x,%02x,%02x\r\n",srcdata[0],srcdata[1],srcdata[2],srcdata[3]);
+    if(srcdata[3]!='\xba')
+    {
+        *outlength = 0;
+        return -1 ;
+    }
+    //printf("inLength:%d\r\n",length);
+    //printf("sizestruct:%d %d %d %d\r\n",sizeof(program_stream_e),sizeof(program_stream_e1),sizeof(pack_start_code),sizeof(littel_endian_size));
     if(ProgramStreamPackHeader((char*)srcdata, length, &NextPack, &leftlength)==0)
         return 0;
     char *PayloadData=NULL; 
@@ -112,13 +129,24 @@ uint32_t TdPs::parsingPs(int8_t*srcdata,int length,uint8_t **outData, int *outle
         && NextPack[3]=='\xE0') {
             //printf("----------------------------------------------------------E0--\r\n");
             //接着就是流包，说明是非i帧
-            if(Pes(NextPack, leftlength, &NextPack, &leftlength, &PayloadData, &PayloadDataLen)) {
+            if(Pes(NextPack, leftlength, &NextPack, &leftlength, &PayloadData, &PayloadDataLen)>=0) {
                 if(PayloadDataLen) {
                     if(PayloadDataLen + *outlength < H264_FRAME_SIZE_MAX) {
                         *outData = (uint8_t*)realloc(*outData,*outlength+PayloadDataLen);
                         memcpy(*outData+*outlength, PayloadData, PayloadDataLen);
                         *outlength += PayloadDataLen;
-                        //printf("PayloadDataLen:%d\r\n",PayloadDataLen);
+                        if((PayloadData+PayloadDataLen)>((char*)srcdata+length))
+                        {
+                            printf("%d %d\r\n",srcdata+length,PayloadData+PayloadDataLen);
+                        }
+                        // if(PayloadData[PayloadDataLen-1]!=srcdata[length-1])
+                        // {
+                        //     printf("eeeeeeeeeeeeeee::: %02x %02x %02x\r\n",srcdata[length-1],PayloadData[PayloadDataLen-2],PayloadData[PayloadDataLen-3]);
+                        // }
+                        // else{
+                        //      printf("oooooooooo::: %02x %02x %02x %02x\r\n",srcdata[length-1],PayloadData[PayloadDataLen-1],PayloadData[PayloadDataLen-2],PayloadData[PayloadDataLen-3]);
+                        // }
+                        // //printf("PayloadDataLen:%d\r\n",PayloadDataLen);
                     }
                     else {
                         printf("h264 frame size exception!! %d:%d  %d\r\n", PayloadDataLen, *outlength,__LINE__);
@@ -126,16 +154,14 @@ uint32_t TdPs::parsingPs(int8_t*srcdata,int length,uint8_t **outData, int *outle
                 }
             }
             else {
-                if(PayloadDataLen) {
-                    if(PayloadDataLen + *outlength < H264_FRAME_SIZE_MAX) {
-                        *outData = (uint8_t*)realloc(*outData,*outlength+PayloadDataLen);
-                        memcpy(*outData+*outlength, PayloadData, PayloadDataLen);
-                        *outlength += PayloadDataLen;
-                    }
-                    else {
-                        printf("h264 frame size exception!! %d:%d  %d\r\n", PayloadDataLen, *outlength,__LINE__);
-                    }
+                printf("outlength < 0   =================================\r\n");
+                *outlength = 0 ;
+                if(*outData!=nullptr)
+                {
+                    free(*outData);
+                    *outData =nullptr;
                 }
+                return *outlength ;
             }
         }
         else if(NextPack 
@@ -323,6 +349,7 @@ uint32_t TdPs::packagingPs(H264Stream_t *h264_stream,uint8_t **outData, int *out
     int remainSize = h264_stream->size;
     int dataPtrOffset = 0 ;
     *outlength = 0;
+    *outData = nullptr;
     *outData = (uint8_t*)realloc(*outData,*outlength+PS_HDR_LEN);
     /*PS header*/
     makePsHeader((char*)*outData + *outlength, h264_stream->pts);

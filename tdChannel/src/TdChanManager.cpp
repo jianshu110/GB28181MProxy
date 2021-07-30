@@ -6,24 +6,86 @@ TdChanManager* TdChanManager::getInstance(){
     if(mTdChanManager==nullptr)
     {
         mTdChanManager = new TdChanManager();
+        mTdChanManager->monitor();
     }
     return mTdChanManager ;
 }
 
-int TdChanManager::createChannel(std::string channle,std::string dest,int destPort,int basePort)
+int TdChanManager::monitor()
+{
+    TdChanManager *mprj = this ;
+    NoticeCenter::Instance().addListener(this,"setCodecParam",[mprj](std::string channel,int Rate,std::string Resolution,int MaxBitrate){
+    TdChanManager *mTag = mprj ;
+    TdRtp *rtp = mTag->chanMap[channel];
+    if(rtp==nullptr)
+        return  ;
+    CodecParam lCodecpara;
+    memset(&lCodecpara,0,sizeof(CodecParam));
+    spdlog::info("修改视频参数为-> 帧率:{} 分辨率:{} 最大比特:{}",Rate,Resolution,MaxBitrate);
+    if(!Resolution.compare("1080p"))
+    {
+        lCodecpara.height = 1080 ;
+        lCodecpara.width = 1920;
+    }
+    else if(!Resolution.compare("720p"))
+    {
+        lCodecpara.height = 720 ;
+        lCodecpara.width = 1280;
+    }
+    else if(!Resolution.compare("qHD"))
+    {
+        lCodecpara.height = 540 ;
+        lCodecpara.width = 960;
+    }
+    else if(!Resolution.compare("nHD"))
+    {
+        lCodecpara.height = 360 ;
+        lCodecpara.width =  640;
+    }
+    else if(!Resolution.compare("WQVGA"))
+    {
+        lCodecpara.height = 272 ;
+        lCodecpara.width =  480;
+    }
+    else if(!Resolution.compare("FWQVGA"))
+    {
+        lCodecpara.height = 240 ;
+        lCodecpara.width =  432;
+    }
+    lCodecpara.rate = Rate;
+    lCodecpara.maxBitrate = MaxBitrate;
+    rtp->setParam(lCodecpara);
+    });
+
+
+    NoticeCenter::Instance().addListener(this,"closeChannel",[mprj](std::string channel){
+        TdChanManager *mTag = mprj ;
+        printf("closeChannel\r\n");
+        mTag->delChannel(channel);
+    });
+
+    NoticeCenter::Instance().addListener(this,"createChannel",[mprj](std::string channel){
+        TdChanManager *mTag = mprj ;
+        printf("createChannel\r\n");
+        mTag->createChannel(channel,"192.168.11.126",30252,30254);
+    });
+    return 0;
+}
+
+int TdChanManager::createChannel(std::string channel,std::string dest,int destPort,int basePort)
 {
     int status = -1 ;
     pthread_mutex_lock(&chanMapMutex);
-    if(chanMap[channle])
+    if(chanMap[channel])
     {
         pthread_mutex_unlock(&chanMapMutex);
-        spdlog::error("通道({}) 已存在",channle);
+        spdlog::error("通道({}) 已存在",channel);
         return status ;
     } 
     pthread_mutex_unlock(&chanMapMutex);
   
     TdRtp *gRtp = new TdRtp();
-    status = gRtp->setUp(channle,dest.c_str(),destPort,basePort);
+    status = gRtp->setUp(channel,dest.c_str(),destPort,basePort);
     if(status<0)
     {
         delete gRtp ;
@@ -32,7 +94,7 @@ int TdChanManager::createChannel(std::string channle,std::string dest,int destPo
     }
     gRtp->start(1);
     pthread_mutex_lock(&chanMapMutex);
-    chanMap[channle] = gRtp;
+    chanMap[channel] = gRtp;
     pthread_mutex_unlock(&chanMapMutex);
     return 0 ;
 }

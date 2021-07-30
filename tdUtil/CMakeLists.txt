@@ -5,7 +5,8 @@ set(srcs
 	src/uuid4.cpp
 	src/common.cpp
 	src/noticeCenter.cpp
-	src/inifile.cpp)
+	src/inifile.cpp
+	src/Tdlog.cpp)
  
 include_directories(. "inc")
 

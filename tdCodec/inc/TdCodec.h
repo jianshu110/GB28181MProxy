@@ -45,7 +45,7 @@ private:
     /* data */
 public:
     TdCodec(/* args */){};
-    ~TdCodec(){};
+    ~TdCodec(){printf("%s\r\n",__func__);};
     int32_t init(CodecType type);
     int32_t setParam(CodecParam param);
     int32_t convert(uint8_t *inDate,uint32_t inSize,uint8_t **outDate,uint32_t *outSize,bool &isKeyFrame);

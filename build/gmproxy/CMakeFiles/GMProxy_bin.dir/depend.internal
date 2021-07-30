@@ -4,6 +4,7 @@
 gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o
  ../tdChannel/inc/TdChanManager.h
  ../tdCodec/inc/TdCodec.h
+ ../tdCodec/inc/TdCodecParam.h
  ../tdCodec/inc/TdH264.h
  ../tdConf/inc/TdConf.h
  ../tdGb28181/inc/TdDevice.h
@@ -15,6 +16,8 @@ gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o
  ../tdServer/inc/httplib.h
  ../tdUtil/inc/FunHandler.h
  ../tdUtil/inc/Queue.h
+ ../tdUtil/inc/System.h
+ ../tdUtil/inc/Tdlog.h
  ../tdUtil/inc/common.h
  ../tdUtil/inc/encryption.h
  ../tdUtil/inc/function_traits.h
