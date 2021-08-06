@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/tdwl/work/GMProxy/tdUtil/src/Tdlog.cpp" "/home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.o"
   "/home/tdwl/work/GMProxy/tdUtil/src/common.cpp" "/home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/util.dir/src/common.cpp.o"
+  "/home/tdwl/work/GMProxy/tdUtil/src/fifoMsg.cpp" "/home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o"
   "/home/tdwl/work/GMProxy/tdUtil/src/inifile.cpp" "/home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/util.dir/src/inifile.cpp.o"
   "/home/tdwl/work/GMProxy/tdUtil/src/json11.cpp" "/home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/util.dir/src/json11.cpp.o"
   "/home/tdwl/work/GMProxy/tdUtil/src/noticeCenter.cpp" "/home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.o"

@@ -179,6 +179,33 @@ src/common.cpp.s:
 	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.s
 .PHONY : src/common.cpp.s
 
+src/fifoMsg.o: src/fifoMsg.cpp.o
+
+.PHONY : src/fifoMsg.o
+
+# target to build an object file
+src/fifoMsg.cpp.o:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o
+.PHONY : src/fifoMsg.cpp.o
+
+src/fifoMsg.i: src/fifoMsg.cpp.i
+
+.PHONY : src/fifoMsg.i
+
+# target to preprocess a source file
+src/fifoMsg.cpp.i:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.i
+.PHONY : src/fifoMsg.cpp.i
+
+src/fifoMsg.s: src/fifoMsg.cpp.s
+
+.PHONY : src/fifoMsg.s
+
+# target to generate assembly for a file
+src/fifoMsg.cpp.s:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.s
+.PHONY : src/fifoMsg.cpp.s
+
 src/inifile.o: src/inifile.cpp.o
 
 .PHONY : src/inifile.o
@@ -302,6 +329,9 @@ help:
 	@echo "... src/common.o"
 	@echo "... src/common.i"
 	@echo "... src/common.s"
+	@echo "... src/fifoMsg.o"
+	@echo "... src/fifoMsg.i"
+	@echo "... src/fifoMsg.s"
 	@echo "... src/inifile.o"
 	@echo "... src/inifile.i"
 	@echo "... src/inifile.s"

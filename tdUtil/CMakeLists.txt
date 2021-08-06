@@ -6,7 +6,8 @@ set(srcs
 	src/common.cpp
 	src/noticeCenter.cpp
 	src/inifile.cpp
-	src/Tdlog.cpp)
+	src/Tdlog.cpp
+	src/fifoMsg.cpp)
  
 include_directories(. "inc")
 

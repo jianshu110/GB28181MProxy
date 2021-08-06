@@ -12,6 +12,7 @@ tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o
  ../tdScale/inc/TdScale.h
  ../tdUtil/inc/FunHandler.h
  ../tdUtil/inc/Queue.h
+ ../tdUtil/inc/fifoMsg.h
  ../tdUtil/inc/function_traits.h
  ../tdUtil/inc/noticeCenter.h
  ../tdUtil/inc/onceToken.h

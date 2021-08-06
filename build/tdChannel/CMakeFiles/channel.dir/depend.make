@@ -11,6 +11,7 @@ tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdRtp/inc/TdRtp.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdScale/inc/TdScale.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/FunHandler.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/Queue.h
+tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/fifoMsg.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/function_traits.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/noticeCenter.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/onceToken.h

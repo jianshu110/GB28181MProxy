@@ -19,6 +19,7 @@ gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o: ../tdUtil/inc/System.h
 gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o: ../tdUtil/inc/Tdlog.h
 gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o: ../tdUtil/inc/common.h
 gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o: ../tdUtil/inc/encryption.h
+gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o: ../tdUtil/inc/fifoMsg.h
 gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o: ../tdUtil/inc/function_traits.h
 gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o: ../tdUtil/inc/inifile.h
 gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o: ../tdUtil/inc/json11.hpp

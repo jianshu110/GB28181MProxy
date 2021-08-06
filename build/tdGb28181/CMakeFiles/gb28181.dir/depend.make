@@ -14,6 +14,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/FunHandler.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/Queue.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/common.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/encryption.h
+tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/fifoMsg.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/function_traits.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/json11.hpp
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/md5.h
@@ -115,6 +116,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/FunHandler
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/Queue.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/common.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/encryption.h
+tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/fifoMsg.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/function_traits.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/json11.hpp
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/md5.h

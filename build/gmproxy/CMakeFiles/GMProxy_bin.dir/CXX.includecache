@@ -15,6 +15,18 @@ map
 -
 inc/TdRtp.h
 ../tdChannel/inc/inc/TdRtp.h
+signal.h
+-
+unistd.h
+-
+errno.h
+-
+sys/types.h
+-
+sys/wait.h
+-
+sys/msg.h
+-
 
 ../tdCodec/inc/TdCodec.h
 iostream
@@ -172,6 +184,8 @@ fstream
 inc/Queue.h
 ../tdRtp/inc/inc/Queue.h
 chrono
+-
+inc/fifoMsg.h
 -
 
 ../tdScale/inc/TdScale.h
@@ -402,6 +416,40 @@ json11.hpp
 
 ../tdUtil/inc/encryption.h
 string
+-
+
+../tdUtil/inc/fifoMsg.h
+stdio.h
+-
+stdlib.h
+-
+signal.h
+-
+unistd.h
+-
+errno.h
+-
+sys/types.h
+-
+sys/wait.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+iostream
+-
+sys/types.h
+-
+sys/stat.h
+-
+errno.h
+-
+fcntl.h
+-
+iostream
+-
+string.h
 -
 
 ../tdUtil/inc/function_traits.h

@@ -15,6 +15,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o
  ../tdUtil/inc/Queue.h
  ../tdUtil/inc/common.h
  ../tdUtil/inc/encryption.h
+ ../tdUtil/inc/fifoMsg.h
  ../tdUtil/inc/function_traits.h
  ../tdUtil/inc/json11.hpp
  ../tdUtil/inc/md5.h
@@ -116,6 +117,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o
  ../tdUtil/inc/Queue.h
  ../tdUtil/inc/common.h
  ../tdUtil/inc/encryption.h
+ ../tdUtil/inc/fifoMsg.h
  ../tdUtil/inc/function_traits.h
  ../tdUtil/inc/json11.hpp
  ../tdUtil/inc/md5.h

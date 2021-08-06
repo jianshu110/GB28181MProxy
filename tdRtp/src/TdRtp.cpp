@@ -17,7 +17,7 @@ int32_t TdRtp::setUp(std::string channel,std::string destIp,uint16_t destPort,ui
  
 	uint32_t lDestip = inet_addr(destIp.c_str());
 	lDestip = ntohl(lDestip);
-
+    lable = channel ;
 	sessparams.SetOwnTimestampUnit(1.0/10.0);		
 	
 	sessparams.SetAcceptOwnPackets(true);
@@ -63,13 +63,41 @@ void TdRtp::dumpHex(uint8_t*data,int start,int end){
     printf("\r\n");
 }
 
-uint32_t TdRtp::start(uint32_t time){
+
+uint32_t TdRtp::start(uint32_t timeout){
     rtpRecvTh = std::thread(recvLoopThread,this);
     rtpSendTh = std::thread(sendLoopThread,this);
-    //t.detach();
+    
+    if(lable.empty())
+    {
+        exit(1); //todo
+    }
+    fifoMsg = new FifoMsgSession();
+    if(fifoMsg->Create(lable))
+    {
+        exit(0);
+    }
     spdlog::debug("Rtp 启动成功\r\n");
+    CodecParam *param = nullptr ;
+    FifoMsg * ffMsgPtr=nullptr;
+    while(1)
+    {
+        if(!fifoMsg->Wait())
+        {
+            ffMsgPtr = fifoMsg->GetFifoMsg();
+            printf("ffMsgPtr->cmd: %d \n",ffMsgPtr->cmd);
+            if(ffMsgPtr->cmd = ModifyCodecParam)
+            {
+                param = (CodecParam*)ffMsgPtr->content;
+                printf("get: %d %d %d %d \n",param->height,param->width,param->maxBitrate,param->rate);
+                //printf("%s: FIFO read %s \n",fifoStr.c_str(),buf_r);
+                setParam(*param); //设置编码参数 ;
+            }
+        }
+    }
     return 0 ;
 }
+
 
 void TdRtp::recvLoopThread(TdRtp *rtp){
     int status ;
@@ -158,46 +186,6 @@ void TdRtp::recvLoopThread(TdRtp *rtp){
     }
     sessPtr->EndDataAccess();
     printf("recvLoopThread stop\r\n");
-
-
-
-    // rtp->isRun = true;
-    // RTPSession *sessPtr = rtp->getRTPSession();
-    // while(rtp->isRun)
-    // {
-        
-    //     sessPtr->BeginDataAccess();
-    //     if (sessPtr->GotoFirstSourceWithData())
-    //     {
-    //         do
-    //         {
-    //             RTPPacket *pack;
-                
-    //             while ((pack = sessPtr->GetNextPacket()) != NULL)
-    //             {
-    //                 // You can examine the data here
-                    
-                    
-    //                 //pack->GetSSRC();
-    //                 printf("Got packet %d %d %d\n",pack->GetPacketLength(),pack->GetPayloadLength(),(int)pack->GetPayloadType());
-                    
-                    
-    //                 // we don't longer need the packet, so
-    //                 // we'll delete it
-    //                 sessPtr->DeletePacket(pack);
-    //             }
-    //         }while (sessPtr->GotoNextSourceWithData());
-    //     }
-	//     sessPtr->EndDataAccess();
-    //     sessPtr->Poll();
-    //     RTPTime::Wait(RTPTime(1,0));
-       
-    // }
-    // sessPtr->ClearAcceptList();
-    // sessPtr->ClearDestinations();
-    // sessPtr->Destroy();
-    
-    //sessPtr->DeleteDestination( RTPIPv4Address(ntohl(inet_addr(dst_ip.c_str()),dst_port) );
     return ;
 }
 
@@ -240,7 +228,7 @@ void TdRtp::sendLoopThread(TdRtp *rtp)
                 free(codecOutDate);
                 codecOutDate = nullptr;
             }
-            printf("frame len:%d\r\n",frame);
+            //printf("frame len:%d\r\n",frame);
             
             frame.clear();
         }

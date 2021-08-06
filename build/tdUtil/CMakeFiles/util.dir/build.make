@@ -201,6 +201,30 @@ tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.o.provides: tdUtil/CMakeFiles/util.dir/
 tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.o.provides.build: tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.o
 
 
+tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o: tdUtil/CMakeFiles/util.dir/flags.make
+tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o: ../tdUtil/src/fifoMsg.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o"
+	cd /home/tdwl/work/GMProxy/build/tdUtil && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/util.dir/src/fifoMsg.cpp.o -c /home/tdwl/work/GMProxy/tdUtil/src/fifoMsg.cpp
+
+tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/util.dir/src/fifoMsg.cpp.i"
+	cd /home/tdwl/work/GMProxy/build/tdUtil && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GMProxy/tdUtil/src/fifoMsg.cpp > CMakeFiles/util.dir/src/fifoMsg.cpp.i
+
+tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/util.dir/src/fifoMsg.cpp.s"
+	cd /home/tdwl/work/GMProxy/build/tdUtil && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GMProxy/tdUtil/src/fifoMsg.cpp -o CMakeFiles/util.dir/src/fifoMsg.cpp.s
+
+tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o.requires:
+
+.PHONY : tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o.requires
+
+tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o.provides: tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o.requires
+	$(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o.provides.build
+.PHONY : tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o.provides
+
+tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o.provides.build: tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o
+
+
 # Object files for target util
 util_OBJECTS = \
 "CMakeFiles/util.dir/src/json11.cpp.o" \
@@ -208,7 +232,8 @@ util_OBJECTS = \
 "CMakeFiles/util.dir/src/common.cpp.o" \
 "CMakeFiles/util.dir/src/noticeCenter.cpp.o" \
 "CMakeFiles/util.dir/src/inifile.cpp.o" \
-"CMakeFiles/util.dir/src/Tdlog.cpp.o"
+"CMakeFiles/util.dir/src/Tdlog.cpp.o" \
+"CMakeFiles/util.dir/src/fifoMsg.cpp.o"
 
 # External object files for target util
 util_EXTERNAL_OBJECTS =
@@ -219,9 +244,10 @@ libs/libutil.a: tdUtil/CMakeFiles/util.dir/src/common.cpp.o
 libs/libutil.a: tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.o
 libs/libutil.a: tdUtil/CMakeFiles/util.dir/src/inifile.cpp.o
 libs/libutil.a: tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.o
+libs/libutil.a: tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o
 libs/libutil.a: tdUtil/CMakeFiles/util.dir/build.make
 libs/libutil.a: tdUtil/CMakeFiles/util.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library ../libs/libutil.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library ../libs/libutil.a"
 	cd /home/tdwl/work/GMProxy/build/tdUtil && $(CMAKE_COMMAND) -P CMakeFiles/util.dir/cmake_clean_target.cmake
 	cd /home/tdwl/work/GMProxy/build/tdUtil && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/util.dir/link.txt --verbose=$(VERBOSE)
 
@@ -236,6 +262,7 @@ tdUtil/CMakeFiles/util.dir/requires: tdUtil/CMakeFiles/util.dir/src/common.cpp.o
 tdUtil/CMakeFiles/util.dir/requires: tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.o.requires
 tdUtil/CMakeFiles/util.dir/requires: tdUtil/CMakeFiles/util.dir/src/inifile.cpp.o.requires
 tdUtil/CMakeFiles/util.dir/requires: tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.o.requires
+tdUtil/CMakeFiles/util.dir/requires: tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o.requires
 
 .PHONY : tdUtil/CMakeFiles/util.dir/requires
 

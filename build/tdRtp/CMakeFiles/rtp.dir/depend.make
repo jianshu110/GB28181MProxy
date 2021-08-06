@@ -10,6 +10,7 @@ tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdRtp/inc/TdRtp.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdScale/inc/TdScale.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdUtil/inc/FunHandler.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdUtil/inc/Queue.h
+tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdUtil/inc/fifoMsg.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdUtil/inc/function_traits.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdUtil/inc/noticeCenter.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdUtil/inc/onceToken.h

@@ -4,6 +4,18 @@
 #include <list>
 #include <map>
 #include "inc/TdRtp.h"
+#include <signal.h>
+#include <unistd.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include<sys/msg.h>
+typedef struct {
+    int pid;
+    FifoMsgSession mFifos;
+    std::string chanName;
+}Channel;
+
 class TdChanManager
 {
 private:
@@ -16,7 +28,7 @@ private:
     ~TdChanManager(){};
     static TdChanManager * mTdChanManager;
     std::list<std::string> delChanList ;
-    std::map<std::string ,TdRtp* > chanMap;
+    std::map<std::string ,Channel*> chanMap;
     static void delChanWorkLoop(TdChanManager* chanMannager);
     pthread_mutex_t delChanMutex;
     pthread_mutex_t chanMapMutex;
@@ -28,7 +40,6 @@ public:
     int monitor();
     int createChannel(std::string channle,std::string dest,int destPort,int basePort);
     int delChannel(std::string channle);
-
 };
 
 #endif

@@ -18,6 +18,8 @@
 #include <fstream>
 #include "inc/Queue.h"
 #include <chrono>
+#include <inc/fifoMsg.h>
+
 using namespace jrtplib;
 typedef void(*closeOnCallBack)(void* argv);
 
@@ -25,13 +27,13 @@ typedef void(*closeOnCallBack)(void* argv);
 #define RTP_MAXBUF          4096
 #define PS_BUF_SIZE         (1024*1024*4)
 
-
 class TdRtp :public TdPs,public TdCodec,public Queue
 {
 private:
 	RTPUDPv4TransmissionParams transparams;
 	RTPSessionParams sessparams;
     RTPSession sess;
+    std::string lable;
     bool isRun = false;
     static void recvLoopThread(TdRtp *rtp);
     static void sendLoopThread(TdRtp *rtp);
@@ -39,6 +41,7 @@ private:
     std::thread rtpRecvTh ;
     int startTeg = 0 ;
     closeOnCallBack mCloseOnCallBack ;
+    FifoMsgSession * fifoMsg ;
     //Queue frameQue;
     /* data */
 public:
@@ -55,7 +58,7 @@ public:
     int32_t setUp(std::string channel,std::string destIp,uint16_t destPort,uint16_t basePort);
     //void h264CallBackUser(uint8_t*data,int size);
     uint32_t sendData(uint8_t * data,uint32_t size);
-    uint32_t start(uint32_t time);
+    uint32_t start(uint32_t timeout);
     uint32_t stop();
 };
 

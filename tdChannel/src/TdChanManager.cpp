@@ -16,8 +16,8 @@ int TdChanManager::monitor()
     TdChanManager *mprj = this ;
     NoticeCenter::Instance().addListener(this,"setCodecParam",[mprj](std::string channel,int Rate,std::string Resolution,int MaxBitrate){
     TdChanManager *mTag = mprj ;
-    TdRtp *rtp = mTag->chanMap[channel];
-    if(rtp==nullptr)
+    Channel *ch = mTag->chanMap[channel];
+    if(ch==nullptr)
         return  ;
     CodecParam lCodecpara;
     memset(&lCodecpara,0,sizeof(CodecParam));
@@ -54,7 +54,11 @@ int TdChanManager::monitor()
     }
     lCodecpara.rate = Rate;
     lCodecpara.maxBitrate = MaxBitrate;
-    rtp->setParam(lCodecpara);
+    //FifoMsgSession ffms(channel) ;
+    ch->mFifos.OnceWrite(ModifyCodecParam,(char*)&lCodecpara,sizeof(CodecParam));
+    //printf("11111111111111111111\r\n");
+
+    //rtp->setParam(lCodecpara);
     });
 
 
@@ -83,19 +87,33 @@ int TdChanManager::createChannel(std::string channel,std::string dest,int destPo
         return status ;
     } 
     pthread_mutex_unlock(&chanMapMutex);
-  
-    TdRtp *gRtp = new TdRtp();
-    status = gRtp->setUp(channel,dest.c_str(),destPort,basePort);
-    if(status<0)
-    {
-        delete gRtp ;
-        spdlog::error("创建通道失败 原因:{}",status);
-        return status ;
+    Channel *lChannel;
+    pid_t fpid;
+	fpid = fork();
+    if(fpid < 0){
+        perror("fork failed");
     }
-    gRtp->start(1);
-    pthread_mutex_lock(&chanMapMutex);
-    chanMap[channel] = gRtp;
-    pthread_mutex_unlock(&chanMapMutex);
+    if(fpid == 0){
+        TdRtp *gRtp = new TdRtp();
+        status = gRtp->setUp(channel,dest.c_str(),destPort,basePort);
+        if(status<0)
+        {
+            delete gRtp ;
+            spdlog::error("创建通道失败 原因:{}",status);
+            return status ;
+        }
+        gRtp->start(100);
+    }else{
+        //FifoMsgSession lfifos;
+        //lfifos.Create(channel);
+        lChannel = new Channel();
+        lChannel->mFifos.Create(channel);
+        lChannel->pid = fpid;
+        lChannel->chanName = channel;
+		pthread_mutex_lock(&chanMapMutex);
+        chanMap[channel] = lChannel;
+        pthread_mutex_unlock(&chanMapMutex);
+	}
     return 0 ;
 }
 int TdChanManager::delChannel(std::string channle)
@@ -120,18 +138,20 @@ void TdChanManager::delChanWorkLoop(TdChanManager* chanMannager)
         
         if(!chanId.empty())
         {
-            TdRtp * rtpPtr = nullptr ;
+            Channel *lChannel =nullptr;
             pthread_mutex_lock(&chanMannager->chanMapMutex);
-            rtpPtr = chanMannager->chanMap[chanId];
-            pthread_mutex_unlock(&chanMannager->chanMapMutex);
-            if(rtpPtr!=nullptr)
+            lChannel = chanMannager->chanMap[chanId];
+            if(lChannel!=nullptr)
             {
-                rtpPtr->stop();
-                delete rtpPtr ;
-                rtpPtr = nullptr ;
-                pthread_mutex_lock(&chanMannager->chanMapMutex);
                 chanMannager->chanMap.erase(chanId);
-                pthread_mutex_unlock(&chanMannager->chanMapMutex);
+            }
+            pthread_mutex_unlock(&chanMannager->chanMapMutex);
+            if(lChannel!=nullptr)
+            {
+                kill(lChannel->pid,SIGTERM);
+                unlink(lChannel->mFifos.GetFifoName().c_str());
+                lChannel->mFifos.Close();
+                delete lChannel;
             }
         }
         

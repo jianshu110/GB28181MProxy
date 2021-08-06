@@ -11,6 +11,9 @@ tdUtil/CMakeFiles/util.dir/src/common.cpp.o: ../tdUtil/inc/md5.h
 tdUtil/CMakeFiles/util.dir/src/common.cpp.o: ../tdUtil/inc/uuid4.h
 tdUtil/CMakeFiles/util.dir/src/common.cpp.o: ../tdUtil/src/common.cpp
 
+tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o: ../tdUtil/inc/fifoMsg.h
+tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o: ../tdUtil/src/fifoMsg.cpp
+
 tdUtil/CMakeFiles/util.dir/src/inifile.cpp.o: ../tdUtil/inc/inifile.h
 tdUtil/CMakeFiles/util.dir/src/inifile.cpp.o: ../tdUtil/src/inifile.cpp
 

@@ -20,6 +20,7 @@ gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o
  ../tdUtil/inc/Tdlog.h
  ../tdUtil/inc/common.h
  ../tdUtil/inc/encryption.h
+ ../tdUtil/inc/fifoMsg.h
  ../tdUtil/inc/function_traits.h
  ../tdUtil/inc/inifile.h
  ../tdUtil/inc/json11.hpp
