@@ -228,17 +228,17 @@ channel/fast:
 .PHONY : channel/fast
 
 #=============================================================================
-# Target rules for targets named GMProxy_bin
+# Target rules for targets named GB28181MProxy_bin
 
 # Build rule for target.
-GMProxy_bin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 GMProxy_bin
-.PHONY : GMProxy_bin
+GB28181MProxy_bin: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 GB28181MProxy_bin
+.PHONY : GB28181MProxy_bin
 
 # fast build rule for target.
-GMProxy_bin/fast:
-	$(MAKE) -f gmproxy/CMakeFiles/GMProxy_bin.dir/build.make gmproxy/CMakeFiles/GMProxy_bin.dir/build
-.PHONY : GMProxy_bin/fast
+GB28181MProxy_bin/fast:
+	$(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build
+.PHONY : GB28181MProxy_bin/fast
 
 # Help Target
 help:
@@ -257,7 +257,7 @@ help:
 	@echo "... util"
 	@echo "... gb28181"
 	@echo "... channel"
-	@echo "... GMProxy_bin"
+	@echo "... GB28181MProxy_bin"
 .PHONY : help
 
 

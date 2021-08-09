@@ -5,6 +5,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdChannel/inc/TdChanMana
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdCodec/inc/TdCodec.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdCodec/inc/TdCodecParam.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdCodec/inc/TdH264.h
+tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdConf/inc/TdConf.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdGb28181/inc/TdDevice.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdPs/inc/TdPs.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdPs/inc/pstream.h
@@ -16,6 +17,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/common.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/encryption.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/fifoMsg.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/function_traits.h
+tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/inifile.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/json11.hpp
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/md5.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdUtil/inc/noticeCenter.h
@@ -107,6 +109,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdChannel/inc/TdChanM
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdCodec/inc/TdCodec.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdCodec/inc/TdCodecParam.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdCodec/inc/TdH264.h
+tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdConf/inc/TdConf.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdGb28181/inc/TdDevice.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdPs/inc/TdPs.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdPs/inc/pstream.h
@@ -118,6 +121,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/common.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/encryption.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/fifoMsg.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/function_traits.h
+tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/inifile.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/json11.hpp
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/md5.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdUtil/inc/noticeCenter.h

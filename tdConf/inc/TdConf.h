@@ -16,7 +16,7 @@ typedef struct {
     std::string mDevideId = "31011500991320000046";
     std::string mServerSipId = "34020000002000000001";
     std::string mServerSipDomain = "3402000000";
-    std::string mSipServerIp = "192.168.11.195";
+    std::string mSipServerIp = "192.168.16.195";
     int mSipServerPort = 15060;
     std::string mSipUserName ="admin";
     std::string mSipPassWd ="admin123";
@@ -28,13 +28,13 @@ class TdConf
 {
     private:
     IniFile mIni;
-    GB28121Ctx mGB28121Ctx;
     static TdConf* mConf ;
     std::string confFile = "config.ini" ;
     public:
         static TdConf* getInstance();
         int saveConfig();
         int readConfig();
+        GB28121Ctx mGB28121Ctx;
 };
 
 #endif

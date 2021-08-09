@@ -14,6 +14,7 @@ tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o
  ../tdUtil/inc/Queue.h
  ../tdUtil/inc/fifoMsg.h
  ../tdUtil/inc/function_traits.h
+ ../tdUtil/inc/json11.hpp
  ../tdUtil/inc/noticeCenter.h
  ../tdUtil/inc/onceToken.h
  ../tdUtil/inc/spdlog/common-inl.h

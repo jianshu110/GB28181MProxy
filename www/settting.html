@@ -13,7 +13,7 @@ SIP服务器端口:  <input type="text" name="SipServerPort" placeholder="" id =
 SIP用户名:  <input type="text" name="SipUserName" placeholder="" id = "SipUserName"><br>
 SIP用户认证ID:  <input type="text" name="DevideId" placeholder="" id = "DevideId"><br>
 密码:  <input type="text" name="SipPassWd" placeholder="" id = "SipPassWd"><br>
-密码确认:  <input type="text" name="ReSipPassWd" placeholder="" id = "ReSipPassWd"><br>
+密码确认:  <input type="text" name="ReSipPassWd" placeholder="" id = "SipPassWd"><br>
 注册有效期:  <input type="text" name="Expires" placeholder="" id = "Expires"><br>
 心跳周期:  <input type="text" name="SipHardExpires" placeholder="" id = "SipHardExpires"><br>
 sip本地端口:  <input type="text" name="SipLocalPort" placeholder="" id = "SipLocalPort"><br>
@@ -44,7 +44,7 @@ sip本地端口:  <input type="text" name="SipLocalPort" placeholder="" id = "Si
                 type: "POST",//方法类型
 				contentType:'application/json;charset=UTF-8',
                 dataType: "json",//预期服务器返回的数据类型
-                url:"gmproxy/setconfig" ,//url
+                url:"gmproxy/setGB28181config" ,//url
                 data:JSON.stringify(data),
                 success: function (result) {
 					$("#ans").text(result.ans);

@@ -27,6 +27,8 @@ sys/wait.h
 -
 sys/msg.h
 -
+inc/json11.hpp
+../tdChannel/inc/inc/json11.hpp
 
 ../tdCodec/inc/TdCodec.h
 iostream
@@ -216,6 +218,18 @@ string.h
 
 ../tdUtil/inc/function_traits.h
 tuple
+-
+
+../tdUtil/inc/json11.hpp
+string
+-
+vector
+-
+map
+-
+memory
+-
+initializer_list
 -
 
 ../tdUtil/inc/noticeCenter.h

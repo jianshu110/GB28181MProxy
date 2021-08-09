@@ -16,6 +16,7 @@
 #include <tuple> 
 #include <inc/common.h> 
 #include "inc/noticeCenter.h"
+#include "inc/TdConf.h"
 
 using namespace std;
 
@@ -42,12 +43,12 @@ public:
     }
 
     ~TdDevice(){}
+    void setGB28181Param();
 
-    void start();
-
+    void init();
     void stop();
 
-    void Register();
+    void modifyRegister();
 
     void process_request();
 
@@ -86,6 +87,7 @@ public:
     string local_ip;
     int local_port;
 
+  
     string manufacture;
     string rtp_ip;
     int rtp_port;
@@ -100,7 +102,9 @@ private:
     string from_sip;
     string to_sip;
     string ssrc;
-
+    string sip_contact;
+    int register_id = -1 ;
+    
     int sockfd;
     int bind();
     void send_network_packet(const char * data, int length);

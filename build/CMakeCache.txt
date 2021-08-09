@@ -260,7 +260,7 @@ scale_SOURCE_DIR:STATIC=/home/tdwl/work/GMProxy/tdScale
 server_BINARY_DIR:STATIC=/home/tdwl/work/GMProxy/build/tdServer
 
 //Dependencies for the target
-server_LIB_DEPENDS:STATIC=general;-lpthread;general;-lm;general;conf;
+server_LIB_DEPENDS:STATIC=general;-lpthread;general;-lm;general;conf;general;channel;
 
 //Value Computed by CMake
 server_SOURCE_DIR:STATIC=/home/tdwl/work/GMProxy/tdServer

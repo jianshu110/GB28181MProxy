@@ -56,9 +56,9 @@ int TdChanManager::monitor()
     lCodecpara.maxBitrate = MaxBitrate;
     //FifoMsgSession ffms(channel) ;
     ch->mFifos.OnceWrite(ModifyCodecParam,(char*)&lCodecpara,sizeof(CodecParam));
-    //printf("11111111111111111111\r\n");
-
-    //rtp->setParam(lCodecpara);
+    ch->height = lCodecpara.height;
+    ch->width = lCodecpara.width;
+    ch->Fps = lCodecpara.rate ;
     });
 
 
@@ -149,9 +149,14 @@ void TdChanManager::delChanWorkLoop(TdChanManager* chanMannager)
             if(lChannel!=nullptr)
             {
                 kill(lChannel->pid,SIGTERM);
-                unlink(lChannel->mFifos.GetFifoName().c_str());
-                lChannel->mFifos.Close();
-                delete lChannel;
+                //printf("wait ...\r\n");
+                if(waitpid(lChannel->pid,nullptr,0)==lChannel->pid)
+                {
+                    unlink(lChannel->mFifos.GetFifoName().c_str());
+                    lChannel->mFifos.Close();
+                    delete lChannel;
+                }
+                //printf("ok\r\n");
             }
         }
         
@@ -159,3 +164,34 @@ void TdChanManager::delChanWorkLoop(TdChanManager* chanMannager)
     }
 }
 
+std::string TdChanManager::channelsInfo2Json()
+{
+    json11::Json::array lChannels;
+    lChannels.clear();
+    Channel* chan =nullptr;
+    int channelsTotal = 0 ;
+    //json11::Json channelInfo;
+    pthread_mutex_lock(&chanMapMutex);
+    channelsTotal = chanMap.size();
+    std::map<std::string ,Channel*>::iterator iter;
+    for (iter=chanMap.begin(); iter!=chanMap.end(); iter++)
+    {
+        chan = iter->second;
+        json11::Json channelInfo = json11::Json::object{
+                {"chanID",  chan->chanName },
+                {"chanPID",   chan->pid},
+                {"height",   chan->height},
+                {"width",   chan->width},
+                {"Fps",   chan->Fps},
+        };
+        lChannels.push_back(channelInfo);
+    }
+    pthread_mutex_unlock(&chanMapMutex);
+    json11::Json channelsJson = json11::Json::object{
+                {"total",  channelsTotal },
+                {"chanInfo",   lChannels},
+        };
+    //printf("channelsJson:%s\r\n",channelsJson.dump().c_str());
+    std::string ret = channelsJson.dump();
+    return ret;
+}

@@ -10,6 +10,8 @@
 #include <thread>
 #include "inc/noticeCenter.h"
 #include <fstream>
+#include "inc/TdConf.h"
+#include "inc/TdChanManager.h"
 
 using namespace httplib;
 using namespace toolkit;

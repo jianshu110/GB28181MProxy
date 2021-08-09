@@ -6,4 +6,4 @@ set(srcs
 include_directories(. "inc" )
 
 add_library(server STATIC ${incs}  ${srcs})
-target_link_libraries (server -lpthread -lm conf)
+target_link_libraries (server -lpthread -lm conf channel)

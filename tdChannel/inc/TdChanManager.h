@@ -10,10 +10,14 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include<sys/msg.h>
+#include"inc/json11.hpp"
 typedef struct {
     int pid;
     FifoMsgSession mFifos;
     std::string chanName;
+    int height = 540;
+    int width = 960;
+    int Fps = 25;
 }Channel;
 
 class TdChanManager
@@ -40,6 +44,7 @@ public:
     int monitor();
     int createChannel(std::string channle,std::string dest,int destPort,int basePort);
     int delChannel(std::string channle);
+    std::string channelsInfo2Json();
 };
 
 #endif

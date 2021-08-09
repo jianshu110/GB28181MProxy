@@ -305,8 +305,13 @@ tdServer/preinstall:
 # Target rules for target tdServer/CMakeFiles/server.dir
 
 # All Build rule for target.
+tdServer/CMakeFiles/server.dir/all: tdRtp/CMakeFiles/rtp.dir/all
+tdServer/CMakeFiles/server.dir/all: tdScale/CMakeFiles/scale.dir/all
+tdServer/CMakeFiles/server.dir/all: tdCodec/CMakeFiles/codec.dir/all
+tdServer/CMakeFiles/server.dir/all: tdPs/CMakeFiles/ps.dir/all
 tdServer/CMakeFiles/server.dir/all: tdConf/CMakeFiles/conf.dir/all
 tdServer/CMakeFiles/server.dir/all: tdUtil/CMakeFiles/util.dir/all
+tdServer/CMakeFiles/server.dir/all: tdChannel/CMakeFiles/channel.dir/all
 	$(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/depend
 	$(MAKE) -f tdServer/CMakeFiles/server.dir/build.make tdServer/CMakeFiles/server.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=20,21 "Built target server"
@@ -319,7 +324,7 @@ all: tdServer/CMakeFiles/server.dir/all
 
 # Build rule for subdir invocation for target.
 tdServer/CMakeFiles/server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 23
 	$(MAKE) -f CMakeFiles/Makefile2 tdServer/CMakeFiles/server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
 .PHONY : tdServer/CMakeFiles/server.dir/rule
@@ -572,12 +577,12 @@ clean: tdChannel/CMakeFiles/channel.dir/clean
 # Directory level rules for directory gmproxy
 
 # Convenience name for "all" pass in the directory.
-gmproxy/all: gmproxy/CMakeFiles/GMProxy_bin.dir/all
+gmproxy/all: gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all
 
 .PHONY : gmproxy/all
 
 # Convenience name for "clean" pass in the directory.
-gmproxy/clean: gmproxy/CMakeFiles/GMProxy_bin.dir/clean
+gmproxy/clean: gmproxy/CMakeFiles/GB28181MProxy_bin.dir/clean
 
 .PHONY : gmproxy/clean
 
@@ -587,47 +592,47 @@ gmproxy/preinstall:
 .PHONY : gmproxy/preinstall
 
 #=============================================================================
-# Target rules for target gmproxy/CMakeFiles/GMProxy_bin.dir
+# Target rules for target gmproxy/CMakeFiles/GB28181MProxy_bin.dir
 
 # All Build rule for target.
-gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdRtp/CMakeFiles/rtp.dir/all
-gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdScale/CMakeFiles/scale.dir/all
-gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdCodec/CMakeFiles/codec.dir/all
-gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdPs/CMakeFiles/ps.dir/all
-gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdServer/CMakeFiles/server.dir/all
-gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdConf/CMakeFiles/conf.dir/all
-gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdUtil/CMakeFiles/util.dir/all
-gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdGb28181/CMakeFiles/gb28181.dir/all
-gmproxy/CMakeFiles/GMProxy_bin.dir/all: tdChannel/CMakeFiles/channel.dir/all
-	$(MAKE) -f gmproxy/CMakeFiles/GMProxy_bin.dir/build.make gmproxy/CMakeFiles/GMProxy_bin.dir/depend
-	$(MAKE) -f gmproxy/CMakeFiles/GMProxy_bin.dir/build.make gmproxy/CMakeFiles/GMProxy_bin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=1,2 "Built target GMProxy_bin"
-.PHONY : gmproxy/CMakeFiles/GMProxy_bin.dir/all
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all: tdRtp/CMakeFiles/rtp.dir/all
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all: tdScale/CMakeFiles/scale.dir/all
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all: tdCodec/CMakeFiles/codec.dir/all
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all: tdPs/CMakeFiles/ps.dir/all
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all: tdServer/CMakeFiles/server.dir/all
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all: tdConf/CMakeFiles/conf.dir/all
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all: tdUtil/CMakeFiles/util.dir/all
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all: tdGb28181/CMakeFiles/gb28181.dir/all
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all: tdChannel/CMakeFiles/channel.dir/all
+	$(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/depend
+	$(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=1,2 "Built target GB28181MProxy_bin"
+.PHONY : gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all
 
 # Include target in all.
-all: gmproxy/CMakeFiles/GMProxy_bin.dir/all
+all: gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-gmproxy/CMakeFiles/GMProxy_bin.dir/rule: cmake_check_build_system
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 29
-	$(MAKE) -f CMakeFiles/Makefile2 gmproxy/CMakeFiles/GMProxy_bin.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
-.PHONY : gmproxy/CMakeFiles/GMProxy_bin.dir/rule
+.PHONY : gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule
 
 # Convenience name for target.
-GMProxy_bin: gmproxy/CMakeFiles/GMProxy_bin.dir/rule
+GB28181MProxy_bin: gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule
 
-.PHONY : GMProxy_bin
-
-# clean rule for target.
-gmproxy/CMakeFiles/GMProxy_bin.dir/clean:
-	$(MAKE) -f gmproxy/CMakeFiles/GMProxy_bin.dir/build.make gmproxy/CMakeFiles/GMProxy_bin.dir/clean
-.PHONY : gmproxy/CMakeFiles/GMProxy_bin.dir/clean
+.PHONY : GB28181MProxy_bin
 
 # clean rule for target.
-clean: gmproxy/CMakeFiles/GMProxy_bin.dir/clean
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/clean:
+	$(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/clean
+.PHONY : gmproxy/CMakeFiles/GB28181MProxy_bin.dir/clean
+
+# clean rule for target.
+clean: gmproxy/CMakeFiles/GB28181MProxy_bin.dir/clean
 
 .PHONY : clean
 

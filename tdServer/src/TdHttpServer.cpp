@@ -2,11 +2,6 @@
 
 uint32_t TdHttpServer::init(){
    
-    // NoticeCenter::Instance().addListener(0,"once",
-    //         [](int &a,const char * &b,double &c,string &d){
-    //     printf("fdsffdsfdsfdsfds\r\n");
-    
-    // });
     httpTh = std::thread(httploop,this);
     return 0 ;
 }
@@ -22,24 +17,41 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
         res.set_content(contents, "text/html");
     });
    
-    httpSrv->mHttpServer.Post("/gmproxy/setconfig", [](const Request& req, Response& res) {
-       
+    httpSrv->mHttpServer.Post("/gmproxy/setGB28181config", [](const Request& req, Response& res) {
         printf("req:%s\r\n",req.body.c_str());
         std::string err;
         auto jsonData = json11::Json::parse(req.body,err);
         std::string contents="";
+        TdConf* lConf = TdConf::getInstance();
         if(jsonData.is_null())
         {
             contents = "{\"code\":\"10000\"}";
         }
         else{
+            printf("reqsss:%s\r\n",req.body.c_str());
+            lConf->mGB28121Ctx.mBasePort = jsonData["SipLocalPort"].int_value();
+            lConf->mGB28121Ctx.mDevideId = jsonData["DevideId"].string_value();
+
+            lConf->mGB28121Ctx.mServerSipId = jsonData["SIPServerID"].string_value();
+            lConf->mGB28121Ctx.mServerSipDomain = jsonData["ServerSipDomain"].string_value();
+            lConf->mGB28121Ctx.mSipServerIp = jsonData["SipServerIp"].string_value();
+            lConf->mGB28121Ctx.mSipServerPort = jsonData["SipServerPort"].int_value();
+            lConf->mGB28121Ctx.mSipUserName = jsonData["SipUserName"].string_value();
+
+            lConf->mGB28121Ctx.mSipPassWd = jsonData["SipPassWd"].string_value();
+            lConf->mGB28121Ctx.mExpires = jsonData["Expires"].int_value();
+            lConf->mGB28121Ctx.mManufacture = "TDWL";
+
+            lConf->saveConfig();
+            NoticeCenter::Instance().emitEvent("modifyRegister");
             std::string contents ("{\"code\":\"0\"}");
         }
+        //res.body = contents;
         res.set_content(contents,"text/json");
     });
 
     httpSrv->mHttpServer.Post("/gmproxy/closeChannel", [](const Request& req, Response& res) {
-    
+        
         printf("req:%s\r\n",req.body.c_str());
         std::string err;
         auto jsonData = json11::Json::parse(req.body,err);
@@ -56,7 +68,7 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
         res.set_content(contents,"text/json");
     });
 
-      httpSrv->mHttpServer.Post("/gmproxy/closeChannel2", [](const Request& req, Response& res) {
+      httpSrv->mHttpServer.Post("/gmproxy/creatChannel2", [](const Request& req, Response& res) {
     
         printf("req:%s\r\n",req.body.c_str());
         std::string err;
@@ -69,10 +81,18 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
         else{
             std::string channel = jsonData["channel"].string_value();
             NoticeCenter::Instance().emitEvent("createChannel",channel);
-            printf("9999999999999999999999\r\n");
             std::string contents ("{\"code\":\"0\"}");
         }
         res.set_content(contents,"text/json");
+    });
+
+    httpSrv->mHttpServer.Get("/gmproxy/allChannels", [](const Request& req, Response& res) {
+    
+        //printf("req:%s\r\n",req.body.c_str());
+        std::string contents="";
+        contents = TdChanManager::getInstance()->channelsInfo2Json();
+        res.set_content(contents,"text/json");
+
     });
 
 
@@ -95,7 +115,11 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
             NoticeCenter::Instance().emitEvent("setCodecParam",Channel,Rate,Resolution,MaxBitrate);
             contents = "{\"code\":\"0\"}";
         }
+        //res.body = contents;
         res.set_content(contents,"text/json");
     });
-    httpSrv->mHttpServer.listen("0.0.0.0", 8080);
+    if(httpSrv->mHttpServer.listen("0.0.0.0", 8080)!=true)
+    {
+        printf("http 启动失败\r\n");
+    }
 }

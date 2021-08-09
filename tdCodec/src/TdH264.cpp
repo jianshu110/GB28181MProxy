@@ -138,88 +138,6 @@ int32_t TdH264::encode(uint8_t* Ydata,uint8_t* Udata,uint8_t* Vdata,uint8_t** pk
 
 	return *pkt_size ;
 }
-// int save_tag = 0 ;
-int32_t TdH264::decode(uint8_t * inData,uint32_t inSize)
-{
-    // if((inData==nullptr))
-    // {
-    //     return -1;
-    // }
-    // uint8_t *oData[3];
-    // SBufferInfo obufInfo ;
-    // int status;
-    // int src_width,src_height,src_width_uv,src_height_uv,src_stride_y,src_stride_uv;
-    // int dst_width,dst_height,dst_width_uv,dst_height_uv,dst_stride_y,dst_stride_uv;
-    // int64_t dst_y_plane_size,dst_uv_plane_size;
-    // int64_t src_y_plane_size,src_uv_plane_size;
-    // memset (&obufInfo, 0, sizeof (SBufferInfo));
-    // DECODING_STATE rv = decoder_->DecodeFrame2 (inData, (int) inSize, oData, &obufInfo);
-    // if (obufInfo.iBufferStatus == 1) 
-    // {  
-    //     if(obufInfo.UsrData.sSystemBuffer.iFormat==videoFormatI420){
-
-    //         src_height = obufInfo.UsrData.sSystemBuffer.iHeight;
-    //         src_width = obufInfo.UsrData.sSystemBuffer.iWidth;
-
-        
-    //         src_width_uv = (abs(src_width) + 1) >> 1;
-    //         src_height_uv = (abs(src_height) + 1) >> 1;
-
-    //         src_y_plane_size = obufInfo.UsrData.sSystemBuffer.iStride[0]*src_height;
-    //         src_uv_plane_size = obufInfo.UsrData.sSystemBuffer.iStride[1]*src_height;
-
-    //         dst_height = (abs(src_height) + 1) >> 1;
-    //         dst_width = (abs(src_width) + 1) >> 1;
-
-    //         dst_width_uv = (abs(dst_width) + 1) >> 1;
-    //         dst_height_uv = (abs(dst_height) + 1) >> 1;
-
-        
-    //         dst_stride_y = dst_width;
-    //         dst_stride_uv = dst_width_uv;
-
-
-    //         dst_y_plane_size = (dst_width) * (dst_height);
-    //         dst_uv_plane_size = (dst_width_uv) * (dst_height_uv);
-
-    //         align_buffer_page_end(dst_y_c,dst_y_plane_size);
-    //         align_buffer_page_end(dst_u_c,dst_uv_plane_size);
-    //         align_buffer_page_end(dst_v_c,dst_uv_plane_size);
-
-
-    //         status = libyuv::I420Scale(oData[0], obufInfo.UsrData.sSystemBuffer.iStride[0],oData[1], 
-    //             obufInfo.UsrData.sSystemBuffer.iStride[1], oData[2],
-    //             obufInfo.UsrData.sSystemBuffer.iStride[1],
-    //             src_width, src_height, dst_y_c, dst_stride_y, dst_u_c,
-    //             dst_stride_uv, dst_v_c, dst_stride_uv, dst_width, dst_height,libyuv::kFilterNone);
-    //         if(status){
-    //             return -1 ;
-    //         }
-    //         uint8_t* pkt = new uint8_t[1024*1024*5];
-    //         size_t pkt_size = 0 ;
-    //         bool is_keyframe=false ,got_output=false;
-
-    //         //printf("status:%d  %d %d %d %d \r\n",status,dst_width,dst_height,dst_stride_uv,dst_stride_y);
-    //         if(!isEncoderSetUp()){
-    //             setEncoderParam(dst_width,dst_height,200000,300000,25);
-    //         }
-    //         setPicture(dst_width,dst_height,dst_stride_y,dst_stride_uv);
-    //         encode(dst_y_c,dst_u_c,dst_v_c,pkt,pkt_size,is_keyframe,got_output);
-     
-    //         if(got_output)
-    //         {
-    //             //h264fout->write((const char*)pkt,pkt_size);
-    //             //h264CallBackUser(pkt,pkt_size);
-    //             mFunHandler(pkt,pkt_size);
-    //         }
-    //         free(pkt);
-    //         free_aligned_buffer_page_end(dst_y_c);
-    //         free_aligned_buffer_page_end(dst_u_c);
-    //         free_aligned_buffer_page_end(dst_v_c);
-    //     }
-    // }
-    return 0 ;
-}
 
 int32_t TdH264::convert(uint8_t *inDate,uint32_t inSize,uint8_t **outDate,uint32_t *outSize,bool &isKeyFrame)
 {
@@ -305,7 +223,7 @@ int32_t TdH264::create()
     decoderSetUp();
     encoderSetUp();
     setCodecParamRefresh(true);
-    printf("TdH264::create\r\n");
+    //printf("TdH264::create\r\n");
     return 0 ;
 }
 

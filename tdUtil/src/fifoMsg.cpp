@@ -34,7 +34,7 @@ int FifoMsgSession::Wait()
     }
     nread = 0 ;
     nread=read(fd,buff,2048);
-    printf("nread:%d\r\n",nread);
+    //printf("nread:%d\r\n",nread);
     if(nread==sizeof(FifoMsg))
     {
         return 0;

@@ -127,6 +127,8 @@ inc/common.h
 -
 inc/noticeCenter.h
 ../tdGb28181/inc/inc/noticeCenter.h
+inc/TdConf.h
+../tdGb28181/inc/inc/TdConf.h
 
 ../tdPs/inc/TdPs.h
 stdlib.h
@@ -219,6 +221,8 @@ inc/noticeCenter.h
 ../tdServer/inc/inc/noticeCenter.h
 fstream
 -
+inc/TdConf.h
+../tdServer/inc/inc/TdConf.h
 
 ../tdServer/inc/httplib.h
 io.h

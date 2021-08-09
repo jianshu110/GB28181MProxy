@@ -28,5 +28,5 @@
 /home/tdwl/work/GMProxy/build/tdChannel/CMakeFiles/channel.dir
 /home/tdwl/work/GMProxy/build/tdChannel/CMakeFiles/edit_cache.dir
 /home/tdwl/work/GMProxy/build/gmproxy/CMakeFiles/rebuild_cache.dir
-/home/tdwl/work/GMProxy/build/gmproxy/CMakeFiles/GMProxy_bin.dir
+/home/tdwl/work/GMProxy/build/gmproxy/CMakeFiles/GB28181MProxy_bin.dir
 /home/tdwl/work/GMProxy/build/gmproxy/CMakeFiles/edit_cache.dir

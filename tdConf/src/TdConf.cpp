@@ -24,6 +24,7 @@ int TdConf::saveConfig()
     mIni.SetIntValue("GB28181","Expires",mGB28121Ctx.mExpires);
     mIni.SetIntValue("GB28181","BasePort",mGB28121Ctx.mBasePort);
     mIni.SetStringValue("GB28181","Manufacture",mGB28121Ctx.mManufacture);
+    printf("DevideId:%s %s\r\n",mGB28121Ctx.mDevideId.c_str(),mGB28121Ctx.mServerSipId.c_str());
     mIni.SaveAs(confFile);
     return 0 ;
 }

@@ -111,19 +111,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-gmproxy/CMakeFiles/GMProxy_bin.dir/rule:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/CMakeFiles/GMProxy_bin.dir/rule
-.PHONY : gmproxy/CMakeFiles/GMProxy_bin.dir/rule
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule
+.PHONY : gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule
 
 # Convenience name for target.
-GMProxy_bin: gmproxy/CMakeFiles/GMProxy_bin.dir/rule
+GB28181MProxy_bin: gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule
 
-.PHONY : GMProxy_bin
+.PHONY : GB28181MProxy_bin
 
 # fast build rule for target.
-GMProxy_bin/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GMProxy_bin.dir/build.make gmproxy/CMakeFiles/GMProxy_bin.dir/build
-.PHONY : GMProxy_bin/fast
+GB28181MProxy_bin/fast:
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build
+.PHONY : GB28181MProxy_bin/fast
 
 main.o: main.cpp.o
 
@@ -131,7 +131,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GMProxy_bin.dir/build.make gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.o
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -140,7 +140,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GMProxy_bin.dir/build.make gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.i
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -149,7 +149,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GMProxy_bin.dir/build.make gmproxy/CMakeFiles/GMProxy_bin.dir/main.cpp.s
+	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -159,7 +159,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... GMProxy_bin"
+	@echo "... GB28181MProxy_bin"
 	@echo "... edit_cache"
 	@echo "... main.o"
 	@echo "... main.i"

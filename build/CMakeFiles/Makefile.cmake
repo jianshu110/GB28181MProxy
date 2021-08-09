@@ -71,5 +71,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "tdUtil/CMakeFiles/util.dir/DependInfo.cmake"
   "tdGb28181/CMakeFiles/gb28181.dir/DependInfo.cmake"
   "tdChannel/CMakeFiles/channel.dir/DependInfo.cmake"
-  "gmproxy/CMakeFiles/GMProxy_bin.dir/DependInfo.cmake"
+  "gmproxy/CMakeFiles/GB28181MProxy_bin.dir/DependInfo.cmake"
   )

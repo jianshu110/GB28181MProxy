@@ -12,7 +12,7 @@ static int get_sn() {
 	return sn;
 }
 
-void TdDevice::start() {
+void TdDevice::init() {
     spdlog::debug("sip init begin.");
     TdChanManager::getInstance();
 
@@ -25,42 +25,64 @@ void TdDevice::start() {
         return;
     }
 
-    if (OSIP_SUCCESS != eXosip_listen_addr(sip_context, IPPROTO_UDP, nullptr, local_port, AF_INET, 0)) {
+    if (OSIP_SUCCESS != eXosip_listen_addr(sip_context, IPPROTO_UDP, nullptr, TdConf::getInstance()->mGB28121Ctx.mBasePort, AF_INET, 0)) {
         spdlog::critical("sip port bind failed.");
         eXosip_quit(sip_context);
         sip_context = nullptr;
         return;
     }
-
+    TdDevice *mprj = this;
+    NoticeCenter::Instance().addListener(this,"modifyRegister",[mprj](void){
+        TdDevice *mTag = mprj ;
+        printf("closeChannel\r\n");
+        mprj->modifyRegister();
+    });
     // run
     is_running = true;
-
-    ostringstream from_uri;
-    ostringstream contact;
-    ostringstream proxy_uri;
-
     // local ip & port
     eXosip_guess_localip(sip_context, AF_INET, /*data(local_ip)*/(char*)local_ip.c_str(), local_ip.length());
     spdlog::debug("local ip is {}", local_ip);
 
-    from_uri << "sip:" << device_sip_id << "@" << local_ip << ":" << local_port;
-    contact << "sip:" << device_sip_id << "@" << local_ip << ":" << local_port;
-    proxy_uri << "sip:" << server_sip_id << "@" << server_ip << ":" << server_port;
+    modifyRegister();
+    thread heartbeat_task_thread(&TdDevice::heartbeat_task, this);
+    heartbeat_task_thread.detach();
+    spdlog::info("启动GB28181协议栈成功");
+    this->process_request();
+}
+
+void TdDevice::setGB28181Param()
+{
+    ostringstream from_uri;
+    ostringstream contact;
+    ostringstream proxy_uri;
+
+
+    from_uri << "sip:" << TdConf::getInstance()->mGB28121Ctx.mDevideId << "@" << local_ip << ":" << TdConf::getInstance()->mGB28121Ctx.mBasePort;
+    contact << "sip:" << TdConf::getInstance()->mGB28121Ctx.mDevideId << "@" << local_ip << ":" << TdConf::getInstance()->mGB28121Ctx.mBasePort;
+    proxy_uri << "sip:" << TdConf::getInstance()->mGB28121Ctx.mServerSipId << "@" << TdConf::getInstance()->mGB28121Ctx.mSipServerIp << ":" << server_port;
 
     from_sip = from_uri.str();
     to_sip = proxy_uri.str();
+    sip_contact = contact.str();
 
-    spdlog::debug("from uri is {}", from_sip);
-    spdlog::debug("contact is {}", contact.str());
-    spdlog::debug("proxy_uri is {}", to_sip);
-
-    // clear auth
+    spdlog::info("from uri is {}", from_sip);
+    spdlog::info("contact is {}", contact.str());
+    spdlog::info("proxy_uri is {}", to_sip);
+}
+void TdDevice::modifyRegister()
+{
+    if(register_id>0)
+    {
+        eXosip_register_remove(sip_context,register_id);
+        register_id= -1; 
+    }
+    setGB28181Param();
+    is_register = false;
     eXosip_clear_authentication_info(sip_context);
-
     osip_message_t * register_message = nullptr;
-    int register_id = eXosip_register_build_initial_register(sip_context, from_sip.c_str(), 
+    register_id = eXosip_register_build_initial_register(sip_context, from_sip.c_str(), 
                     to_sip.c_str(), 
-                    contact.str().c_str(), 3600, &register_message);
+                    sip_contact.c_str(), 120, &register_message);
     if (nullptr == register_message) {
         spdlog::error("eXosip_register_build_initial_register failed");
         return;
@@ -69,16 +91,6 @@ void TdDevice::start() {
     eXosip_lock(sip_context);
 	eXosip_register_send_register(sip_context, register_id, register_message);
 	eXosip_unlock(sip_context);
-
-    thread heartbeat_task_thread(&TdDevice::heartbeat_task, this);
-    heartbeat_task_thread.detach();
-    spdlog::info("启动GB28181协议栈成功");
-    this->process_request();
-   
-}
-void TdDevice::Register()
-{
-
 }
 void TdDevice::process_request() {
     while (is_running) {
@@ -97,8 +109,11 @@ void TdDevice::process_request() {
         switch (evt->type)
         {
         case eXosip_event_type::EXOSIP_REGISTRATION_SUCCESS: {
-            spdlog::info("GB28181注册成功");
-            is_register = true;
+            if(is_register!=true)
+            {
+                spdlog::info("GB28181注册成功");
+                is_register = true;
+            }
             break;
         }
         case eXosip_event_type::EXOSIP_REGISTRATION_FAILURE: {
@@ -113,7 +128,8 @@ void TdDevice::process_request() {
 
                 osip_message_get_www_authenticate(evt->response, 0, &www_authenticate_header);
 
-                if (eXosip_add_authentication_info(sip_context, device_sip_id.c_str(), username.c_str(), password.c_str(), 
+                if (eXosip_add_authentication_info(sip_context, TdConf::getInstance()->mGB28121Ctx.mDevideId.c_str(), 
+                    TdConf::getInstance()->mGB28121Ctx.mSipUserName.c_str(), TdConf::getInstance()->mGB28121Ctx.mSipPassWd.c_str(), 
                                     "MD5", www_authenticate_header->realm)) {
                     spdlog::error("register add auth failed");
                     break;

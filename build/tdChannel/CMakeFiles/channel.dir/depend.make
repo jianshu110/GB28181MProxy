@@ -13,6 +13,7 @@ tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/FunHandl
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/Queue.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/fifoMsg.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/function_traits.h
+tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/json11.hpp
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/noticeCenter.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/onceToken.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: ../tdUtil/inc/spdlog/common-inl.h

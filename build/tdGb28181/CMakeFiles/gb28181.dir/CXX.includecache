@@ -27,6 +27,8 @@ sys/wait.h
 -
 sys/msg.h
 -
+inc/json11.hpp
+../tdChannel/inc/inc/json11.hpp
 
 ../tdCodec/inc/TdCodec.h
 iostream
@@ -82,6 +84,20 @@ inc/FunHandler.h
 inc/TdCodecParam.h
 ../tdCodec/inc/inc/TdCodecParam.h
 
+../tdConf/inc/TdConf.h
+iostream
+-
+fstream
+-
+stdlib.h
+-
+string.h
+-
+inc/uuid4.h
+../tdConf/inc/inc/uuid4.h
+inc/inifile.h
+../tdConf/inc/inc/inifile.h
+
 ../tdGb28181/inc/TdDevice.h
 string
 -
@@ -113,6 +129,8 @@ inc/common.h
 -
 inc/noticeCenter.h
 ../tdGb28181/inc/inc/noticeCenter.h
+inc/TdConf.h
+../tdGb28181/inc/inc/TdConf.h
 
 ../tdPs/inc/TdPs.h
 stdlib.h
@@ -274,6 +292,16 @@ string.h
 
 ../tdUtil/inc/function_traits.h
 tuple
+-
+
+../tdUtil/inc/inifile.h
+vector
+-
+algorithm
+-
+string
+-
+string.h
 -
 
 ../tdUtil/inc/json11.hpp

@@ -85,7 +85,7 @@ uint32_t TdRtp::start(uint32_t timeout){
         if(!fifoMsg->Wait())
         {
             ffMsgPtr = fifoMsg->GetFifoMsg();
-            printf("ffMsgPtr->cmd: %d \n",ffMsgPtr->cmd);
+            //printf("ffMsgPtr->cmd: %d \n",ffMsgPtr->cmd);
             if(ffMsgPtr->cmd = ModifyCodecParam)
             {
                 param = (CodecParam*)ffMsgPtr->content;
