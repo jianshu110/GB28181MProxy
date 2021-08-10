@@ -72,7 +72,6 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtcpscheduler.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtcpsdesinfo.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtcpsdespacket.h
-tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtpabortdescriptors.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtpaddress.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtpcollisionlist.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtpconfig.h
@@ -91,7 +90,6 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtpsession.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtpsessionparams.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtpsessionsources.h
-tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtpsocketutil.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtpsources.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtpstructs.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: /usr/local/include/jrtplib3/rtptimeutilities.h
@@ -176,7 +174,6 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtpl
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtcpscheduler.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtcpsdesinfo.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtcpsdespacket.h
-tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtpabortdescriptors.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtpaddress.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtpcollisionlist.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtpconfig.h
@@ -195,7 +192,6 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtpl
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtpsession.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtpsessionparams.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtpsessionsources.h
-tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtpsocketutil.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtpsources.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtpstructs.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: /usr/local/include/jrtplib3/rtptimeutilities.h

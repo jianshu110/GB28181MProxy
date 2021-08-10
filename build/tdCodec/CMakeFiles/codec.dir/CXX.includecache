@@ -114,13 +114,13 @@ functional
 type_traits
 -
 
-/home/tdwl/work/GMProxy/tdCodec/src/TdCodec.cpp
+/home/tdwl/work/GB28181MProxy/tdCodec/src/TdCodec.cpp
 TdCodec.h
-/home/tdwl/work/GMProxy/tdCodec/src/TdCodec.h
+/home/tdwl/work/GB28181MProxy/tdCodec/src/TdCodec.h
 
-/home/tdwl/work/GMProxy/tdCodec/src/TdH264.cpp
+/home/tdwl/work/GB28181MProxy/tdCodec/src/TdH264.cpp
 TdH264.h
-/home/tdwl/work/GMProxy/tdCodec/src/TdH264.h
+/home/tdwl/work/GB28181MProxy/tdCodec/src/TdH264.h
 cmath
 -
 

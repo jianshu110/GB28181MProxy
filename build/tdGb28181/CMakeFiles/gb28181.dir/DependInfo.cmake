@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tdwl/work/GMProxy/tdGb28181/src/TdDevice.cpp" "/home/tdwl/work/GMProxy/build/tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o"
-  "/home/tdwl/work/GMProxy/tdGb28181/src/TdNetClient.cpp" "/home/tdwl/work/GMProxy/build/tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o"
-  "/home/tdwl/work/GMProxy/tdGb28181/src/TdPugixml.cpp" "/home/tdwl/work/GMProxy/build/tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o"
+  "/home/tdwl/work/GB28181MProxy/tdGb28181/src/TdDevice.cpp" "/home/tdwl/work/GB28181MProxy/build/tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o"
+  "/home/tdwl/work/GB28181MProxy/tdGb28181/src/TdNetClient.cpp" "/home/tdwl/work/GB28181MProxy/build/tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o"
+  "/home/tdwl/work/GB28181MProxy/tdGb28181/src/TdPugixml.cpp" "/home/tdwl/work/GB28181MProxy/build/tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -32,12 +32,12 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/util.dir/DependInfo.cmake"
-  "/home/tdwl/work/GMProxy/build/tdRtp/CMakeFiles/rtp.dir/DependInfo.cmake"
-  "/home/tdwl/work/GMProxy/build/tdChannel/CMakeFiles/channel.dir/DependInfo.cmake"
-  "/home/tdwl/work/GMProxy/build/tdCodec/CMakeFiles/codec.dir/DependInfo.cmake"
-  "/home/tdwl/work/GMProxy/build/tdScale/CMakeFiles/scale.dir/DependInfo.cmake"
-  "/home/tdwl/work/GMProxy/build/tdPs/CMakeFiles/ps.dir/DependInfo.cmake"
+  "/home/tdwl/work/GB28181MProxy/build/tdUtil/CMakeFiles/util.dir/DependInfo.cmake"
+  "/home/tdwl/work/GB28181MProxy/build/tdRtp/CMakeFiles/rtp.dir/DependInfo.cmake"
+  "/home/tdwl/work/GB28181MProxy/build/tdChannel/CMakeFiles/channel.dir/DependInfo.cmake"
+  "/home/tdwl/work/GB28181MProxy/build/tdCodec/CMakeFiles/codec.dir/DependInfo.cmake"
+  "/home/tdwl/work/GB28181MProxy/build/tdScale/CMakeFiles/scale.dir/DependInfo.cmake"
+  "/home/tdwl/work/GB28181MProxy/build/tdPs/CMakeFiles/ps.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

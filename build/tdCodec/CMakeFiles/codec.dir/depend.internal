@@ -10,7 +10,7 @@ tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o
  ../tdUtil/inc/function_traits.h
  ../tdUtil/inc/noticeCenter.h
  ../tdUtil/inc/onceToken.h
- /home/tdwl/work/GMProxy/tdCodec/src/TdCodec.cpp
+ /home/tdwl/work/GB28181MProxy/tdCodec/src/TdCodec.cpp
  /usr/local/include/libyuv/basic_types.h
  /usr/local/include/libyuv/cpu_id.h
  /usr/local/include/libyuv/scale.h
@@ -25,7 +25,7 @@ tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o
  ../tdUtil/inc/function_traits.h
  ../tdUtil/inc/noticeCenter.h
  ../tdUtil/inc/onceToken.h
- /home/tdwl/work/GMProxy/tdCodec/src/TdH264.cpp
+ /home/tdwl/work/GB28181MProxy/tdCodec/src/TdH264.cpp
  /usr/local/include/libyuv/basic_types.h
  /usr/local/include/libyuv/cpu_id.h
  /usr/local/include/libyuv/scale.h

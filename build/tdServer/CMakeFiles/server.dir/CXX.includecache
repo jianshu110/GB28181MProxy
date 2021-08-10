@@ -932,9 +932,9 @@ spdlog-inl.h
 
 ../tdUtil/inc/uuid4.h
 
-/home/tdwl/work/GMProxy/tdServer/src/TdHttpServer.cpp
+/home/tdwl/work/GB28181MProxy/tdServer/src/TdHttpServer.cpp
 TdHttpServer.h
-/home/tdwl/work/GMProxy/tdServer/src/TdHttpServer.h
+/home/tdwl/work/GB28181MProxy/tdServer/src/TdHttpServer.h
 
 /usr/local/include/jrtplib3/rtcpcompoundpacket.h
 rtpconfig.h

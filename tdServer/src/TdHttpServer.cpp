@@ -18,7 +18,7 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
     });
    
     httpSrv->mHttpServer.Post("/gmproxy/setGB28181config", [](const Request& req, Response& res) {
-        printf("req:%s\r\n",req.body.c_str());
+        spdlog::info("设置GB28181平台 {}",req.body);
         std::string err;
         auto jsonData = json11::Json::parse(req.body,err);
         std::string contents="";
@@ -52,7 +52,7 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
 
     httpSrv->mHttpServer.Post("/gmproxy/closeChannel", [](const Request& req, Response& res) {
         
-        printf("req:%s\r\n",req.body.c_str());
+        spdlog::info("关闭指定通道 {}",req.body);
         std::string err;
         auto jsonData = json11::Json::parse(req.body,err);
         std::string contents="";
@@ -63,7 +63,7 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
         else{
             std::string channel = jsonData["channel"].string_value();
             NoticeCenter::Instance().emitEvent("closeChannel",channel);
-            std::string contents ("{\"code\":\"0\"}");
+            std::string contents ("{\"code\":0,\"msg\":\"success\"}");
         }
         res.set_content(contents,"text/json");
     });
@@ -85,10 +85,17 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
         }
         res.set_content(contents,"text/json");
     });
-
+     httpSrv->mHttpServer.Post("/gmproxy/login", [](const Request& req, Response& res) {
+    
+        spdlog::info("客户端登陆 {}",req.body);
+        std::string err;
+        auto jsonData = json11::Json::parse(req.body,err);
+        std::string contents ("{\"code\":0,\"msg\":\"success\"}");
+        res.set_content(contents,"text/json");
+    });
     httpSrv->mHttpServer.Get("/gmproxy/allChannels", [](const Request& req, Response& res) {
     
-        //printf("req:%s\r\n",req.body.c_str());
+        spdlog::info("获取所有通道信息");
         std::string contents="";
         contents = TdChanManager::getInstance()->channelsInfo2Json();
         res.set_content(contents,"text/json");
@@ -99,7 +106,7 @@ void TdHttpServer::httploop(TdHttpServer* httpSrv)
 
     httpSrv->mHttpServer.Post("/gmproxy/setvideoparam", [](const Request& req, Response& res) {
        
-        printf("req:%s\r\n",req.body.c_str());
+        spdlog::info("设置指定通道媒体信息 {}",req.body);
         std::string err;
         auto jsonData = json11::Json::parse(req.body,err);
         std::string contents="";

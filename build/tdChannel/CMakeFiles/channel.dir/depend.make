@@ -63,7 +63,6 @@ tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrt
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtcpscheduler.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtcpsdesinfo.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtcpsdespacket.h
-tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtpabortdescriptors.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtpaddress.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtpcollisionlist.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtpconfig.h
@@ -82,7 +81,6 @@ tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrt
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtpsession.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtpsessionparams.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtpsessionsources.h
-tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtpsocketutil.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtpsources.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtpstructs.h
 tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o: /usr/local/include/jrtplib3/rtptimeutilities.h

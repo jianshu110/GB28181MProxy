@@ -65,9 +65,9 @@ void TdDevice::setGB28181Param()
     to_sip = proxy_uri.str();
     sip_contact = contact.str();
 
-    spdlog::info("from uri is {}", from_sip);
-    spdlog::info("contact is {}", contact.str());
-    spdlog::info("proxy_uri is {}", to_sip);
+    // spdlog::info("from uri is {}", from_sip);
+    // spdlog::info("contact is {}", contact.str());
+    // spdlog::info("proxy_uri is {}", to_sip);
 }
 void TdDevice::modifyRegister()
 {

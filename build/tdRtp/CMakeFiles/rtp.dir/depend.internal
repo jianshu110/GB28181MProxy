@@ -54,7 +54,7 @@ tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o
  ../tdUtil/inc/spdlog/spdlog.h
  ../tdUtil/inc/spdlog/tweakme.h
  ../tdUtil/inc/spdlog/version.h
- /home/tdwl/work/GMProxy/tdRtp/src/TdRtp.cpp
+ /home/tdwl/work/GB28181MProxy/tdRtp/src/TdRtp.cpp
  /usr/local/include/jrtplib3/rtcpcompoundpacket.h
  /usr/local/include/jrtplib3/rtcpcompoundpacketbuilder.h
  /usr/local/include/jrtplib3/rtcppacket.h
@@ -62,7 +62,6 @@ tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o
  /usr/local/include/jrtplib3/rtcpscheduler.h
  /usr/local/include/jrtplib3/rtcpsdesinfo.h
  /usr/local/include/jrtplib3/rtcpsdespacket.h
- /usr/local/include/jrtplib3/rtpabortdescriptors.h
  /usr/local/include/jrtplib3/rtpaddress.h
  /usr/local/include/jrtplib3/rtpcollisionlist.h
  /usr/local/include/jrtplib3/rtpconfig.h
@@ -81,7 +80,6 @@ tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o
  /usr/local/include/jrtplib3/rtpsession.h
  /usr/local/include/jrtplib3/rtpsessionparams.h
  /usr/local/include/jrtplib3/rtpsessionsources.h
- /usr/local/include/jrtplib3/rtpsocketutil.h
  /usr/local/include/jrtplib3/rtpsources.h
  /usr/local/include/jrtplib3/rtpstructs.h
  /usr/local/include/jrtplib3/rtptimeutilities.h

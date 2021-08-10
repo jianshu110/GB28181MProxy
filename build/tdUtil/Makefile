@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tdwl/work/GMProxy
+CMAKE_SOURCE_DIR = /home/tdwl/work/GB28181MProxy
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tdwl/work/GMProxy/build
+CMAKE_BINARY_DIR = /home/tdwl/work/GB28181MProxy/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles /home/tdwl/work/GMProxy/build/tdUtil/CMakeFiles/progress.marks
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdUtil/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles /home/tdwl/work/GB28181MProxy/build/tdUtil/CMakeFiles/progress.marks
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdUtil/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdUtil/clean
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdUtil/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdUtil/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdUtil/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdUtil/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdUtil/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tdUtil/CMakeFiles/util.dir/rule:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdUtil/CMakeFiles/util.dir/rule
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdUtil/CMakeFiles/util.dir/rule
 .PHONY : tdUtil/CMakeFiles/util.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ util: tdUtil/CMakeFiles/util.dir/rule
 
 # fast build rule for target.
 util/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/build
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/build
 .PHONY : util/fast
 
 src/Tdlog.o: src/Tdlog.cpp.o
@@ -131,7 +131,7 @@ src/Tdlog.o: src/Tdlog.cpp.o
 
 # target to build an object file
 src/Tdlog.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.o
 .PHONY : src/Tdlog.cpp.o
 
 src/Tdlog.i: src/Tdlog.cpp.i
@@ -140,7 +140,7 @@ src/Tdlog.i: src/Tdlog.cpp.i
 
 # target to preprocess a source file
 src/Tdlog.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.i
 .PHONY : src/Tdlog.cpp.i
 
 src/Tdlog.s: src/Tdlog.cpp.s
@@ -149,7 +149,7 @@ src/Tdlog.s: src/Tdlog.cpp.s
 
 # target to generate assembly for a file
 src/Tdlog.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/Tdlog.cpp.s
 .PHONY : src/Tdlog.cpp.s
 
 src/common.o: src/common.cpp.o
@@ -158,7 +158,7 @@ src/common.o: src/common.cpp.o
 
 # target to build an object file
 src/common.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.o
 .PHONY : src/common.cpp.o
 
 src/common.i: src/common.cpp.i
@@ -167,7 +167,7 @@ src/common.i: src/common.cpp.i
 
 # target to preprocess a source file
 src/common.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.i
 .PHONY : src/common.cpp.i
 
 src/common.s: src/common.cpp.s
@@ -176,7 +176,7 @@ src/common.s: src/common.cpp.s
 
 # target to generate assembly for a file
 src/common.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/common.cpp.s
 .PHONY : src/common.cpp.s
 
 src/fifoMsg.o: src/fifoMsg.cpp.o
@@ -185,7 +185,7 @@ src/fifoMsg.o: src/fifoMsg.cpp.o
 
 # target to build an object file
 src/fifoMsg.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.o
 .PHONY : src/fifoMsg.cpp.o
 
 src/fifoMsg.i: src/fifoMsg.cpp.i
@@ -194,7 +194,7 @@ src/fifoMsg.i: src/fifoMsg.cpp.i
 
 # target to preprocess a source file
 src/fifoMsg.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.i
 .PHONY : src/fifoMsg.cpp.i
 
 src/fifoMsg.s: src/fifoMsg.cpp.s
@@ -203,7 +203,7 @@ src/fifoMsg.s: src/fifoMsg.cpp.s
 
 # target to generate assembly for a file
 src/fifoMsg.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/fifoMsg.cpp.s
 .PHONY : src/fifoMsg.cpp.s
 
 src/inifile.o: src/inifile.cpp.o
@@ -212,7 +212,7 @@ src/inifile.o: src/inifile.cpp.o
 
 # target to build an object file
 src/inifile.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/inifile.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/inifile.cpp.o
 .PHONY : src/inifile.cpp.o
 
 src/inifile.i: src/inifile.cpp.i
@@ -221,7 +221,7 @@ src/inifile.i: src/inifile.cpp.i
 
 # target to preprocess a source file
 src/inifile.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/inifile.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/inifile.cpp.i
 .PHONY : src/inifile.cpp.i
 
 src/inifile.s: src/inifile.cpp.s
@@ -230,7 +230,7 @@ src/inifile.s: src/inifile.cpp.s
 
 # target to generate assembly for a file
 src/inifile.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/inifile.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/inifile.cpp.s
 .PHONY : src/inifile.cpp.s
 
 src/json11.o: src/json11.cpp.o
@@ -239,7 +239,7 @@ src/json11.o: src/json11.cpp.o
 
 # target to build an object file
 src/json11.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/json11.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/json11.cpp.o
 .PHONY : src/json11.cpp.o
 
 src/json11.i: src/json11.cpp.i
@@ -248,7 +248,7 @@ src/json11.i: src/json11.cpp.i
 
 # target to preprocess a source file
 src/json11.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/json11.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/json11.cpp.i
 .PHONY : src/json11.cpp.i
 
 src/json11.s: src/json11.cpp.s
@@ -257,7 +257,7 @@ src/json11.s: src/json11.cpp.s
 
 # target to generate assembly for a file
 src/json11.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/json11.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/json11.cpp.s
 .PHONY : src/json11.cpp.s
 
 src/noticeCenter.o: src/noticeCenter.cpp.o
@@ -266,7 +266,7 @@ src/noticeCenter.o: src/noticeCenter.cpp.o
 
 # target to build an object file
 src/noticeCenter.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.o
 .PHONY : src/noticeCenter.cpp.o
 
 src/noticeCenter.i: src/noticeCenter.cpp.i
@@ -275,7 +275,7 @@ src/noticeCenter.i: src/noticeCenter.cpp.i
 
 # target to preprocess a source file
 src/noticeCenter.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.i
 .PHONY : src/noticeCenter.cpp.i
 
 src/noticeCenter.s: src/noticeCenter.cpp.s
@@ -284,7 +284,7 @@ src/noticeCenter.s: src/noticeCenter.cpp.s
 
 # target to generate assembly for a file
 src/noticeCenter.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/noticeCenter.cpp.s
 .PHONY : src/noticeCenter.cpp.s
 
 src/uuid4.o: src/uuid4.cpp.o
@@ -293,7 +293,7 @@ src/uuid4.o: src/uuid4.cpp.o
 
 # target to build an object file
 src/uuid4.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/uuid4.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/uuid4.cpp.o
 .PHONY : src/uuid4.cpp.o
 
 src/uuid4.i: src/uuid4.cpp.i
@@ -302,7 +302,7 @@ src/uuid4.i: src/uuid4.cpp.i
 
 # target to preprocess a source file
 src/uuid4.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/uuid4.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/uuid4.cpp.i
 .PHONY : src/uuid4.cpp.i
 
 src/uuid4.s: src/uuid4.cpp.s
@@ -311,7 +311,7 @@ src/uuid4.s: src/uuid4.cpp.s
 
 # target to generate assembly for a file
 src/uuid4.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/uuid4.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdUtil/CMakeFiles/util.dir/build.make tdUtil/CMakeFiles/util.dir/src/uuid4.cpp.s
 .PHONY : src/uuid4.cpp.s
 
 # Help Target
@@ -355,6 +355,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

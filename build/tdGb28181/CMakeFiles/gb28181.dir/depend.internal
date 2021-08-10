@@ -65,7 +65,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o
  ../tdUtil/inc/spdlog/tweakme.h
  ../tdUtil/inc/spdlog/version.h
  ../tdUtil/inc/uuid4.h
- /home/tdwl/work/GMProxy/tdGb28181/src/TdDevice.cpp
+ /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdDevice.cpp
  /usr/local/include/jrtplib3/rtcpcompoundpacket.h
  /usr/local/include/jrtplib3/rtcpcompoundpacketbuilder.h
  /usr/local/include/jrtplib3/rtcppacket.h
@@ -73,7 +73,6 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o
  /usr/local/include/jrtplib3/rtcpscheduler.h
  /usr/local/include/jrtplib3/rtcpsdesinfo.h
  /usr/local/include/jrtplib3/rtcpsdespacket.h
- /usr/local/include/jrtplib3/rtpabortdescriptors.h
  /usr/local/include/jrtplib3/rtpaddress.h
  /usr/local/include/jrtplib3/rtpcollisionlist.h
  /usr/local/include/jrtplib3/rtpconfig.h
@@ -92,7 +91,6 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o
  /usr/local/include/jrtplib3/rtpsession.h
  /usr/local/include/jrtplib3/rtpsessionparams.h
  /usr/local/include/jrtplib3/rtpsessionsources.h
- /usr/local/include/jrtplib3/rtpsocketutil.h
  /usr/local/include/jrtplib3/rtpsources.h
  /usr/local/include/jrtplib3/rtpstructs.h
  /usr/local/include/jrtplib3/rtptimeutilities.h
@@ -169,7 +167,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o
  ../tdUtil/inc/spdlog/tweakme.h
  ../tdUtil/inc/spdlog/version.h
  ../tdUtil/inc/uuid4.h
- /home/tdwl/work/GMProxy/tdGb28181/src/TdNetClient.cpp
+ /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdNetClient.cpp
  /usr/local/include/jrtplib3/rtcpcompoundpacket.h
  /usr/local/include/jrtplib3/rtcpcompoundpacketbuilder.h
  /usr/local/include/jrtplib3/rtcppacket.h
@@ -177,7 +175,6 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o
  /usr/local/include/jrtplib3/rtcpscheduler.h
  /usr/local/include/jrtplib3/rtcpsdesinfo.h
  /usr/local/include/jrtplib3/rtcpsdespacket.h
- /usr/local/include/jrtplib3/rtpabortdescriptors.h
  /usr/local/include/jrtplib3/rtpaddress.h
  /usr/local/include/jrtplib3/rtpcollisionlist.h
  /usr/local/include/jrtplib3/rtpconfig.h
@@ -196,7 +193,6 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o
  /usr/local/include/jrtplib3/rtpsession.h
  /usr/local/include/jrtplib3/rtpsessionparams.h
  /usr/local/include/jrtplib3/rtpsessionsources.h
- /usr/local/include/jrtplib3/rtpsocketutil.h
  /usr/local/include/jrtplib3/rtpsources.h
  /usr/local/include/jrtplib3/rtpstructs.h
  /usr/local/include/jrtplib3/rtptimeutilities.h
@@ -212,4 +208,4 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o
 tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o
  ../tdUtil/inc/pugiconfig.hpp
  ../tdUtil/inc/pugixml.hpp
- /home/tdwl/work/GMProxy/tdGb28181/src/TdPugixml.cpp
+ /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdPugixml.cpp

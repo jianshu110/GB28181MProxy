@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tdwl/work/GMProxy
+CMAKE_SOURCE_DIR = /home/tdwl/work/GB28181MProxy
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tdwl/work/GMProxy/build
+CMAKE_BINARY_DIR = /home/tdwl/work/GB28181MProxy/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles /home/tdwl/work/GMProxy/build/gmproxy/CMakeFiles/progress.marks
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles /home/tdwl/work/GB28181MProxy/build/gmproxy/CMakeFiles/progress.marks
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/clean
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule
 .PHONY : gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ GB28181MProxy_bin: gmproxy/CMakeFiles/GB28181MProxy_bin.dir/rule
 
 # fast build rule for target.
 GB28181MProxy_bin/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build
 .PHONY : GB28181MProxy_bin/fast
 
 main.o: main.cpp.o
@@ -131,7 +131,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -140,7 +140,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -149,7 +149,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f gmproxy/CMakeFiles/GB28181MProxy_bin.dir/build.make gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -175,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tdwl/work/GMProxy
+CMAKE_SOURCE_DIR = /home/tdwl/work/GB28181MProxy
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tdwl/work/GMProxy/build
+CMAKE_BINARY_DIR = /home/tdwl/work/GB28181MProxy/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles /home/tdwl/work/GMProxy/build/tdGb28181/CMakeFiles/progress.marks
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdGb28181/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles /home/tdwl/work/GB28181MProxy/build/tdGb28181/CMakeFiles/progress.marks
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdGb28181/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdGb28181/clean
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdGb28181/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdGb28181/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdGb28181/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdGb28181/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdGb28181/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tdGb28181/CMakeFiles/gb28181.dir/rule:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdGb28181/CMakeFiles/gb28181.dir/rule
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdGb28181/CMakeFiles/gb28181.dir/rule
 .PHONY : tdGb28181/CMakeFiles/gb28181.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ gb28181: tdGb28181/CMakeFiles/gb28181.dir/rule
 
 # fast build rule for target.
 gb28181/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/build
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/build
 .PHONY : gb28181/fast
 
 src/TdDevice.o: src/TdDevice.cpp.o
@@ -131,7 +131,7 @@ src/TdDevice.o: src/TdDevice.cpp.o
 
 # target to build an object file
 src/TdDevice.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o
 .PHONY : src/TdDevice.cpp.o
 
 src/TdDevice.i: src/TdDevice.cpp.i
@@ -140,7 +140,7 @@ src/TdDevice.i: src/TdDevice.cpp.i
 
 # target to preprocess a source file
 src/TdDevice.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.i
 .PHONY : src/TdDevice.cpp.i
 
 src/TdDevice.s: src/TdDevice.cpp.s
@@ -149,7 +149,7 @@ src/TdDevice.s: src/TdDevice.cpp.s
 
 # target to generate assembly for a file
 src/TdDevice.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.s
 .PHONY : src/TdDevice.cpp.s
 
 src/TdNetClient.o: src/TdNetClient.cpp.o
@@ -158,7 +158,7 @@ src/TdNetClient.o: src/TdNetClient.cpp.o
 
 # target to build an object file
 src/TdNetClient.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o
 .PHONY : src/TdNetClient.cpp.o
 
 src/TdNetClient.i: src/TdNetClient.cpp.i
@@ -167,7 +167,7 @@ src/TdNetClient.i: src/TdNetClient.cpp.i
 
 # target to preprocess a source file
 src/TdNetClient.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.i
 .PHONY : src/TdNetClient.cpp.i
 
 src/TdNetClient.s: src/TdNetClient.cpp.s
@@ -176,7 +176,7 @@ src/TdNetClient.s: src/TdNetClient.cpp.s
 
 # target to generate assembly for a file
 src/TdNetClient.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.s
 .PHONY : src/TdNetClient.cpp.s
 
 src/TdPugixml.o: src/TdPugixml.cpp.o
@@ -185,7 +185,7 @@ src/TdPugixml.o: src/TdPugixml.cpp.o
 
 # target to build an object file
 src/TdPugixml.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o
 .PHONY : src/TdPugixml.cpp.o
 
 src/TdPugixml.i: src/TdPugixml.cpp.i
@@ -194,7 +194,7 @@ src/TdPugixml.i: src/TdPugixml.cpp.i
 
 # target to preprocess a source file
 src/TdPugixml.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.i
 .PHONY : src/TdPugixml.cpp.i
 
 src/TdPugixml.s: src/TdPugixml.cpp.s
@@ -203,7 +203,7 @@ src/TdPugixml.s: src/TdPugixml.cpp.s
 
 # target to generate assembly for a file
 src/TdPugixml.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdGb28181/CMakeFiles/gb28181.dir/build.make tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.s
 .PHONY : src/TdPugixml.cpp.s
 
 # Help Target
@@ -235,6 +235,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

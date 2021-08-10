@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tdwl/work/GMProxy
+CMAKE_SOURCE_DIR = /home/tdwl/work/GB28181MProxy
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tdwl/work/GMProxy/build
+CMAKE_BINARY_DIR = /home/tdwl/work/GB28181MProxy/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles /home/tdwl/work/GMProxy/build/tdCodec/CMakeFiles/progress.marks
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdCodec/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles /home/tdwl/work/GB28181MProxy/build/tdCodec/CMakeFiles/progress.marks
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdCodec/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdCodec/clean
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdCodec/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdCodec/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdCodec/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdCodec/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdCodec/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tdCodec/CMakeFiles/codec.dir/rule:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdCodec/CMakeFiles/codec.dir/rule
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdCodec/CMakeFiles/codec.dir/rule
 .PHONY : tdCodec/CMakeFiles/codec.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ codec: tdCodec/CMakeFiles/codec.dir/rule
 
 # fast build rule for target.
 codec/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/build
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/build
 .PHONY : codec/fast
 
 src/TdCodec.o: src/TdCodec.cpp.o
@@ -131,7 +131,7 @@ src/TdCodec.o: src/TdCodec.cpp.o
 
 # target to build an object file
 src/TdCodec.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o
 .PHONY : src/TdCodec.cpp.o
 
 src/TdCodec.i: src/TdCodec.cpp.i
@@ -140,7 +140,7 @@ src/TdCodec.i: src/TdCodec.cpp.i
 
 # target to preprocess a source file
 src/TdCodec.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.i
 .PHONY : src/TdCodec.cpp.i
 
 src/TdCodec.s: src/TdCodec.cpp.s
@@ -149,7 +149,7 @@ src/TdCodec.s: src/TdCodec.cpp.s
 
 # target to generate assembly for a file
 src/TdCodec.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.s
 .PHONY : src/TdCodec.cpp.s
 
 src/TdH264.o: src/TdH264.cpp.o
@@ -158,7 +158,7 @@ src/TdH264.o: src/TdH264.cpp.o
 
 # target to build an object file
 src/TdH264.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o
 .PHONY : src/TdH264.cpp.o
 
 src/TdH264.i: src/TdH264.cpp.i
@@ -167,7 +167,7 @@ src/TdH264.i: src/TdH264.cpp.i
 
 # target to preprocess a source file
 src/TdH264.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.i
 .PHONY : src/TdH264.cpp.i
 
 src/TdH264.s: src/TdH264.cpp.s
@@ -176,7 +176,7 @@ src/TdH264.s: src/TdH264.cpp.s
 
 # target to generate assembly for a file
 src/TdH264.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.s
 .PHONY : src/TdH264.cpp.s
 
 # Help Target
@@ -205,6 +205,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

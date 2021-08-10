@@ -69,7 +69,7 @@ gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o
  ../tdUtil/inc/spdlog/tweakme.h
  ../tdUtil/inc/spdlog/version.h
  ../tdUtil/inc/uuid4.h
- /home/tdwl/work/GMProxy/gmproxy/main.cpp
+ /home/tdwl/work/GB28181MProxy/gmproxy/main.cpp
  /usr/local/include/jrtplib3/rtcpcompoundpacket.h
  /usr/local/include/jrtplib3/rtcpcompoundpacketbuilder.h
  /usr/local/include/jrtplib3/rtcppacket.h

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tdwl/work/GMProxy
+CMAKE_SOURCE_DIR = /home/tdwl/work/GB28181MProxy
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tdwl/work/GMProxy/build
+CMAKE_BINARY_DIR = /home/tdwl/work/GB28181MProxy/build
 
 # Include any dependencies generated for this target.
 include tdCodec/CMakeFiles/codec.dir/depend.make
@@ -59,16 +59,16 @@ include tdCodec/CMakeFiles/codec.dir/flags.make
 
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: tdCodec/CMakeFiles/codec.dir/flags.make
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: ../tdCodec/src/TdH264.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o"
-	cd /home/tdwl/work/GMProxy/build/tdCodec && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/codec.dir/src/TdH264.cpp.o -c /home/tdwl/work/GMProxy/tdCodec/src/TdH264.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GB28181MProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o"
+	cd /home/tdwl/work/GB28181MProxy/build/tdCodec && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/codec.dir/src/TdH264.cpp.o -c /home/tdwl/work/GB28181MProxy/tdCodec/src/TdH264.cpp
 
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/codec.dir/src/TdH264.cpp.i"
-	cd /home/tdwl/work/GMProxy/build/tdCodec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GMProxy/tdCodec/src/TdH264.cpp > CMakeFiles/codec.dir/src/TdH264.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build/tdCodec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GB28181MProxy/tdCodec/src/TdH264.cpp > CMakeFiles/codec.dir/src/TdH264.cpp.i
 
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/codec.dir/src/TdH264.cpp.s"
-	cd /home/tdwl/work/GMProxy/build/tdCodec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GMProxy/tdCodec/src/TdH264.cpp -o CMakeFiles/codec.dir/src/TdH264.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build/tdCodec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GB28181MProxy/tdCodec/src/TdH264.cpp -o CMakeFiles/codec.dir/src/TdH264.cpp.s
 
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o.requires:
 
@@ -83,16 +83,16 @@ tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o.provides.build: tdCodec/CMakeFiles
 
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: tdCodec/CMakeFiles/codec.dir/flags.make
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: ../tdCodec/src/TdCodec.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o"
-	cd /home/tdwl/work/GMProxy/build/tdCodec && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/codec.dir/src/TdCodec.cpp.o -c /home/tdwl/work/GMProxy/tdCodec/src/TdCodec.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GB28181MProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o"
+	cd /home/tdwl/work/GB28181MProxy/build/tdCodec && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/codec.dir/src/TdCodec.cpp.o -c /home/tdwl/work/GB28181MProxy/tdCodec/src/TdCodec.cpp
 
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/codec.dir/src/TdCodec.cpp.i"
-	cd /home/tdwl/work/GMProxy/build/tdCodec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GMProxy/tdCodec/src/TdCodec.cpp > CMakeFiles/codec.dir/src/TdCodec.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build/tdCodec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GB28181MProxy/tdCodec/src/TdCodec.cpp > CMakeFiles/codec.dir/src/TdCodec.cpp.i
 
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/codec.dir/src/TdCodec.cpp.s"
-	cd /home/tdwl/work/GMProxy/build/tdCodec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GMProxy/tdCodec/src/TdCodec.cpp -o CMakeFiles/codec.dir/src/TdCodec.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build/tdCodec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GB28181MProxy/tdCodec/src/TdCodec.cpp -o CMakeFiles/codec.dir/src/TdCodec.cpp.s
 
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o.requires:
 
@@ -117,9 +117,9 @@ libs/libcodec.a: tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o
 libs/libcodec.a: tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o
 libs/libcodec.a: tdCodec/CMakeFiles/codec.dir/build.make
 libs/libcodec.a: tdCodec/CMakeFiles/codec.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library ../libs/libcodec.a"
-	cd /home/tdwl/work/GMProxy/build/tdCodec && $(CMAKE_COMMAND) -P CMakeFiles/codec.dir/cmake_clean_target.cmake
-	cd /home/tdwl/work/GMProxy/build/tdCodec && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/codec.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tdwl/work/GB28181MProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library ../libs/libcodec.a"
+	cd /home/tdwl/work/GB28181MProxy/build/tdCodec && $(CMAKE_COMMAND) -P CMakeFiles/codec.dir/cmake_clean_target.cmake
+	cd /home/tdwl/work/GB28181MProxy/build/tdCodec && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/codec.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tdCodec/CMakeFiles/codec.dir/build: libs/libcodec.a
@@ -132,10 +132,10 @@ tdCodec/CMakeFiles/codec.dir/requires: tdCodec/CMakeFiles/codec.dir/src/TdCodec.
 .PHONY : tdCodec/CMakeFiles/codec.dir/requires
 
 tdCodec/CMakeFiles/codec.dir/clean:
-	cd /home/tdwl/work/GMProxy/build/tdCodec && $(CMAKE_COMMAND) -P CMakeFiles/codec.dir/cmake_clean.cmake
+	cd /home/tdwl/work/GB28181MProxy/build/tdCodec && $(CMAKE_COMMAND) -P CMakeFiles/codec.dir/cmake_clean.cmake
 .PHONY : tdCodec/CMakeFiles/codec.dir/clean
 
 tdCodec/CMakeFiles/codec.dir/depend:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tdwl/work/GMProxy /home/tdwl/work/GMProxy/tdCodec /home/tdwl/work/GMProxy/build /home/tdwl/work/GMProxy/build/tdCodec /home/tdwl/work/GMProxy/build/tdCodec/CMakeFiles/codec.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tdwl/work/GB28181MProxy /home/tdwl/work/GB28181MProxy/tdCodec /home/tdwl/work/GB28181MProxy/build /home/tdwl/work/GB28181MProxy/build/tdCodec /home/tdwl/work/GB28181MProxy/build/tdCodec/CMakeFiles/codec.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tdCodec/CMakeFiles/codec.dir/depend
 

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tdwl/work/GMProxy/tdPs/src/TdPs.cpp" "/home/tdwl/work/GMProxy/build/tdPs/CMakeFiles/ps.dir/src/TdPs.cpp.o"
+  "/home/tdwl/work/GB28181MProxy/tdPs/src/TdPs.cpp" "/home/tdwl/work/GB28181MProxy/build/tdPs/CMakeFiles/ps.dir/src/TdPs.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

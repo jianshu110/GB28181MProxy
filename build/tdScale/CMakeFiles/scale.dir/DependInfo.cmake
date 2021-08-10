@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tdwl/work/GMProxy/tdScale/src/TdScale.cpp" "/home/tdwl/work/GMProxy/build/tdScale/CMakeFiles/scale.dir/src/TdScale.cpp.o"
+  "/home/tdwl/work/GB28181MProxy/tdScale/src/TdScale.cpp" "/home/tdwl/work/GB28181MProxy/build/tdScale/CMakeFiles/scale.dir/src/TdScale.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tdwl/work/GMProxy
+CMAKE_SOURCE_DIR = /home/tdwl/work/GB28181MProxy
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tdwl/work/GMProxy/build
+CMAKE_BINARY_DIR = /home/tdwl/work/GB28181MProxy/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles /home/tdwl/work/GMProxy/build/tdChannel/CMakeFiles/progress.marks
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdChannel/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles /home/tdwl/work/GB28181MProxy/build/tdChannel/CMakeFiles/progress.marks
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdChannel/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdChannel/clean
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdChannel/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdChannel/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdChannel/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdChannel/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdChannel/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tdChannel/CMakeFiles/channel.dir/rule:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdChannel/CMakeFiles/channel.dir/rule
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdChannel/CMakeFiles/channel.dir/rule
 .PHONY : tdChannel/CMakeFiles/channel.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ channel: tdChannel/CMakeFiles/channel.dir/rule
 
 # fast build rule for target.
 channel/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/build
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/build
 .PHONY : channel/fast
 
 src/TdChanManager.o: src/TdChanManager.cpp.o
@@ -131,7 +131,7 @@ src/TdChanManager.o: src/TdChanManager.cpp.o
 
 # target to build an object file
 src/TdChanManager.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.o
 .PHONY : src/TdChanManager.cpp.o
 
 src/TdChanManager.i: src/TdChanManager.cpp.i
@@ -140,7 +140,7 @@ src/TdChanManager.i: src/TdChanManager.cpp.i
 
 # target to preprocess a source file
 src/TdChanManager.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.i
 .PHONY : src/TdChanManager.cpp.i
 
 src/TdChanManager.s: src/TdChanManager.cpp.s
@@ -149,7 +149,7 @@ src/TdChanManager.s: src/TdChanManager.cpp.s
 
 # target to generate assembly for a file
 src/TdChanManager.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdChannel/CMakeFiles/channel.dir/build.make tdChannel/CMakeFiles/channel.dir/src/TdChanManager.cpp.s
 .PHONY : src/TdChanManager.cpp.s
 
 # Help Target
@@ -175,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

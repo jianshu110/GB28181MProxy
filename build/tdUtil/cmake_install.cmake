@@ -1,4 +1,4 @@
-# Install script for directory: /home/tdwl/work/GMProxy/tdUtil
+# Install script for directory: /home/tdwl/work/GB28181MProxy/tdUtil
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

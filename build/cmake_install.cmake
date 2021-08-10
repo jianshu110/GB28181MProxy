@@ -1,4 +1,4 @@
-# Install script for directory: /home/tdwl/work/GMProxy
+# Install script for directory: /home/tdwl/work/GB28181MProxy
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,16 +39,16 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/tdwl/work/GMProxy/build/tdRtp/cmake_install.cmake")
-  include("/home/tdwl/work/GMProxy/build/tdScale/cmake_install.cmake")
-  include("/home/tdwl/work/GMProxy/build/tdCodec/cmake_install.cmake")
-  include("/home/tdwl/work/GMProxy/build/tdPs/cmake_install.cmake")
-  include("/home/tdwl/work/GMProxy/build/tdServer/cmake_install.cmake")
-  include("/home/tdwl/work/GMProxy/build/tdConf/cmake_install.cmake")
-  include("/home/tdwl/work/GMProxy/build/tdUtil/cmake_install.cmake")
-  include("/home/tdwl/work/GMProxy/build/tdGb28181/cmake_install.cmake")
-  include("/home/tdwl/work/GMProxy/build/tdChannel/cmake_install.cmake")
-  include("/home/tdwl/work/GMProxy/build/gmproxy/cmake_install.cmake")
+  include("/home/tdwl/work/GB28181MProxy/build/tdRtp/cmake_install.cmake")
+  include("/home/tdwl/work/GB28181MProxy/build/tdScale/cmake_install.cmake")
+  include("/home/tdwl/work/GB28181MProxy/build/tdCodec/cmake_install.cmake")
+  include("/home/tdwl/work/GB28181MProxy/build/tdPs/cmake_install.cmake")
+  include("/home/tdwl/work/GB28181MProxy/build/tdServer/cmake_install.cmake")
+  include("/home/tdwl/work/GB28181MProxy/build/tdConf/cmake_install.cmake")
+  include("/home/tdwl/work/GB28181MProxy/build/tdUtil/cmake_install.cmake")
+  include("/home/tdwl/work/GB28181MProxy/build/tdGb28181/cmake_install.cmake")
+  include("/home/tdwl/work/GB28181MProxy/build/tdChannel/cmake_install.cmake")
+  include("/home/tdwl/work/GB28181MProxy/build/gmproxy/cmake_install.cmake")
 
 endif()
 
@@ -60,5 +60,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/tdwl/work/GMProxy/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/tdwl/work/GB28181MProxy/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

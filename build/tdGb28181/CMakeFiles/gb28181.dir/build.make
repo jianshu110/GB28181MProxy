@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tdwl/work/GMProxy
+CMAKE_SOURCE_DIR = /home/tdwl/work/GB28181MProxy
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tdwl/work/GMProxy/build
+CMAKE_BINARY_DIR = /home/tdwl/work/GB28181MProxy/build
 
 # Include any dependencies generated for this target.
 include tdGb28181/CMakeFiles/gb28181.dir/depend.make
@@ -59,16 +59,16 @@ include tdGb28181/CMakeFiles/gb28181.dir/flags.make
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: tdGb28181/CMakeFiles/gb28181.dir/flags.make
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdGb28181/src/TdNetClient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o"
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o -c /home/tdwl/work/GMProxy/tdGb28181/src/TdNetClient.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GB28181MProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o"
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o -c /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdNetClient.cpp
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gb28181.dir/src/TdNetClient.cpp.i"
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GMProxy/tdGb28181/src/TdNetClient.cpp > CMakeFiles/gb28181.dir/src/TdNetClient.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdNetClient.cpp > CMakeFiles/gb28181.dir/src/TdNetClient.cpp.i
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gb28181.dir/src/TdNetClient.cpp.s"
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GMProxy/tdGb28181/src/TdNetClient.cpp -o CMakeFiles/gb28181.dir/src/TdNetClient.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdNetClient.cpp -o CMakeFiles/gb28181.dir/src/TdNetClient.cpp.s
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o.requires:
 
@@ -83,16 +83,16 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o.provides.build: tdGb28181
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o: tdGb28181/CMakeFiles/gb28181.dir/flags.make
 tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o: ../tdGb28181/src/TdPugixml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o"
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o -c /home/tdwl/work/GMProxy/tdGb28181/src/TdPugixml.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GB28181MProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o"
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o -c /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdPugixml.cpp
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gb28181.dir/src/TdPugixml.cpp.i"
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GMProxy/tdGb28181/src/TdPugixml.cpp > CMakeFiles/gb28181.dir/src/TdPugixml.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdPugixml.cpp > CMakeFiles/gb28181.dir/src/TdPugixml.cpp.i
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gb28181.dir/src/TdPugixml.cpp.s"
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GMProxy/tdGb28181/src/TdPugixml.cpp -o CMakeFiles/gb28181.dir/src/TdPugixml.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdPugixml.cpp -o CMakeFiles/gb28181.dir/src/TdPugixml.cpp.s
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o.requires:
 
@@ -107,16 +107,16 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o.provides.build: tdGb28181/C
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: tdGb28181/CMakeFiles/gb28181.dir/flags.make
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdGb28181/src/TdDevice.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o"
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gb28181.dir/src/TdDevice.cpp.o -c /home/tdwl/work/GMProxy/tdGb28181/src/TdDevice.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tdwl/work/GB28181MProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o"
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gb28181.dir/src/TdDevice.cpp.o -c /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdDevice.cpp
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gb28181.dir/src/TdDevice.cpp.i"
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GMProxy/tdGb28181/src/TdDevice.cpp > CMakeFiles/gb28181.dir/src/TdDevice.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdDevice.cpp > CMakeFiles/gb28181.dir/src/TdDevice.cpp.i
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gb28181.dir/src/TdDevice.cpp.s"
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GMProxy/tdGb28181/src/TdDevice.cpp -o CMakeFiles/gb28181.dir/src/TdDevice.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tdwl/work/GB28181MProxy/tdGb28181/src/TdDevice.cpp -o CMakeFiles/gb28181.dir/src/TdDevice.cpp.s
 
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o.requires:
 
@@ -143,9 +143,9 @@ libs/libgb28181.a: tdGb28181/CMakeFiles/gb28181.dir/src/TdPugixml.cpp.o
 libs/libgb28181.a: tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o
 libs/libgb28181.a: tdGb28181/CMakeFiles/gb28181.dir/build.make
 libs/libgb28181.a: tdGb28181/CMakeFiles/gb28181.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tdwl/work/GMProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library ../libs/libgb28181.a"
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && $(CMAKE_COMMAND) -P CMakeFiles/gb28181.dir/cmake_clean_target.cmake
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gb28181.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tdwl/work/GB28181MProxy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library ../libs/libgb28181.a"
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && $(CMAKE_COMMAND) -P CMakeFiles/gb28181.dir/cmake_clean_target.cmake
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gb28181.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tdGb28181/CMakeFiles/gb28181.dir/build: libs/libgb28181.a
@@ -159,10 +159,10 @@ tdGb28181/CMakeFiles/gb28181.dir/requires: tdGb28181/CMakeFiles/gb28181.dir/src/
 .PHONY : tdGb28181/CMakeFiles/gb28181.dir/requires
 
 tdGb28181/CMakeFiles/gb28181.dir/clean:
-	cd /home/tdwl/work/GMProxy/build/tdGb28181 && $(CMAKE_COMMAND) -P CMakeFiles/gb28181.dir/cmake_clean.cmake
+	cd /home/tdwl/work/GB28181MProxy/build/tdGb28181 && $(CMAKE_COMMAND) -P CMakeFiles/gb28181.dir/cmake_clean.cmake
 .PHONY : tdGb28181/CMakeFiles/gb28181.dir/clean
 
 tdGb28181/CMakeFiles/gb28181.dir/depend:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tdwl/work/GMProxy /home/tdwl/work/GMProxy/tdGb28181 /home/tdwl/work/GMProxy/build /home/tdwl/work/GMProxy/build/tdGb28181 /home/tdwl/work/GMProxy/build/tdGb28181/CMakeFiles/gb28181.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tdwl/work/GB28181MProxy /home/tdwl/work/GB28181MProxy/tdGb28181 /home/tdwl/work/GB28181MProxy/build /home/tdwl/work/GB28181MProxy/build/tdGb28181 /home/tdwl/work/GB28181MProxy/build/tdGb28181/CMakeFiles/gb28181.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tdGb28181/CMakeFiles/gb28181.dir/depend
 

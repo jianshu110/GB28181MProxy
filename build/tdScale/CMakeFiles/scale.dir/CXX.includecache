@@ -16,11 +16,11 @@ stdlib.h
 stdio.h
 ../tdScale/inc/stdio.h
 
-/home/tdwl/work/GMProxy/tdScale/src/TdScale.cpp
+/home/tdwl/work/GB28181MProxy/tdScale/src/TdScale.cpp
 TdScale.h
-/home/tdwl/work/GMProxy/tdScale/src/TdScale.h
+/home/tdwl/work/GB28181MProxy/tdScale/src/TdScale.h
 stdlib.h
-/home/tdwl/work/GMProxy/tdScale/src/stdlib.h
+/home/tdwl/work/GB28181MProxy/tdScale/src/stdlib.h
 stdlib.h
 -
 math.h

@@ -124,7 +124,7 @@ stddef.h
 TargetConditionals.h
 ../tdUtil/inc/TargetConditionals.h
 
-/home/tdwl/work/GMProxy/tdUtil/inc/common.h
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/common.h
 iostream
 -
 string
@@ -138,19 +138,19 @@ sys/time.h
 unistd.h
 -
 md5.h
-/home/tdwl/work/GMProxy/tdUtil/inc/md5.h
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/md5.h
 uuid4.h
-/home/tdwl/work/GMProxy/tdUtil/inc/uuid4.h
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/uuid4.h
 encryption.h
-/home/tdwl/work/GMProxy/tdUtil/inc/encryption.h
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/encryption.h
 json11.hpp
-/home/tdwl/work/GMProxy/tdUtil/inc/json11.hpp
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/json11.hpp
 
-/home/tdwl/work/GMProxy/tdUtil/inc/encryption.h
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/encryption.h
 string
 -
 
-/home/tdwl/work/GMProxy/tdUtil/inc/json11.hpp
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/json11.hpp
 string
 -
 vector
@@ -162,17 +162,17 @@ memory
 initializer_list
 -
 
-/home/tdwl/work/GMProxy/tdUtil/inc/md5.h
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/md5.h
 string
 -
 cstring
 -
 
-/home/tdwl/work/GMProxy/tdUtil/inc/uuid4.h
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/uuid4.h
 
-/home/tdwl/work/GMProxy/tdUtil/src/Tdlog.cpp
+/home/tdwl/work/GB28181MProxy/tdUtil/src/Tdlog.cpp
 Tdlog.h
-/home/tdwl/work/GMProxy/tdUtil/src/Tdlog.h
+/home/tdwl/work/GB28181MProxy/tdUtil/src/Tdlog.h
 time.h
 -
 assert.h
@@ -202,21 +202,21 @@ pthread.h
 sys/syscall.h
 -
 
-/home/tdwl/work/GMProxy/tdUtil/src/common.cpp
+/home/tdwl/work/GB28181MProxy/tdUtil/src/common.cpp
 ../inc/json11.hpp
-/home/tdwl/work/GMProxy/tdUtil/inc/json11.hpp
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/json11.hpp
 ../inc/common.h
-/home/tdwl/work/GMProxy/tdUtil/inc/common.h
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/common.h
 string
 -
 sstream
 -
 
-/home/tdwl/work/GMProxy/tdUtil/src/fifoMsg.cpp
+/home/tdwl/work/GB28181MProxy/tdUtil/src/fifoMsg.cpp
 fifoMsg.h
-/home/tdwl/work/GMProxy/tdUtil/src/fifoMsg.h
+/home/tdwl/work/GB28181MProxy/tdUtil/src/fifoMsg.h
 
-/home/tdwl/work/GMProxy/tdUtil/src/inifile.cpp
+/home/tdwl/work/GB28181MProxy/tdUtil/src/inifile.cpp
 stdlib.h
 -
 stdio.h
@@ -228,11 +228,11 @@ iostream
 fstream
 -
 inifile.h
-/home/tdwl/work/GMProxy/tdUtil/src/inifile.h
+/home/tdwl/work/GB28181MProxy/tdUtil/src/inifile.h
 
-/home/tdwl/work/GMProxy/tdUtil/src/json11.cpp
+/home/tdwl/work/GB28181MProxy/tdUtil/src/json11.cpp
 ../inc/json11.hpp
-/home/tdwl/work/GMProxy/tdUtil/inc/json11.hpp
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/json11.hpp
 cassert
 -
 cmath
@@ -244,13 +244,13 @@ cstdio
 limits
 -
 
-/home/tdwl/work/GMProxy/tdUtil/src/noticeCenter.cpp
+/home/tdwl/work/GB28181MProxy/tdUtil/src/noticeCenter.cpp
 noticeCenter.h
-/home/tdwl/work/GMProxy/tdUtil/src/noticeCenter.h
+/home/tdwl/work/GB28181MProxy/tdUtil/src/noticeCenter.h
 util.h
-/home/tdwl/work/GMProxy/tdUtil/src/util.h
+/home/tdwl/work/GB28181MProxy/tdUtil/src/util.h
 
-/home/tdwl/work/GMProxy/tdUtil/src/uuid4.cpp
+/home/tdwl/work/GB28181MProxy/tdUtil/src/uuid4.cpp
 stdio.h
 -
 stdint.h
@@ -260,5 +260,5 @@ windows.h
 wincrypt.h
 -
 ../inc/uuid4.h
-/home/tdwl/work/GMProxy/tdUtil/inc/uuid4.h
+/home/tdwl/work/GB28181MProxy/tdUtil/inc/uuid4.h
 

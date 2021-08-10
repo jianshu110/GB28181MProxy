@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tdwl/work/GMProxy
+CMAKE_SOURCE_DIR = /home/tdwl/work/GB28181MProxy
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tdwl/work/GMProxy/build
+CMAKE_BINARY_DIR = /home/tdwl/work/GB28181MProxy/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles /home/tdwl/work/GMProxy/build/tdPs/CMakeFiles/progress.marks
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdPs/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GMProxy/build/CMakeFiles 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles /home/tdwl/work/GB28181MProxy/build/tdPs/CMakeFiles/progress.marks
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdPs/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tdwl/work/GB28181MProxy/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdPs/clean
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdPs/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdPs/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdPs/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdPs/preinstall
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdPs/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tdPs/CMakeFiles/ps.dir/rule:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdPs/CMakeFiles/ps.dir/rule
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f CMakeFiles/Makefile2 tdPs/CMakeFiles/ps.dir/rule
 .PHONY : tdPs/CMakeFiles/ps.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ ps: tdPs/CMakeFiles/ps.dir/rule
 
 # fast build rule for target.
 ps/fast:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdPs/CMakeFiles/ps.dir/build.make tdPs/CMakeFiles/ps.dir/build
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdPs/CMakeFiles/ps.dir/build.make tdPs/CMakeFiles/ps.dir/build
 .PHONY : ps/fast
 
 src/TdPs.o: src/TdPs.cpp.o
@@ -131,7 +131,7 @@ src/TdPs.o: src/TdPs.cpp.o
 
 # target to build an object file
 src/TdPs.cpp.o:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdPs/CMakeFiles/ps.dir/build.make tdPs/CMakeFiles/ps.dir/src/TdPs.cpp.o
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdPs/CMakeFiles/ps.dir/build.make tdPs/CMakeFiles/ps.dir/src/TdPs.cpp.o
 .PHONY : src/TdPs.cpp.o
 
 src/TdPs.i: src/TdPs.cpp.i
@@ -140,7 +140,7 @@ src/TdPs.i: src/TdPs.cpp.i
 
 # target to preprocess a source file
 src/TdPs.cpp.i:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdPs/CMakeFiles/ps.dir/build.make tdPs/CMakeFiles/ps.dir/src/TdPs.cpp.i
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdPs/CMakeFiles/ps.dir/build.make tdPs/CMakeFiles/ps.dir/src/TdPs.cpp.i
 .PHONY : src/TdPs.cpp.i
 
 src/TdPs.s: src/TdPs.cpp.s
@@ -149,7 +149,7 @@ src/TdPs.s: src/TdPs.cpp.s
 
 # target to generate assembly for a file
 src/TdPs.cpp.s:
-	cd /home/tdwl/work/GMProxy/build && $(MAKE) -f tdPs/CMakeFiles/ps.dir/build.make tdPs/CMakeFiles/ps.dir/src/TdPs.cpp.s
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdPs/CMakeFiles/ps.dir/build.make tdPs/CMakeFiles/ps.dir/src/TdPs.cpp.s
 .PHONY : src/TdPs.cpp.s
 
 # Help Target
@@ -175,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/tdwl/work/GMProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/tdwl/work/GB28181MProxy/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
