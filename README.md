@@ -10,7 +10,7 @@
 
 安装教程
 
-1.  git clone https://gitee.com/jianshu20121/GB28181MProxy.git
+1.  git clone ...
 2.  cd GB28181MProxy
 3.  mkdir build
 4.  cmake ..
