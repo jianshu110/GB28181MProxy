@@ -25,6 +25,8 @@ stdlib.h
 -
 math.h
 -
+string.h
+-
 
 /usr/local/include/libyuv/basic_types.h
 stddef.h

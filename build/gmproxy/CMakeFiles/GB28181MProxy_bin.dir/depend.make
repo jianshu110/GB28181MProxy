@@ -5,6 +5,7 @@ gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o: ../tdChannel/inc/TdChanMana
 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o: ../tdCodec/inc/TdCodec.h
 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o: ../tdCodec/inc/TdCodecParam.h
 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o: ../tdCodec/inc/TdH264.h
+gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o: ../tdCodec/inc/TdX264Handle.h
 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o: ../tdConf/inc/TdConf.h
 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o: ../tdGb28181/inc/TdDevice.h
 gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o: ../tdPs/inc/TdPs.h

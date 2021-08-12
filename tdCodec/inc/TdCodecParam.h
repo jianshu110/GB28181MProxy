@@ -47,4 +47,9 @@ public:
     {
         return mBaseBitrate ;
     }
+
+    int setCodecBaseBitrate(int BaseBitrate)
+    {
+        return mBaseBitrate =BaseBitrate;
+    }
 };

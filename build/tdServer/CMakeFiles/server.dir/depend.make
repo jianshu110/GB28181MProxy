@@ -5,6 +5,7 @@ tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o: ../tdChannel/inc/TdChanMa
 tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o: ../tdCodec/inc/TdCodec.h
 tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o: ../tdCodec/inc/TdCodecParam.h
 tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o: ../tdCodec/inc/TdH264.h
+tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o: ../tdCodec/inc/TdX264Handle.h
 tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o: ../tdConf/inc/TdConf.h
 tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o: ../tdPs/inc/TdPs.h
 tdServer/CMakeFiles/server.dir/src/TdHttpServer.cpp.o: ../tdPs/inc/pstream.h

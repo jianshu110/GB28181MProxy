@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/tdwl/work/GB28181MProxy/tdCodec/src/TdCodec.cpp" "/home/tdwl/work/GB28181MProxy/build/tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o"
   "/home/tdwl/work/GB28181MProxy/tdCodec/src/TdH264.cpp" "/home/tdwl/work/GB28181MProxy/build/tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o"
+  "/home/tdwl/work/GB28181MProxy/tdCodec/src/TdX264Handle.cpp" "/home/tdwl/work/GB28181MProxy/build/tdCodec/CMakeFiles/codec.dir/src/TdX264Handle.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -179,6 +179,33 @@ src/TdH264.cpp.s:
 	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.s
 .PHONY : src/TdH264.cpp.s
 
+src/TdX264Handle.o: src/TdX264Handle.cpp.o
+
+.PHONY : src/TdX264Handle.o
+
+# target to build an object file
+src/TdX264Handle.cpp.o:
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdX264Handle.cpp.o
+.PHONY : src/TdX264Handle.cpp.o
+
+src/TdX264Handle.i: src/TdX264Handle.cpp.i
+
+.PHONY : src/TdX264Handle.i
+
+# target to preprocess a source file
+src/TdX264Handle.cpp.i:
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdX264Handle.cpp.i
+.PHONY : src/TdX264Handle.cpp.i
+
+src/TdX264Handle.s: src/TdX264Handle.cpp.s
+
+.PHONY : src/TdX264Handle.s
+
+# target to generate assembly for a file
+src/TdX264Handle.cpp.s:
+	cd /home/tdwl/work/GB28181MProxy/build && $(MAKE) -f tdCodec/CMakeFiles/codec.dir/build.make tdCodec/CMakeFiles/codec.dir/src/TdX264Handle.cpp.s
+.PHONY : src/TdX264Handle.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -194,6 +221,9 @@ help:
 	@echo "... src/TdH264.o"
 	@echo "... src/TdH264.i"
 	@echo "... src/TdH264.s"
+	@echo "... src/TdX264Handle.o"
+	@echo "... src/TdX264Handle.i"
+	@echo "... src/TdX264Handle.s"
 .PHONY : help
 
 

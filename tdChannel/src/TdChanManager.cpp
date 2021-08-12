@@ -22,43 +22,19 @@ int TdChanManager::monitor()
     CodecParam lCodecpara;
     memset(&lCodecpara,0,sizeof(CodecParam));
     spdlog::info("修改视频参数为-> 帧率:{} 分辨率:{} 最大比特:{}",Rate,Resolution,MaxBitrate);
-    if(!Resolution.compare("1080p"))
-    {
-        lCodecpara.height = 1080 ;
-        lCodecpara.width = 1920;
-    }
-    else if(!Resolution.compare("720p"))
-    {
-        lCodecpara.height = 720 ;
-        lCodecpara.width = 1280;
-    }
-    else if(!Resolution.compare("qHD"))
-    {
-        lCodecpara.height = 540 ;
-        lCodecpara.width = 960;
-    }
-    else if(!Resolution.compare("nHD"))
-    {
-        lCodecpara.height = 360 ;
-        lCodecpara.width =  640;
-    }
-    else if(!Resolution.compare("WQVGA"))
-    {
-        lCodecpara.height = 272 ;
-        lCodecpara.width =  480;
-    }
-    else if(!Resolution.compare("FWQVGA"))
-    {
-        lCodecpara.height = 240 ;
-        lCodecpara.width =  432;
-    }
+    
+    Resolution_t lRes(Resolution);
+
+    lCodecpara.height = lRes.mHeight;
+    lCodecpara.width = lRes.mWidth;
     lCodecpara.rate = Rate;
     lCodecpara.maxBitrate = MaxBitrate;
-    //FifoMsgSession ffms(channel) ;
+   
     ch->mFifos.OnceWrite(ModifyCodecParam,(char*)&lCodecpara,sizeof(CodecParam));
-    ch->height = lCodecpara.height;
-    ch->width = lCodecpara.width;
-    ch->Fps = lCodecpara.rate ;
+    ch->mCMediaParam.mRes.mHeight=lCodecpara.height;
+    ch->mCMediaParam.mRes.mWidth = lCodecpara.width = lRes.mWidth;
+    ch->mCMediaParam.Fps = lCodecpara.rate;
+    ch->mCMediaParam.MaxBitrate = lCodecpara.maxBitrate;
     });
 
 
@@ -71,12 +47,12 @@ int TdChanManager::monitor()
     NoticeCenter::Instance().addListener(this,"createChannel",[mprj](std::string channel){
         TdChanManager *mTag = mprj ;
         printf("createChannel\r\n");
-        mTag->createChannel(channel,"192.168.11.126",30252,30254);
+        //mTag->createChannel(channel,"192.168.11.126",30252,30254);
     });
     return 0;
 }
 
-int TdChanManager::createChannel(std::string channel,std::string dest,int destPort,int basePort)
+int TdChanManager::createChannel(std::string channel,std::string dest,int destPort,int basePort,ChanMediaParam_t param)
 {
     int status = -1 ;
     pthread_mutex_lock(&chanMapMutex);
@@ -102,14 +78,19 @@ int TdChanManager::createChannel(std::string channel,std::string dest,int destPo
             spdlog::error("创建通道失败 原因:{}",status);
             return status ;
         }
+        CodecParam lCodecpara;
+        lCodecpara.height = param.mRes.mHeight;
+        lCodecpara.width = param.mRes.mWidth;
+        lCodecpara.rate = param.Fps;
+        lCodecpara.maxBitrate = param.MaxBitrate;
+        gRtp->setParam(lCodecpara);
         gRtp->start(100);
     }else{
-        //FifoMsgSession lfifos;
-        //lfifos.Create(channel);
         lChannel = new Channel();
         lChannel->mFifos.Create(channel);
         lChannel->pid = fpid;
         lChannel->chanName = channel;
+        lChannel->mCMediaParam = param ;
 		pthread_mutex_lock(&chanMapMutex);
         chanMap[channel] = lChannel;
         pthread_mutex_unlock(&chanMapMutex);
@@ -180,9 +161,9 @@ std::string TdChanManager::channelsInfo2Json()
         json11::Json channelInfo = json11::Json::object{
                 {"chanID",  chan->chanName },
                 {"chanPID",   chan->pid},
-                {"height",   chan->height},
-                {"width",   chan->width},
-                {"Fps",   chan->Fps},
+                {"height",   chan->mCMediaParam.mRes.mHeight},
+                {"width",   chan->mCMediaParam.mRes.mWidth},
+                {"Fps",    chan->mCMediaParam.Fps},
         };
         lChannels.push_back(channelInfo);
     }
@@ -194,4 +175,32 @@ std::string TdChanManager::channelsInfo2Json()
     //printf("channelsJson:%s\r\n",channelsJson.dump().c_str());
     std::string ret = channelsJson.dump();
     return ret;
+}
+
+int TdChanManager::mediaPreset(std::string chan,ChanMediaParam_t param)
+{
+    if(chan.empty())
+        return -1 ;
+    Channel *lChannel = nullptr;
+    CodecParam lCodecpara;
+    memset(&lCodecpara,0,sizeof(CodecParam));
+    pthread_mutex_lock(&chanMapMutex);
+    lChannel = chanMap[chan];
+    if(lChannel==nullptr)
+    {
+        return -1 ;
+    }
+    pthread_mutex_unlock(&chanMapMutex);
+    if(lChannel!=nullptr)
+    {
+        lCodecpara.height = param.mRes.mHeight;
+        lCodecpara.width = param.mRes.mWidth;
+        lCodecpara.rate = param.Fps;
+        lCodecpara.maxBitrate = param.MaxBitrate;
+
+        lChannel->mFifos.OnceWrite(ModifyCodecParam,(char*)&lCodecpara,sizeof(CodecParam));
+        lChannel->mCMediaParam = param;
+        printf("%d %d\r\n",lChannel->mCMediaParam.mRes.mHeight,lChannel->mCMediaParam.mRes.mWidth);
+    }
+    return 0 ;
 }

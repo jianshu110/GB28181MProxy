@@ -4,6 +4,7 @@
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdCodec/inc/TdCodec.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdCodec/inc/TdCodecParam.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdCodec/inc/TdH264.h
+tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdCodec/inc/TdX264Handle.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdPs/inc/TdPs.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdPs/inc/pstream.h
 tdRtp/CMakeFiles/rtp.dir/src/TdRtp.cpp.o: ../tdRtp/inc/TdRtp.h

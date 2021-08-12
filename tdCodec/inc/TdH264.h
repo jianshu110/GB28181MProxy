@@ -19,6 +19,7 @@
 #include "inc/noticeCenter.h"
 #include "inc/FunHandler.h"
 #include "inc/TdCodecParam.h"
+#include "TdX264Handle.h"
 // #ifdef DMALLOC
 // #include "dmalloc.h"
 // #endif
@@ -36,10 +37,12 @@ private:
     SEncParamExt encParam;
     Source_Picture_s picture_;
     uint64_t timestamp_;
+    
     /* data */
 public:
     TdH264(/* args */){};
     ~TdH264(){};
+    Td::TdX264Handle mTdX264Handle ;
     std::ofstream *rtpfout ;
     std::ofstream *h264fout ;
     std::ofstream *yuvScalefout ;

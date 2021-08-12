@@ -11,14 +11,21 @@
 #include <sys/wait.h>
 #include<sys/msg.h>
 #include"inc/json11.hpp"
+
+typedef struct {
+    Resolution_t mRes= Resolution_t("WQVGA") ;
+    int Fps = 25;
+    int MaxBitrate = 300000;
+}ChanMediaParam_t;
+
+
 typedef struct {
     int pid;
     FifoMsgSession mFifos;
     std::string chanName;
-    int height = 540;
-    int width = 960;
-    int Fps = 25;
+    ChanMediaParam_t mCMediaParam;
 }Channel;
+
 
 class TdChanManager
 {
@@ -42,9 +49,10 @@ private:
 public:
     static TdChanManager* getInstance();
     int monitor();
-    int createChannel(std::string channle,std::string dest,int destPort,int basePort);
+    int createChannel(std::string channle,std::string dest,int destPort,int basePort,ChanMediaParam_t param);
     int delChannel(std::string channle);
     std::string channelsInfo2Json();
+    int mediaPreset(std::string chan,ChanMediaParam_t param);
 };
 
 #endif

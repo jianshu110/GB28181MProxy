@@ -34,6 +34,8 @@ class Queue
 private:
     /* data */
     std::queue <Packet> packetQue ;
+    std::queue <Packet> outPacketQue ;
+    std::queue <Packet> *inPacketQue ;
     bool mQueAccess = true;
     pthread_mutex_t queMutex;
 public:
@@ -81,6 +83,8 @@ public:
         }
         pthread_mutex_unlock(&queMutex);
     }
+
+    static int link(Queue &src,Queue &dest);
 };
 
 

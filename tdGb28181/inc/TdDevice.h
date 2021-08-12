@@ -75,7 +75,7 @@ public:
     std::tuple<string, string> get_cmd(const char * body);
     std::string getValueByNodeName(const char * body,std::string nodeName);
     std::string getValueByAttrKey(const char * sdp,std::string AttrKey);
-    int createSession(std::string deviceId,std::string dest,int destPort,int basePort);
+    int createSession(std::string deviceId,std::string dest,int destPort,int basePort,ChanMediaParam_t param);
     int destorySession(std::string deviceId);
 public:
     string server_sip_id;

@@ -5,6 +5,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdChannel/inc/TdChanMana
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdCodec/inc/TdCodec.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdCodec/inc/TdCodecParam.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdCodec/inc/TdH264.h
+tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdCodec/inc/TdX264Handle.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdConf/inc/TdConf.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdGb28181/inc/TdDevice.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdDevice.cpp.o: ../tdPs/inc/TdPs.h
@@ -107,6 +108,7 @@ tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdChannel/inc/TdChanM
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdCodec/inc/TdCodec.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdCodec/inc/TdCodecParam.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdCodec/inc/TdH264.h
+tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdCodec/inc/TdX264Handle.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdConf/inc/TdConf.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdGb28181/inc/TdDevice.h
 tdGb28181/CMakeFiles/gb28181.dir/src/TdNetClient.cpp.o: ../tdPs/inc/TdPs.h

@@ -5,6 +5,7 @@ tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o
  ../tdCodec/inc/TdCodec.h
  ../tdCodec/inc/TdCodecParam.h
  ../tdCodec/inc/TdH264.h
+ ../tdCodec/inc/TdX264Handle.h
  ../tdScale/inc/TdScale.h
  ../tdUtil/inc/FunHandler.h
  ../tdUtil/inc/function_traits.h
@@ -20,6 +21,7 @@ tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o
  ../tdCodec/inc/TdCodecParam.h
  ../tdCodec/inc/TdH264.h
+ ../tdCodec/inc/TdX264Handle.h
  ../tdScale/inc/TdScale.h
  ../tdUtil/inc/FunHandler.h
  ../tdUtil/inc/function_traits.h
@@ -32,3 +34,6 @@ tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o
  /usr/local/include/wels/codec_api.h
  /usr/local/include/wels/codec_app_def.h
  /usr/local/include/wels/codec_def.h
+tdCodec/CMakeFiles/codec.dir/src/TdX264Handle.cpp.o
+ ../tdCodec/inc/TdX264Handle.h
+ /home/tdwl/work/GB28181MProxy/tdCodec/src/TdX264Handle.cpp

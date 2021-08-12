@@ -4,6 +4,7 @@
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: ../tdCodec/inc/TdCodec.h
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: ../tdCodec/inc/TdCodecParam.h
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: ../tdCodec/inc/TdH264.h
+tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: ../tdCodec/inc/TdX264Handle.h
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: ../tdScale/inc/TdScale.h
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: ../tdUtil/inc/FunHandler.h
 tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: ../tdUtil/inc/function_traits.h
@@ -19,6 +20,7 @@ tdCodec/CMakeFiles/codec.dir/src/TdCodec.cpp.o: /usr/local/include/wels/codec_de
 
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: ../tdCodec/inc/TdCodecParam.h
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: ../tdCodec/inc/TdH264.h
+tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: ../tdCodec/inc/TdX264Handle.h
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: ../tdScale/inc/TdScale.h
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: ../tdUtil/inc/FunHandler.h
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: ../tdUtil/inc/function_traits.h
@@ -31,4 +33,7 @@ tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: /usr/local/include/libyuv/scale.h
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: /usr/local/include/wels/codec_api.h
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: /usr/local/include/wels/codec_app_def.h
 tdCodec/CMakeFiles/codec.dir/src/TdH264.cpp.o: /usr/local/include/wels/codec_def.h
+
+tdCodec/CMakeFiles/codec.dir/src/TdX264Handle.cpp.o: ../tdCodec/inc/TdX264Handle.h
+tdCodec/CMakeFiles/codec.dir/src/TdX264Handle.cpp.o: ../tdCodec/src/TdX264Handle.cpp
 

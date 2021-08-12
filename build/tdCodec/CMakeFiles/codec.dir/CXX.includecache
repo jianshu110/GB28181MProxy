@@ -59,6 +59,34 @@ inc/FunHandler.h
 ../tdCodec/inc/inc/FunHandler.h
 inc/TdCodecParam.h
 ../tdCodec/inc/inc/TdCodecParam.h
+TdX264Handle.h
+../tdCodec/inc/TdX264Handle.h
+
+../tdCodec/inc/TdX264Handle.h
+stdlib.h
+-
+stdio.h
+-
+stdint.h
+-
+string.h
+-
+limits.h
+../tdCodec/inc/limits.h
+fstream
+-
+stdio.h
+-
+queue
+-
+thread
+-
+mutex
+-
+unistd.h
+-
+x264.h
+-
 
 ../tdScale/inc/TdScale.h
 libyuv/cpu_id.h
@@ -121,6 +149,12 @@ TdCodec.h
 /home/tdwl/work/GB28181MProxy/tdCodec/src/TdH264.cpp
 TdH264.h
 /home/tdwl/work/GB28181MProxy/tdCodec/src/TdH264.h
+cmath
+-
+
+/home/tdwl/work/GB28181MProxy/tdCodec/src/TdX264Handle.cpp
+TdX264Handle.h
+/home/tdwl/work/GB28181MProxy/tdCodec/src/TdX264Handle.h
 cmath
 -
 

@@ -6,6 +6,7 @@ gmproxy/CMakeFiles/GB28181MProxy_bin.dir/main.cpp.o
  ../tdCodec/inc/TdCodec.h
  ../tdCodec/inc/TdCodecParam.h
  ../tdCodec/inc/TdH264.h
+ ../tdCodec/inc/TdX264Handle.h
  ../tdConf/inc/TdConf.h
  ../tdGb28181/inc/TdDevice.h
  ../tdPs/inc/TdPs.h

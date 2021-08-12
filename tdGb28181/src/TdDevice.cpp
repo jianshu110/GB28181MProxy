@@ -59,7 +59,7 @@ void TdDevice::setGB28181Param()
 
     from_uri << "sip:" << TdConf::getInstance()->mGB28121Ctx.mDevideId << "@" << local_ip << ":" << TdConf::getInstance()->mGB28121Ctx.mBasePort;
     contact << "sip:" << TdConf::getInstance()->mGB28121Ctx.mDevideId << "@" << local_ip << ":" << TdConf::getInstance()->mGB28121Ctx.mBasePort;
-    proxy_uri << "sip:" << TdConf::getInstance()->mGB28121Ctx.mServerSipId << "@" << TdConf::getInstance()->mGB28121Ctx.mSipServerIp << ":" << server_port;
+    proxy_uri << "sip:" << TdConf::getInstance()->mGB28121Ctx.mServerSipId << "@" << TdConf::getInstance()->mGB28121Ctx.mSipServerIp << ":" << TdConf::getInstance()->mGB28121Ctx.mSipServerPort;
 
     from_sip = from_uri.str();
     to_sip = proxy_uri.str();
@@ -168,8 +168,12 @@ void TdDevice::process_request() {
                         std::string destHost = getValueByNodeName(body->body,"DestHost");
                         std::string destPort = getValueByNodeName(body->body,"DestPort");
                         std::string basePort = getValueByNodeName(body->body,"BasePort");
+                        std::string ResolutionStr = getValueByNodeName(body->body,"Resolution");
+                        ChanMediaParam_t param ;
+                        if(!ResolutionStr.empty())
+                            param.mRes = Resolution_t(ResolutionStr);
                         spdlog::debug("got destHost: {} destPort:{} basePort:{}", destHost,destPort,basePort);
-                        if(!createSession(channel,destHost,string2int(destPort),string2int(basePort)))
+                        if(!createSession(channel,destHost,string2int(destPort),string2int(basePort),param))
                         {
                             spdlog::info("通道({}) - Port({}->{})-> 启动成功",channel,basePort,destPort);
                             usleep(500);
@@ -257,7 +261,7 @@ void TdDevice::process_request() {
             ssrc = y_sdp.substr(2, y_sdp_last_index-1);
             spdlog::info("ssrc: {}", ssrc);
 
-             osip_message_t * message = evt->request;
+            osip_message_t * message = evt->request;
             int status = eXosip_call_build_answer(sip_context, evt->tid, 200, &message);
             if (status != 0) {
                 spdlog::error("call invite build answer failed");
@@ -301,15 +305,15 @@ void TdDevice::process_catalog_query(string sn) {
     ss << "<Response>\r\n";
     ss << "<CmdType>Catalog</CmdType>\r\n";
     ss << "<SN>" << sn << "</SN>\r\n";
-    ss << "<DeviceID>" << device_sip_id << "</DeviceID>\r\n";
+    ss << "<DeviceID>" << TdConf::getInstance()->mGB28121Ctx.mDevideId << "</DeviceID>\r\n";
     ss << "<SumNum>" << 1 << "</SumNum>\r\n";
     ss << "<DeviceList Num=\"" << 1 << "\">\r\n";
     ss << "<Item>\r\n";
-    ss << "<DeviceID>" << device_sip_id << "</DeviceID>\r\n";
+    ss << "<DeviceID>" << TdConf::getInstance()->mGB28121Ctx.mDevideId << "</DeviceID>\r\n";
     ss << "<Manufacturer>" << manufacture << "</Manufacturer>\r\n";
     ss << "<Status>ON</Status>\r\n";
     ss << "<Name>MediaProxy</Name>\r\n";
-    ss << "<ParentID>" << server_sip_id << "</ParentID>\r\n";
+    ss << "<ParentID>" << TdConf::getInstance()->mGB28121Ctx.mServerSipId << "</ParentID>\r\n";
     ss << "</Item>\r\n";
     ss << "</DeviceList>\r\n";
     ss << "</Response>\r\n";
@@ -337,7 +341,7 @@ void TdDevice::process_devicestatus_query(string sn) {
     ss << "<Response>\r\n";
     ss << "<CmdType>DeviceStatus</CmdType>\r\n";
     ss << "<SN>" << get_sn() << "</SN>\r\n";
-    ss << "<DeviceID>" << device_sip_id << "</DeviceID>\r\n";
+    ss << "<DeviceID>" << TdConf::getInstance()->mGB28121Ctx.mDevideId << "</DeviceID>\r\n";
     ss << "<Result>OK</Result>\r\n";
     ss << "<Online>ONLINE</Online>\r\n";
     ss << "<Status>OK</Status>\r\n";
@@ -364,7 +368,7 @@ void TdDevice::process_deviceinfo_query(string sn) {
     ss <<    "<Response>\r\n";
     ss <<    "<CmdType>DeviceInfo</CmdType>\r\n";
     ss <<    "<SN>" << get_sn() << "</SN>\r\n";
-    ss <<    "<DeviceID>" << device_sip_id << "</DeviceID>\r\n";
+    ss <<    "<DeviceID>" << TdConf::getInstance()->mGB28121Ctx.mDevideId << "</DeviceID>\r\n";
     ss <<    "<DeviceName>jiuli</DeviceName>";
     ss <<    "<Name>媒体代理服务</Name>\r\n" ;
     ss <<    "<Result>OK</Result>\r\n";
@@ -397,7 +401,7 @@ void TdDevice::heartbeat_task() {
             ss << "<Notify>\r\n";
             ss << "<CmdType>Keepalive</CmdType>\r\n";
             ss << "<SN>" << get_sn() << "</SN>\r\n";
-            ss << "<DeviceID>" << device_sip_id << "</DeviceID>\r\n";
+            ss << "<DeviceID>" << TdConf::getInstance()->mGB28121Ctx.mDevideId << "</DeviceID>\r\n";
             ss << "<Status>OK</Status>\r\n";
             ss << "</Notify>\r\n";
 
@@ -444,9 +448,6 @@ void TdDevice::send_response_ok(shared_ptr<eXosip_event_t> evt) {
 }
 
 void TdDevice::send_response_err(shared_ptr<eXosip_event_t> evt) {
-    //auto msg = evt->request;
-    //eXosip_message_build_answer(sip_context, evt->tid, 403, nullptr);
-    //send_response(evt, msg);
     eXosip_message_send_answer(sip_context, evt->tid, 403, nullptr);
 }
 
@@ -533,9 +534,9 @@ std::string TdDevice::getValueByAttrKey(const char * sdp,std::string AttrKey)
    return "";
 }
 
-int TdDevice::createSession(std::string channle,std::string dest,int destPort,int basePort)
+int TdDevice::createSession(std::string channle,std::string dest,int destPort,int basePort,ChanMediaParam_t param)
 {
-    return TdChanManager::getInstance()->createChannel(channle,dest,destPort,basePort);
+    return TdChanManager::getInstance()->createChannel(channle,dest,destPort,basePort,param);
 }
 
 int TdDevice::destorySession(std::string channle)

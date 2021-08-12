@@ -1,5 +1,6 @@
 #include "TdH264.h"
 #include<cmath>
+
 int32_t TdH264::decoderSetUp()
 {
     long rv = WelsCreateDecoder (&decoder_);
@@ -24,6 +25,9 @@ int32_t TdH264::encoderSetUp(){
     unsigned int uiTraceLevel = WELS_LOG_ERROR;
     encoder_->SetOption (ENCODER_OPTION_TRACE_LEVEL, &uiTraceLevel);
     timestamp_ = 0;
+
+    //mTdX264Handle.encoderSetUp();
+
     return 0 ;
 }
 //pDecoder->SetOption (DECODER_OPTION_END_OF_STREAM, (void*)&iEndOfStreamFlag);
@@ -41,7 +45,7 @@ int32_t TdH264::setEncoderParam(int width,int height,int bitrate,int iMaxBitrate
     encParam.iTemporalLayerNum = 1;
     encParam.iSpatialLayerNum = 1;
     encParam.bEnableDenoise = false;
-    encParam.bEnableBackgroundDetection = true;
+    encParam.bEnableBackgroundDetection = false;
     encParam.bEnableAdaptiveQuant = false;
     encParam.bEnableFrameSkip = false;
     encParam.bEnableLongTermReference = false;
@@ -51,9 +55,20 @@ int32_t TdH264::setEncoderParam(int width,int height,int bitrate,int iMaxBitrate
     encParam.sSpatialLayers[0].iVideoWidth = width;
     encParam.sSpatialLayers[0].iVideoHeight = height;
     encParam.sSpatialLayers[0].fFrameRate = fps;
-    encParam.sSpatialLayers[0].iSpatialBitrate = bitrate;
-    encParam.sSpatialLayers[0].iMaxSpatialBitrate =iMaxBitrate;
+
+    // for (int i = 0; i < encParam.iSpatialLayerNum; i++) {
+    //     encParam.sSpatialLayers[i].iVideoWidth = width ;
+    //     encParam.sSpatialLayers[i].iVideoHeight = height ;
+    //     encParam.sSpatialLayers[i].fFrameRate = fps;
+    // }
+
+
+    //encParam.sSpatialLayers[0].iSpatialBitrate = bitrate;
+    //encParam.sSpatialLayers[0].iMaxSpatialBitrate =5000000;
     encoder_->InitializeExt (&encParam);
+
+    //mTdX264Handle.setEncoderParam(width,height,bitrate,iMaxBitrate,fps);
+
     return 0 ;
 }
 void TdH264::setPicture(int width,int height,int Ystride,int UVstride)
@@ -148,71 +163,47 @@ int32_t TdH264::convert(uint8_t *inDate,uint32_t inSize,uint8_t **outDate,uint32
     uint8_t *oData[3];
     SBufferInfo obufInfo ;
     int status;
-    int src_width,src_height,src_width_uv,src_height_uv,src_stride_y,src_stride_uv;
-    int dst_width,dst_height,dst_width_uv,dst_height_uv,dst_stride_y,dst_stride_uv;
     int64_t dst_y_plane_size,dst_uv_plane_size;
     int64_t src_y_plane_size,src_uv_plane_size;
+
+    YUVFrame_t srcFrame,*dstFrame;
     memset (&obufInfo, 0, sizeof (SBufferInfo));
     *outSize = 0 ;
     isKeyFrame=false ;
     DECODING_STATE rv = decoder_->DecodeFrame2 (inDate, (int) inSize, oData, &obufInfo);
     if (obufInfo.iBufferStatus == 1)
     {  
-        if(obufInfo.UsrData.sSystemBuffer.iFormat==videoFormatI420){
+        if(obufInfo.UsrData.sSystemBuffer.iFormat==videoFormatI420){            
+            srcFrame.data[0].data = oData[0];
+            srcFrame.data[1].data = oData[1];
+            srcFrame.data[2].data = oData[2];
+            srcFrame.height = obufInfo.UsrData.sSystemBuffer.iHeight;
+            srcFrame.width = obufInfo.UsrData.sSystemBuffer.iWidth;
+            srcFrame.stride[0] = obufInfo.UsrData.sSystemBuffer.iStride[0];
+            srcFrame.stride[1] = obufInfo.UsrData.sSystemBuffer.iStride[1];
 
-            src_height = obufInfo.UsrData.sSystemBuffer.iHeight;
-            src_width = obufInfo.UsrData.sSystemBuffer.iWidth;
+            dstFrame = newEmptyYUVFrame();
+            dstFrame->height = getCodecHeight();
+            dstFrame->width = getCodecWidth();
 
-        
-            src_width_uv = (abs(src_width) + 1) >> 1;
-            src_height_uv = (abs(src_height) + 1) >> 1;
-
-            src_y_plane_size = obufInfo.UsrData.sSystemBuffer.iStride[0]*src_height;
-            src_uv_plane_size = obufInfo.UsrData.sSystemBuffer.iStride[1]*src_height;
-
-            //  dst_height = (abs(src_height) + 1) >> 1;
-            //  dst_width = (abs(src_width) + 1) >> 1;
-            dst_height = getCodecHeight();
-            dst_width = getCodecWidth();
-
-            dst_width_uv = (abs(dst_width) + 1) >> 1;
-            dst_height_uv = (abs(dst_height) + 1) >> 1;
-
-        
-            dst_stride_y = dst_width;
-            dst_stride_uv = dst_width_uv;
-
-
-            dst_y_plane_size = (dst_width) * (dst_height);
-            dst_uv_plane_size = (dst_width_uv) * (dst_height_uv);
-
-            align_buffer_page_end(dst_y_c,dst_y_plane_size);
-            align_buffer_page_end(dst_u_c,dst_uv_plane_size);
-            align_buffer_page_end(dst_v_c,dst_uv_plane_size);
-
-
-            status = libyuv::I420Scale(oData[0], obufInfo.UsrData.sSystemBuffer.iStride[0],oData[1], 
-                obufInfo.UsrData.sSystemBuffer.iStride[1], oData[2],
-                obufInfo.UsrData.sSystemBuffer.iStride[1],
-                src_width, src_height, dst_y_c, dst_stride_y, dst_u_c,
-                dst_stride_uv, dst_v_c, dst_stride_uv, dst_width, dst_height,libyuv::kFilterNone);
-            if(status){
-                return -1 ;
-            }
-            bool is_keyframe=false ,got_output=false;
-
-            //printf("status:%d  %d %d %d %d \r\n",status,dst_width,dst_height,dst_stride_uv,dst_stride_y);
-            if(isCodecParamRefresh()){
-                //printf("H264修改参数\r\n");
-                setEncoderParam(dst_width,dst_height,200000,getCodecMaxBitrate(),getCodecRate());
+             if(isCodecParamRefresh()){
+                dstFrame->height = getCodecHeight();
+                dstFrame->width = getCodecWidth();
+                //printf("H264修改参数 %d %d \r\n",dstFrame->width,dstFrame->height);
+                setEncoderParam(dstFrame->width,dstFrame->height,400000,getCodecMaxBitrate(),getCodecRate());
+                // bool enID = true;
+                // encoder_->ForceIntraFrame (enID);
                 setCodecParamRefresh(false);
             }
-            setPicture(dst_width,dst_height,dst_stride_y,dst_stride_uv);
-            encode(dst_y_c,dst_u_c,dst_v_c,outDate,outSize,isKeyFrame,got_output);
-        
-            free_aligned_buffer_page_end(dst_y_c);
-            free_aligned_buffer_page_end(dst_u_c);
-            free_aligned_buffer_page_end(dst_v_c);
+            status=scale(&srcFrame,dstFrame);
+            if(status)
+            {
+                return -1;
+            }
+            bool is_keyframe=false ,got_output=false;         
+            setPicture(dstFrame->width,dstFrame->height,dstFrame->stride[0],dstFrame->stride[1]);
+            encode(dstFrame->data[0].data,dstFrame->data[1].data,dstFrame->data[2].data,outDate,outSize,isKeyFrame,got_output);
+            freeYUVFrame(dstFrame);
         }
     }
     return 0 ;

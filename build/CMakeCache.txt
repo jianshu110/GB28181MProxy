@@ -200,7 +200,7 @@ channel_SOURCE_DIR:STATIC=/home/tdwl/work/GB28181MProxy/tdChannel
 codec_BINARY_DIR:STATIC=/home/tdwl/work/GB28181MProxy/build/tdCodec
 
 //Dependencies for the target
-codec_LIB_DEPENDS:STATIC=general;-lpthread;general;-lm;general;-lopenh264;general;scale;general;util;
+codec_LIB_DEPENDS:STATIC=general;-lpthread;general;-lm;general;-lopenh264;general;scale;general;util;general;-lx264;
 
 //Value Computed by CMake
 codec_SOURCE_DIR:STATIC=/home/tdwl/work/GB28181MProxy/tdCodec

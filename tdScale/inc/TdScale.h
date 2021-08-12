@@ -8,7 +8,7 @@
 
 typedef struct {
     uint8_t * data ;
-    uint8_t * mem;
+    int size;
 }buff_t ;
 
 static const int kMaxWidth = 32768;
@@ -55,8 +55,8 @@ static inline bool SizeValid(int src_width,
   var = 0
 
 typedef struct  {
-    buff_t *data;
-    int *stride;
+    buff_t data[4];
+    int stride[3];
     int width;
     int height;
 }YUVFrame_t;
@@ -69,17 +69,6 @@ public:
     TdScale(/* args */){};
     ~TdScale(){};
 
-    // int align_buffer_page_end(buff_t* buff,int size){
-    //     buff->mem = reinterpret_cast<uint8_t*>(malloc(((size) + 4095 + 63) & ~4095)); 
-    //     buff->data = reinterpret_cast<uint8_t*>((intptr_t)(buff->mem + (((size) + 4095 + 63) & ~4095) - (size)) & ~63);
-    //     return 0 ;
-    // };
-    // void free_aligned_buffer_page_end(buff_t* dataPtr){
-    //     if(dataPtr->mem!=nullptr)
-    //         free(dataPtr->mem);
-    //     dataPtr->data = nullptr;
-    //     //free(dataPtr);
-    // }
     int I420TestFilter(int src_width,
                           int src_height,
                           int dst_width,
@@ -88,6 +77,7 @@ public:
                           int benchmark_iterations,
                           int disable_cpu_flags,
                           int benchmark_cpu_info);
+    int initYUVFrame();
     YUVFrame_t * newEmptyYUVFrame();
     YUVFrame_t * newYUVFrame(int Width,int Height,int Ystride,int UVstride);
     void freeYUVFrame(YUVFrame_t * YUVFrame);

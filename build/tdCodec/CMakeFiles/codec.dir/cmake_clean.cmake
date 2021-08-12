@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/codec.dir/src/TdH264.cpp.o"
   "CMakeFiles/codec.dir/src/TdCodec.cpp.o"
+  "CMakeFiles/codec.dir/src/TdX264Handle.cpp.o"
   "../libs/libcodec.pdb"
   "../libs/libcodec.a"
 )

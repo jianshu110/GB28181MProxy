@@ -10,20 +10,6 @@
 
 using namespace std::placeholders;
 using namespace toolkit;
-// typedef struct  {
-//     uint8_t * data[3];
-//     int stride[2];
-//     int width;
-//     int height;
-// }Frame_t;
-
-//typedef void (*h264CallBackUser)(void * user,uint8_t * data,int size )
-
-// typedef struct FramePacket_s{
-//     FramePacket_s(uint8_t * Data,uint32_t Size):data(Data),size(Size){};
-//     uint8_t * data;
-//     uint32_t size;
-// }FramePacket;
 
 typedef struct {
     int width;
@@ -36,6 +22,51 @@ enum CodecType{
     VideoH264,
     VideoH265,
 };
+
+typedef struct Resolution_{
+    Resolution_(std::string ResolutionStr)
+    {
+        mResolutionStr = ResolutionStr ;
+        if(!mResolutionStr.compare("1080p"))
+        {
+            mHeight = 1080 ;
+            mWidth = 1920;
+        }
+        else if(!mResolutionStr.compare("720p"))
+        {
+            mHeight = 720 ;
+            mWidth = 1280;
+        }
+        else if(!mResolutionStr.compare("qHD"))
+        {
+            mHeight = 540 ;
+            mWidth = 960;
+        }
+        else if(!mResolutionStr.compare("nHD"))
+        {
+            mHeight = 360 ;
+            mWidth =  640;
+        }
+        else if(!mResolutionStr.compare("WQVGA"))
+        {
+            mHeight = 272 ;
+            mWidth =  480;
+        }
+        else if(!mResolutionStr.compare("FWQVGA"))
+        {
+            mHeight = 240 ;
+            mWidth =  432;
+        }
+        else
+        {
+            mHeight = 540 ;
+            mWidth = 960;
+        }
+    }
+    std::string mResolutionStr ;
+    int mWidth = 960;
+    int mHeight = 540;
+} Resolution_t ;
 
 class TdCodec
 {
@@ -50,6 +81,7 @@ public:
     int32_t setParam(CodecParam param);
     int32_t convert(uint8_t *inDate,uint32_t inSize,uint8_t **outDate,uint32_t *outSize,bool &isKeyFrame);
     int32_t destroy();
+    // Resolution_t parseResolution(std::string Resolution);
 };
 
 
