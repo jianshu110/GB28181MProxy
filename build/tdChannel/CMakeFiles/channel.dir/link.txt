@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../libs/libchannel.a  CMakeFiles/channel.dir/src/TdChanManager.cpp.o
-/usr/bin/ranlib ../libs/libchannel.a

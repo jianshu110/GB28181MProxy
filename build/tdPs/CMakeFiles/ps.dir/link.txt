@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../libs/libps.a  CMakeFiles/ps.dir/src/TdPs.cpp.o
-/usr/bin/ranlib ../libs/libps.a

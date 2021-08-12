@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../libs/libconf.a  CMakeFiles/conf.dir/src/TdConf.cpp.o
-/usr/bin/ranlib ../libs/libconf.a
